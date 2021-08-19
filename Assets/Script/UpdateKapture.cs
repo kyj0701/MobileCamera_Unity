@@ -21,7 +21,7 @@ public class UpdateKapture : MonoBehaviour
 
     private void UpdateKaptureFormat()
     {
-        accel.text = "X:" + Input.acceleration.x.ToString("N2") + " Y: " + Input.acceleration.y.ToString("N2") + " Z: " + Input.acceleration.z.ToString("N2");
-        gyro.text = "X:" + Input.gyro.rotationRate.x.ToString("N2") + " Y: " + Input.gyro.rotationRate.y.ToString("N2") + " Z: " + Input.gyro.rotationRate.z.ToString("N2");
+        accel.text = "ACC - " + "X:" + Input.acceleration.x.ToString("N2") + " Y: " + Input.acceleration.y.ToString("N2") + " Z: " + Input.acceleration.z.ToString("N2");
+        gyro.text = "GYRO - " + "X:" + Input.gyro.rotationRate.x.ToString("N2") + " Y: " + Input.gyro.rotationRate.y.ToString("N2") + " Z: " + Input.gyro.rotationRate.z.ToString("N2");
     }
 }

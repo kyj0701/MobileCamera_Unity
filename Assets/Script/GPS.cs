@@ -10,9 +10,14 @@ public class GPS : MonoBehaviour {
 
     public float latitude;
     public float longitude;
+    public float altitude;
 
     void Start()
     {
+        if (!Permission.HasUserAuthorizedPermission("android.permission.ACCESS_FINE_LOCATION"))
+        {
+            Permission.RequestUserPermission("android.permission.ACCESS_FINE_LOCATION");
+        }
         Instance = this;
         DontDestroyOnLoad(gameObject);
         StartCoroutine(StartLocationService());
@@ -21,11 +26,6 @@ public class GPS : MonoBehaviour {
 
     private IEnumerator StartLocationService()
     {
-        if (!Permission.HasUserAuthorizedPermission("android.permission.ACCESS_FINE_LOCATION"))
-        {
-            Permission.RequestUserPermission("android.permission.ACCESS_FINE_LOCATION");
-        }
-
         if (!Input.location.isEnabledByUser)
         {
             Debug.Log("User has not enabled GPS");
@@ -55,5 +55,6 @@ public class GPS : MonoBehaviour {
 
         latitude = Input.location.lastData.latitude;
         longitude = Input.location.lastData.longitude;
+        altitude = Input.location.lastData.altitude;
     }
 }

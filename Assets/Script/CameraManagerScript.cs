@@ -15,56 +15,88 @@ public class CameraManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        selectedCameraIndex = -1;
-    }
-
-    public void CameraOn()
-    {
-        if (selectedCameraIndex == -1)
+    if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
         {
-            if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
+            Permission.RequestUserPermission(Permission.Camera);
+        }
+
+        if (WebCamTexture.devices.Length == 0)
+        {
+            Debug.Log("No Camera!");
+            return;
+        }
+
+        WebCamDevice[] devices = WebCamTexture.devices;
+
+        for (int i = 0; i < devices.Length; i++)
+        {
+            if(devices[i].isFrontFacing == false)
             {
-                Permission.RequestUserPermission(Permission.Camera);
-            }
-
-            if (WebCamTexture.devices.Length == 0)
-            {
-                Debug.Log("No Camera!");
-                return;
-            }
-
-            WebCamDevice[] devices = WebCamTexture.devices;
-
-            for (int i = 0; i < devices.Length; i++)
-            {
-                if(devices[i].isFrontFacing == false)
-                {
-                    selectedCameraIndex = i;
-                    break;
-                }
-            }
-
-            if (selectedCameraIndex >= 0)
-            {
-                camTexture = new WebCamTexture(devices[selectedCameraIndex].name);
-
-                camTexture.requestedFPS = 60;
-
-                cameraViewImage.texture = camTexture;
-
-                camTexture.Play();
+                selectedCameraIndex = i;
+                break;
             }
         }
-    }
 
-    public void CameraOff()
-    {
-        if (camTexture != null)
+        if (selectedCameraIndex >= 0)
         {
-            camTexture.Stop();
-            WebCamTexture.Destroy(camTexture);
-            camTexture = null;
+            camTexture = new WebCamTexture(devices[selectedCameraIndex].name, 1080, 1300);
+
+            camTexture.requestedFPS = 60;
+
+            cameraViewImage.texture = camTexture;
+
+            camTexture.Play();
         }
-        selectedCameraIndex = -1;
     }
 }
+
+//     public void CameraOn()
+//     {
+//         if (selectedCameraIndex == -1)
+//         {
+//             if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
+//             {
+//                 Permission.RequestUserPermission(Permission.Camera);
+//             }
+
+//             if (WebCamTexture.devices.Length == 0)
+//             {
+//                 Debug.Log("No Camera!");
+//                 return;
+//             }
+
+//             WebCamDevice[] devices = WebCamTexture.devices;
+
+//             for (int i = 0; i < devices.Length; i++)
+//             {
+//                 if(devices[i].isFrontFacing == false)
+//                 {
+//                     selectedCameraIndex = i;
+//                     break;
+//                 }
+//             }
+
+//             if (selectedCameraIndex >= 0)
+//             {
+//                 camTexture = new WebCamTexture(devices[selectedCameraIndex].name, 1080, 1300);
+
+//                 camTexture.requestedFPS = 60;
+
+//                 cameraViewImage.texture = camTexture;
+
+//                 camTexture.Play();
+//             }
+//         }
+//     }
+
+//     public void CameraOff()
+//     {
+//         if (camTexture != null)
+//         {
+//             camTexture.Stop();
+//             WebCamTexture.Destroy(camTexture);
+//             camTexture = null;
+//         }
+//         selectedCameraIndex = -1;
+//     }
+// }
