@@ -11,6 +11,7 @@ public class GPS : MonoBehaviour {
     public float latitude;
     public float longitude;
     public float altitude;
+    public double UTC;
 
     void Start()
     {
@@ -56,5 +57,6 @@ public class GPS : MonoBehaviour {
         latitude = Input.location.lastData.latitude;
         longitude = Input.location.lastData.longitude;
         altitude = Input.location.lastData.altitude;
+        UTC = Input.location.lastData.timestamp;
     }
 }
