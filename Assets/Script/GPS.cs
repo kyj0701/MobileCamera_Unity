@@ -12,6 +12,10 @@ public class GPS : MonoBehaviour {
     public float longitude;
     public float altitude;
     public double UTC;
+    public float VDOP;
+    public float HDOP;
+    public float PDOP;
+
 
     void Start()
     {
@@ -23,7 +27,6 @@ public class GPS : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
         StartCoroutine(StartLocationService());
     }
-
 
     private IEnumerator StartLocationService()
     {
@@ -53,10 +56,18 @@ public class GPS : MonoBehaviour {
             Debug.Log("Unable to determine device location");
             yield break;
         }
+        
+        UpdateLocationInfo();
+    }
 
+    public void UpdateLocationInfo()
+    {
         latitude = Input.location.lastData.latitude;
         longitude = Input.location.lastData.longitude;
         altitude = Input.location.lastData.altitude;
         UTC = Input.location.lastData.timestamp;
+        VDOP = Input.location.lastData.verticalAccuracy;
+        HDOP = Input.location.lastData.horizontalAccuracy;
+        PDOP = Mathf.Sqrt(VDOP * VDOP + HDOP * HDOP);
     }
 }
