@@ -39,7 +39,7 @@ public class CameraManagerScript : MonoBehaviour
 
         if (selectedCameraIndex >= 0)
         {
-            camTexture = new WebCamTexture(devices[selectedCameraIndex].name, 1080, 1300);
+            camTexture = new WebCamTexture(devices[selectedCameraIndex].name, 1080, 1920);
 
             camTexture.requestedFPS = 60;
 
@@ -49,54 +49,3 @@ public class CameraManagerScript : MonoBehaviour
         }
     }
 }
-
-//     public void CameraOn()
-//     {
-//         if (selectedCameraIndex == -1)
-//         {
-//             if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
-//             {
-//                 Permission.RequestUserPermission(Permission.Camera);
-//             }
-
-//             if (WebCamTexture.devices.Length == 0)
-//             {
-//                 Debug.Log("No Camera!");
-//                 return;
-//             }
-
-//             WebCamDevice[] devices = WebCamTexture.devices;
-
-//             for (int i = 0; i < devices.Length; i++)
-//             {
-//                 if(devices[i].isFrontFacing == false)
-//                 {
-//                     selectedCameraIndex = i;
-//                     break;
-//                 }
-//             }
-
-//             if (selectedCameraIndex >= 0)
-//             {
-//                 camTexture = new WebCamTexture(devices[selectedCameraIndex].name, 1080, 1300);
-
-//                 camTexture.requestedFPS = 60;
-
-//                 cameraViewImage.texture = camTexture;
-
-//                 camTexture.Play();
-//             }
-//         }
-//     }
-
-//     public void CameraOff()
-//     {
-//         if (camTexture != null)
-//         {
-//             camTexture.Stop();
-//             WebCamTexture.Destroy(camTexture);
-//             camTexture = null;
-//         }
-//         selectedCameraIndex = -1;
-//     }
-// }
