@@ -13,9 +13,9 @@ public class CameraManagerScript : MonoBehaviour
     private int selectedCameraIndex;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-    if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
+        if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
         {
             Permission.RequestUserPermission(Permission.Camera);
         }
@@ -25,7 +25,10 @@ public class CameraManagerScript : MonoBehaviour
             Debug.Log("No Camera!");
             return;
         }
+    }
 
+    void Start() 
+    {
         WebCamDevice[] devices = WebCamTexture.devices;
 
         for (int i = 0; i < devices.Length; i++)

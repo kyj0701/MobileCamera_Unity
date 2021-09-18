@@ -17,12 +17,16 @@ public class GPS : MonoBehaviour {
     public float PDOP;
 
 
-    void Start()
+    void Awake()
     {
         if (!Permission.HasUserAuthorizedPermission("android.permission.ACCESS_FINE_LOCATION"))
         {
             Permission.RequestUserPermission("android.permission.ACCESS_FINE_LOCATION");
         }
+    }
+
+    void Start()
+    {
         Instance = this;
         DontDestroyOnLoad(gameObject);
         StartCoroutine(StartLocationService());
