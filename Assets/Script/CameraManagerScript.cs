@@ -6,7 +6,7 @@ using UnityEngine.Android;
 
 public class CameraManagerScript : MonoBehaviour
 {
-    WebCamTexture camTexture;
+    public WebCamTexture camTexture;
 
     public RawImage cameraViewImage;
 

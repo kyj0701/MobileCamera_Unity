@@ -41,10 +41,11 @@ public class GPS : MonoBehaviour {
         }
 
         Input.location.Start();
-        int maxWait = 20;
+        int maxWait = 100;
         
         while (Input.location.status == LocationServiceStatus.Initializing && maxWait > 0)
         {
+            Debug.Log("HERE?");
             yield return new WaitForSeconds(1);
             maxWait--;
         }
@@ -61,6 +62,7 @@ public class GPS : MonoBehaviour {
             yield break;
         }
         
+        Debug.Log(altitude);
         UpdateLocationInfo();
     }
 
