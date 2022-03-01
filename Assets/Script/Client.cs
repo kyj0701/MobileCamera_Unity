@@ -5,22 +5,22 @@ using UnityEngine.UI;
 
 public class Client : MonoBehaviour
 {
+    public static Client Instance { set; get; }
     private TcpClient socketConnection;
 
 	public RawImage testImage;
 
     public CameraManagerScript CameraManager;
-
-    public void Start()
-  	{
-        ConnectToTcpServer();
-    }
+    public Text trajectory;
+    public string traj;
+    public string[] split_traj;
+    public float qw, qx, qy, qz, tx, ty, tz;
 
     private void ConnectToTcpServer()
     {
         try
         {
-            socketConnection = new TcpClient("125.130.0.42", 17000);
+            socketConnection = new TcpClient("166.104.246.62", 17000);
         }
         catch (Exception e)
         {
@@ -33,7 +33,8 @@ public class Client : MonoBehaviour
     {
         if (socketConnection == null)
         {
-            return;
+            socketConnection = new TcpClient("166.104.246.62", 17000);
+            // return;
         }
         try
         {
@@ -51,40 +52,55 @@ public class Client : MonoBehaviour
         }
     }
 
-	public void SendToServerMessage()
-	{
-		string test = "id test_message 1024";
-		byte[] byteMessage = null;
+    private void RecvMessage()
+    {
+        try
+        {
+            // Get a stream object for writing.             
+            NetworkStream stream = socketConnection.GetStream();
+            byte[] recvMessage = new Byte[1024];
 
-		byteMessage = System.Text.Encoding.Default.GetBytes(test);
+            stream.Read(recvMessage, 0, recvMessage.Length);
 
-		SendMessage(byteMessage);
-	}
+            trajectory.text = System.Text.Encoding.UTF8.GetString(recvMessage);
+            traj = trajectory.ToString();
+            split_traj = traj.Split(' ');
+            qw = float.Parse(split_traj[0]);
+            qx = float.Parse(split_traj[1]);
+            qy = float.Parse(split_traj[2]);
+            qz = float.Parse(split_traj[3]);
+            tx = float.Parse(split_traj[4]);
+            ty = float.Parse(split_traj[5]);
+            tz = float.Parse(split_traj[6]);
+
+        }
+        catch (SocketException socketException)
+        {
+            Debug.Log("Socket exception: " + socketException);
+        }
+    }
 
 	public void SendToServerImage()
 	{
-        CameraManagerScript CameraManager = GameObject.Find("CameraManager").GetComponent<CameraManagerScript>();
+        ConnectToTcpServer();
+        Debug.Log("Send to Server");
+
+        CameraManagerScript CameraManager = GameObject.Find("Camera Manager").GetComponent<CameraManagerScript>();
         Texture2D testImageTexture = new Texture2D(CameraManager.camTexture.width, CameraManager.camTexture.height);
         testImageTexture.SetPixels(CameraManager.camTexture.GetPixels());
         testImageTexture.Apply();
         byte[] byteTestImageTexture = testImageTexture.EncodeToPNG();
-        // string userID = "kyj0701";
-        // byte[] byteUserID = System.Text.Encoding.Default.GetBytes(userID);
-        // string imageSize = "1024";
-        // byte[] byteImageSize = System.Text.Encoding.Default.GetBytes(imageSize);
-        // byte[] byteMessage = new byte[byteUserID.Length + byteTestImageTexture.Length + byteImageSize.Length];
 
-        // Array.Copy(byteUserID, 0, byteMessage, 0, byteUserID.Length);
-        // Array.Copy(byteTestImageTexture, 0, byteMessage, byteUserID.Length, byteTestImageTexture.Length);
-        // Array.Copy(byteImageSize, 0, byteMessage, byteUserID.Length + byteTestImageTexture.Length, byteImageSize.Length);
-
-        string requestMessage = "kyj0701 CameraImage.png" + byteTestImageTexture.Length;
+        string requestMessage = GameManager.Instance.playerID + " CameraImage.png " + byteTestImageTexture.Length;
         Debug.Log(requestMessage);
-        byte[] byteMessage = System.Text.Encoding.Default.GetBytes(requestMessage);
 
-		SendMessage(byteMessage);
+		SendMessage(System.Text.Encoding.Default.GetBytes(requestMessage));
 
-        byteMessage = byteTestImageTexture;
-        SendMessage(byteMessage);
+        SendMessage(byteTestImageTexture);
+        SendMessage(System.Text.Encoding.Default.GetBytes("EOF"));
+
+        RecvMessage();
+
+        socketConnection = null;
 	}
 }
