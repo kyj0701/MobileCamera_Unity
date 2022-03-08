@@ -844,11 +844,9 @@ IL2CPP_EXTERN_C RuntimeClass* WordSelectionEvent_t340E6006406B5E90F7190C56218E8F
 IL2CPP_EXTERN_C String_t* _stringLiteral000A577FA6F1044FCB37680E918D59D0DA3E7DDA;
 IL2CPP_EXTERN_C String_t* _stringLiteral00B28FF06B788B9B67C6B259800F404F9F3761FD;
 IL2CPP_EXTERN_C String_t* _stringLiteral0133981053AC767ED98F641B459173B5499F4EB0;
-IL2CPP_EXTERN_C String_t* _stringLiteral018259D39E36414B8C2B365CE0D0F392F0A08CBE;
 IL2CPP_EXTERN_C String_t* _stringLiteral024EA1BE7A2041C068C8DBC38470C880F5410103;
 IL2CPP_EXTERN_C String_t* _stringLiteral042E81C2165064627022D513DE063F1AE9F8EF49;
 IL2CPP_EXTERN_C String_t* _stringLiteral0570B799853B77BFC04E0AB8BD83CD1E5089060A;
-IL2CPP_EXTERN_C String_t* _stringLiteral0934FC6BFB2181A767301031EA32DE8F11379B3C;
 IL2CPP_EXTERN_C String_t* _stringLiteral09F08E524021A24DFB7C4E5A66F6F52B69AE2485;
 IL2CPP_EXTERN_C String_t* _stringLiteral0A5B75A180F8485D63D34FF1F4EDF6699CD0E2E0;
 IL2CPP_EXTERN_C String_t* _stringLiteral0DDC9946DED7ED0F8DAEE6CBDCE7312C67E5E5E6;
@@ -899,6 +897,7 @@ IL2CPP_EXTERN_C String_t* _stringLiteral876C4B39B6E4D0187090400768899C71D99DE90D
 IL2CPP_EXTERN_C String_t* _stringLiteral88BEE283254D7094E258B3A88730F4CC4F1E4AC7;
 IL2CPP_EXTERN_C String_t* _stringLiteral89A69171DD9B6677B2FE6DC2019A79A7C499EE48;
 IL2CPP_EXTERN_C String_t* _stringLiteral8ACAA4E0B28437F5FD1A41CE6591A16813F05377;
+IL2CPP_EXTERN_C String_t* _stringLiteral8FE5ACA991C78FB00F6C1E2F78DF8A90FF02793C;
 IL2CPP_EXTERN_C String_t* _stringLiteral960E5E7F211EFF3243DF14EDD1901DC9EF314D62;
 IL2CPP_EXTERN_C String_t* _stringLiteral9A7E77DB84E1908153085B0037B2757EFD9E6B67;
 IL2CPP_EXTERN_C String_t* _stringLiteral9C311850C974AD222115D59D4F9F42F19002BA4B;
@@ -938,6 +937,7 @@ IL2CPP_EXTERN_C String_t* _stringLiteralD99C319B457682A09D028AF022D0B2EE6B4D48A6
 IL2CPP_EXTERN_C String_t* _stringLiteralDECFB8F380101725B06EAE2D3F983211A277171C;
 IL2CPP_EXTERN_C String_t* _stringLiteralE2138FA8D137D1C6C81747FE1638815DDE9177B0;
 IL2CPP_EXTERN_C String_t* _stringLiteralE2EE8E73413D8C0EC384803067E74CF1A2A1AAFB;
+IL2CPP_EXTERN_C String_t* _stringLiteralE564C2D4F3B4E2C36C9F907B9C99A392DF2C5BC2;
 IL2CPP_EXTERN_C String_t* _stringLiteralEAA78E3F8941E308ED82C5ADB488D1307768B084;
 IL2CPP_EXTERN_C String_t* _stringLiteralEE3657997C5E6EC82CDE374326A95906F03A3315;
 IL2CPP_EXTERN_C String_t* _stringLiteralEF516EC7240CA160FD729299C926B5EDB246658A;
@@ -950,6 +950,7 @@ IL2CPP_EXTERN_C const RuntimeMethod* AsyncVoidMethodBuilder_AwaitUnsafeOnComplet
 IL2CPP_EXTERN_C const RuntimeMethod* AsyncVoidMethodBuilder_Start_TisU3CCommunitcateWithServerU3Ed__23_tE41FDE5E40B136AAADFF26F04DC2FD04D39A2671_m1F206B28E8019291F1E172E7369109F85A893BE4_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* ChatController_AddToChatOutput_m9AB8FA8A32EA23F2E55795D8301ED0BF6A59F722_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Client_U3CCommunitcateWithServerU3Eb__23_0_mC12F83D2273B9E074F82BE4FBBE7AFD9492032C2_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* Client_U3CSendToServerImageU3Eb__22_0_m9A2C68D1CD82CAB171269E887D796B5C9E79BB6B_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Component_GetComponentInChildren_TisTextMeshProUGUI_t101091AF4B578BB534C92E9D1EEAF0611636D957_m60A1B193FDBBFB3719065622DB5E0BB21CA4ABDC_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Component_GetComponent_TisLight_t1E68479B7782AF2050FAA02A5DC612FD034F18F3_mF4816FA12B6F220CA55D47D669D7E50DC118B9E9_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Component_GetComponent_TisRenderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF_mC91ACC92AD57CA6CA00991DAF1DB3830BCE07AF8_RuntimeMethod_var;
@@ -7440,10 +7441,10 @@ struct VertexAnimU5BU5D_tC74236D4EB454A8EF2CE1E6145CE5F78E1D5CF38  : public Runt
 };
 
 
-// T UnityEngine.GameObject::GetComponent<System.Object>()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* GameObject_GetComponent_TisRuntimeObject_m6EAED4AA356F0F48288F67899E5958792395563B_gshared (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* __this, const RuntimeMethod* method) ;
 // System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder::Start<Client/<CommunitcateWithServer>d__23>(TStateMachine&)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AsyncVoidMethodBuilder_Start_TisU3CCommunitcateWithServerU3Ed__23_tE41FDE5E40B136AAADFF26F04DC2FD04D39A2671_m1F206B28E8019291F1E172E7369109F85A893BE4_gshared (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, U3CCommunitcateWithServerU3Ed__23_tE41FDE5E40B136AAADFF26F04DC2FD04D39A2671* ___stateMachine0, const RuntimeMethod* method) ;
+// T UnityEngine.GameObject::GetComponent<System.Object>()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* GameObject_GetComponent_TisRuntimeObject_m6EAED4AA356F0F48288F67899E5958792395563B_gshared (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* __this, const RuntimeMethod* method) ;
 // System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder::AwaitUnsafeOnCompleted<System.Runtime.CompilerServices.TaskAwaiter,Client/<CommunitcateWithServer>d__23>(TAwaiter&,TStateMachine&)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CCommunitcateWithServerU3Ed__23_tE41FDE5E40B136AAADFF26F04DC2FD04D39A2671_m93DF1E8F08FF206096EAE66667F625B31210E7B6_gshared (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833* ___awaiter0, U3CCommunitcateWithServerU3Ed__23_tE41FDE5E40B136AAADFF26F04DC2FD04D39A2671* ___stateMachine1, const RuntimeMethod* method) ;
 // System.Void UnityEngine.Events.UnityAction`1<System.Object>::.ctor(System.Object,System.IntPtr)
@@ -7581,6 +7582,19 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float Single_Parse_m349A7F699C77834259812ABE8
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Encoding_t65CDEF28CF20A7B8C92E85A4E808920C2465F095* Encoding_get_Default_m20D9BEC170CED98C8D129F8BF51BEEDCA6A9FB3D (const RuntimeMethod* method) ;
 // System.Void Client::SendMessage(System.Byte[])
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Client_SendMessage_m4BDDCE0AD2302CF8867AFBF3A9AB1BA8C2D2ECAC (Client_t733365C872686A6CDE2EAF9FF1A2570997083D7E* __this, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* ___buffer0, const RuntimeMethod* method) ;
+// System.Void System.Action::.ctor(System.Object,System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Action__ctor_mBDC7B0B4A3F583B64C2896F01BDED360772F67DC (Action_tD00B0A84D7945E50C2DFFC28EFEE6ED44ED2AD07* __this, RuntimeObject* ___object0, intptr_t ___method1, const RuntimeMethod* method) ;
+// System.Threading.Tasks.Task System.Threading.Tasks.Task::Run(System.Action)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* Task_Run_mBD6EF33232D13F2183A43D0A526A220C4F0181B4 (Action_tD00B0A84D7945E50C2DFFC28EFEE6ED44ED2AD07* ___action0, const RuntimeMethod* method) ;
+// System.Runtime.CompilerServices.AsyncVoidMethodBuilder System.Runtime.CompilerServices.AsyncVoidMethodBuilder::Create()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D AsyncVoidMethodBuilder_Create_mE6D291637BF7B4B6D3F8BFCA14920B9200D7A502 (const RuntimeMethod* method) ;
+// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder::Start<Client/<CommunitcateWithServer>d__23>(TStateMachine&)
+inline void AsyncVoidMethodBuilder_Start_TisU3CCommunitcateWithServerU3Ed__23_tE41FDE5E40B136AAADFF26F04DC2FD04D39A2671_m1F206B28E8019291F1E172E7369109F85A893BE4 (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, U3CCommunitcateWithServerU3Ed__23_tE41FDE5E40B136AAADFF26F04DC2FD04D39A2671* ___stateMachine0, const RuntimeMethod* method)
+{
+	((  void (*) (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*, U3CCommunitcateWithServerU3Ed__23_tE41FDE5E40B136AAADFF26F04DC2FD04D39A2671*, const RuntimeMethod*))AsyncVoidMethodBuilder_Start_TisU3CCommunitcateWithServerU3Ed__23_tE41FDE5E40B136AAADFF26F04DC2FD04D39A2671_m1F206B28E8019291F1E172E7369109F85A893BE4_gshared)(__this, ___stateMachine0, method);
+}
+// System.Void Client::CommunitcateWithServer()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Client_CommunitcateWithServer_mE08ED39598DE36BBBE5409308901814C4699BB6E (Client_t733365C872686A6CDE2EAF9FF1A2570997083D7E* __this, const RuntimeMethod* method) ;
 // System.Void Client::ConnectToTcpServer()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Client_ConnectToTcpServer_m25B7AD1EF23DD81402F7C36379A6EA22D3749688 (Client_t733365C872686A6CDE2EAF9FF1A2570997083D7E* __this, const RuntimeMethod* method) ;
 // UnityEngine.GameObject UnityEngine.GameObject::Find(System.String)
@@ -7604,17 +7618,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A8261
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* Int32_ToString_m030E01C24E294D6762FB0B6F37CB541581F55CA5 (int32_t* __this, const RuntimeMethod* method) ;
 // System.Void Client::RecvMessage()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Client_RecvMessage_m6B4CE38EE5E5C0A3A0B0D4563C1E217E51A3778C (Client_t733365C872686A6CDE2EAF9FF1A2570997083D7E* __this, const RuntimeMethod* method) ;
-// System.Runtime.CompilerServices.AsyncVoidMethodBuilder System.Runtime.CompilerServices.AsyncVoidMethodBuilder::Create()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D AsyncVoidMethodBuilder_Create_mE6D291637BF7B4B6D3F8BFCA14920B9200D7A502 (const RuntimeMethod* method) ;
-// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder::Start<Client/<CommunitcateWithServer>d__23>(TStateMachine&)
-inline void AsyncVoidMethodBuilder_Start_TisU3CCommunitcateWithServerU3Ed__23_tE41FDE5E40B136AAADFF26F04DC2FD04D39A2671_m1F206B28E8019291F1E172E7369109F85A893BE4 (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, U3CCommunitcateWithServerU3Ed__23_tE41FDE5E40B136AAADFF26F04DC2FD04D39A2671* ___stateMachine0, const RuntimeMethod* method)
-{
-	((  void (*) (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*, U3CCommunitcateWithServerU3Ed__23_tE41FDE5E40B136AAADFF26F04DC2FD04D39A2671*, const RuntimeMethod*))AsyncVoidMethodBuilder_Start_TisU3CCommunitcateWithServerU3Ed__23_tE41FDE5E40B136AAADFF26F04DC2FD04D39A2671_m1F206B28E8019291F1E172E7369109F85A893BE4_gshared)(__this, ___stateMachine0, method);
-}
-// System.Void System.Action::.ctor(System.Object,System.IntPtr)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Action__ctor_mBDC7B0B4A3F583B64C2896F01BDED360772F67DC (Action_tD00B0A84D7945E50C2DFFC28EFEE6ED44ED2AD07* __this, RuntimeObject* ___object0, intptr_t ___method1, const RuntimeMethod* method) ;
-// System.Threading.Tasks.Task System.Threading.Tasks.Task::Run(System.Action)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* Task_Run_mBD6EF33232D13F2183A43D0A526A220C4F0181B4 (Action_tD00B0A84D7945E50C2DFFC28EFEE6ED44ED2AD07* ___action0, const RuntimeMethod* method) ;
 // System.Runtime.CompilerServices.TaskAwaiter System.Threading.Tasks.Task::GetAwaiter()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 Task_GetAwaiter_m08B368EAC939DD35D0AC428180822255A442CA29 (Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* __this, const RuntimeMethod* method) ;
 // System.Boolean System.Runtime.CompilerServices.TaskAwaiter::get_IsCompleted()
@@ -9030,7 +9033,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Client_ConnectToTcpServer_m25B7AD1EF23DD
 	if (!s_Il2CppMethodInitialized)
 	{
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&TcpClient_t753B702EE06B59897564F75CEBFB6C8AFF10BD58_il2cpp_TypeInfo_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral018259D39E36414B8C2B365CE0D0F392F0A08CBE);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralE564C2D4F3B4E2C36C9F907B9C99A392DF2C5BC2);
 		s_Il2CppMethodInitialized = true;
 	}
 	Exception_t* V_0 = NULL;
@@ -9043,10 +9046,10 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Client_ConnectToTcpServer_m25B7AD1EF23DD
 	String_t* G_B4_1 = NULL;
 	try
 	{// begin try (depth: 1)
-		// socketConnection = new TcpClient("166.104.246.60", 17000);
+		// socketConnection = new TcpClient("166.104.246.62", 17000);
 		TcpClient_t753B702EE06B59897564F75CEBFB6C8AFF10BD58* L_0 = (TcpClient_t753B702EE06B59897564F75CEBFB6C8AFF10BD58*)il2cpp_codegen_object_new(TcpClient_t753B702EE06B59897564F75CEBFB6C8AFF10BD58_il2cpp_TypeInfo_var);
 		NullCheck(L_0);
-		TcpClient__ctor_m51F653BB31E296E37086AD7FDC8F34F2F827B57D(L_0, _stringLiteral018259D39E36414B8C2B365CE0D0F392F0A08CBE, ((int32_t)17000), NULL);
+		TcpClient__ctor_m51F653BB31E296E37086AD7FDC8F34F2F827B57D(L_0, _stringLiteralE564C2D4F3B4E2C36C9F907B9C99A392DF2C5BC2, ((int32_t)17000), NULL);
 		__this->___socketConnection_5 = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___socketConnection_5), (void*)L_0);
 		// }
@@ -9119,7 +9122,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Client_SendMessage_m4BDDCE0AD2302CF8867A
 	if (!s_Il2CppMethodInitialized)
 	{
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&TcpClient_t753B702EE06B59897564F75CEBFB6C8AFF10BD58_il2cpp_TypeInfo_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral018259D39E36414B8C2B365CE0D0F392F0A08CBE);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralE564C2D4F3B4E2C36C9F907B9C99A392DF2C5BC2);
 		s_Il2CppMethodInitialized = true;
 	}
 	NetworkStream_tF39C3684B6D572BF47F518AD1DB1F4B12CEE4AE0* V_0 = NULL;
@@ -9140,10 +9143,10 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Client_SendMessage_m4BDDCE0AD2302CF8867A
 		}
 	}
 	{
-		// socketConnection = new TcpClient("166.104.246.60", 17000);
+		// socketConnection = new TcpClient("166.104.246.62", 17000);
 		TcpClient_t753B702EE06B59897564F75CEBFB6C8AFF10BD58* L_1 = (TcpClient_t753B702EE06B59897564F75CEBFB6C8AFF10BD58*)il2cpp_codegen_object_new(TcpClient_t753B702EE06B59897564F75CEBFB6C8AFF10BD58_il2cpp_TypeInfo_var);
 		NullCheck(L_1);
-		TcpClient__ctor_m51F653BB31E296E37086AD7FDC8F34F2F827B57D(L_1, _stringLiteral018259D39E36414B8C2B365CE0D0F392F0A08CBE, ((int32_t)17000), NULL);
+		TcpClient__ctor_m51F653BB31E296E37086AD7FDC8F34F2F827B57D(L_1, _stringLiteralE564C2D4F3B4E2C36C9F907B9C99A392DF2C5BC2, ((int32_t)17000), NULL);
 		__this->___socketConnection_5 = L_1;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___socketConnection_5), (void*)L_1);
 	}
@@ -9461,98 +9464,19 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Client_SendToServerImage_mD0B814241A64AC
 	static bool s_Il2CppMethodInitialized;
 	if (!s_Il2CppMethodInitialized)
 	{
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GameObject_GetComponent_TisCameraManagerScript_t08491CC5BD2FD6A9F97306114E4BA8E26488979E_m7F819BC2BA7BD1657C89B0DE8C574FA6D285DD61_RuntimeMethod_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4_il2cpp_TypeInfo_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral0934FC6BFB2181A767301031EA32DE8F11379B3C);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral6ADAE4ED93EB6C3C5BF9DFB02409BEEFCC35BC5B);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralA9E97704D98D8435E963D4DFE3AFF206257B680D);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Action_tD00B0A84D7945E50C2DFFC28EFEE6ED44ED2AD07_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Client_U3CSendToServerImageU3Eb__22_0_m9A2C68D1CD82CAB171269E887D796B5C9E79BB6B_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572_il2cpp_TypeInfo_var);
 		s_Il2CppMethodInitialized = true;
 	}
-	CameraManagerScript_t08491CC5BD2FD6A9F97306114E4BA8E26488979E* V_0 = NULL;
-	ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* V_1 = NULL;
-	String_t* V_2 = NULL;
-	int32_t V_3 = 0;
 	{
-		// ConnectToTcpServer();
-		Client_ConnectToTcpServer_m25B7AD1EF23DD81402F7C36379A6EA22D3749688(__this, NULL);
-		// CameraManagerScript CameraManager = GameObject.Find("CameraManager").GetComponent<CameraManagerScript>();
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0;
-		L_0 = GameObject_Find_mFF1D6C65A7E2CD82443F4DCE4C53472FB30B7F51(_stringLiteral0934FC6BFB2181A767301031EA32DE8F11379B3C, NULL);
+		// Task.Run(() => CommunitcateWithServer());
+		Action_tD00B0A84D7945E50C2DFFC28EFEE6ED44ED2AD07* L_0 = (Action_tD00B0A84D7945E50C2DFFC28EFEE6ED44ED2AD07*)il2cpp_codegen_object_new(Action_tD00B0A84D7945E50C2DFFC28EFEE6ED44ED2AD07_il2cpp_TypeInfo_var);
 		NullCheck(L_0);
-		CameraManagerScript_t08491CC5BD2FD6A9F97306114E4BA8E26488979E* L_1;
-		L_1 = GameObject_GetComponent_TisCameraManagerScript_t08491CC5BD2FD6A9F97306114E4BA8E26488979E_m7F819BC2BA7BD1657C89B0DE8C574FA6D285DD61(L_0, GameObject_GetComponent_TisCameraManagerScript_t08491CC5BD2FD6A9F97306114E4BA8E26488979E_m7F819BC2BA7BD1657C89B0DE8C574FA6D285DD61_RuntimeMethod_var);
-		V_0 = L_1;
-		// Texture2D testImageTexture = new Texture2D(CameraManager.camTexture.width, CameraManager.camTexture.height);
-		CameraManagerScript_t08491CC5BD2FD6A9F97306114E4BA8E26488979E* L_2 = V_0;
-		NullCheck(L_2);
-		WebCamTexture_t2021D179149C925AA6D73E6F1898C8D46521C749* L_3 = L_2->___camTexture_4;
-		NullCheck(L_3);
-		int32_t L_4;
-		L_4 = VirtualFuncInvoker0< int32_t >::Invoke(4 /* System.Int32 UnityEngine.Texture::get_width() */, L_3);
-		CameraManagerScript_t08491CC5BD2FD6A9F97306114E4BA8E26488979E* L_5 = V_0;
-		NullCheck(L_5);
-		WebCamTexture_t2021D179149C925AA6D73E6F1898C8D46521C749* L_6 = L_5->___camTexture_4;
-		NullCheck(L_6);
-		int32_t L_7;
-		L_7 = VirtualFuncInvoker0< int32_t >::Invoke(6 /* System.Int32 UnityEngine.Texture::get_height() */, L_6);
-		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_8 = (Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4*)il2cpp_codegen_object_new(Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4_il2cpp_TypeInfo_var);
-		NullCheck(L_8);
-		Texture2D__ctor_m3BA82E87442B7F69E118477069AE11101B9DF796(L_8, L_4, L_7, NULL);
-		// testImageTexture.SetPixels(CameraManager.camTexture.GetPixels());
-		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_9 = L_8;
-		CameraManagerScript_t08491CC5BD2FD6A9F97306114E4BA8E26488979E* L_10 = V_0;
-		NullCheck(L_10);
-		WebCamTexture_t2021D179149C925AA6D73E6F1898C8D46521C749* L_11 = L_10->___camTexture_4;
-		NullCheck(L_11);
-		ColorU5BU5D_t612261CF293F6FFC3D80AB52259FF0DC2B2CC389* L_12;
-		L_12 = WebCamTexture_GetPixels_mA2B07D6D761AA724A6AB1ED04BE0FA195D830FDC(L_11, NULL);
-		NullCheck(L_9);
-		Texture2D_SetPixels_mAE0CDFA15FA96F840D7FFADC31405D8AF20D9073(L_9, L_12, NULL);
-		// testImageTexture.Apply();
-		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_13 = L_9;
-		NullCheck(L_13);
-		Texture2D_Apply_mA014182C9EE0BBF6EEE3B286854F29E50EB972DC(L_13, NULL);
-		// byte[] byteTestImageTexture = testImageTexture.EncodeToPNG();
-		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_14;
-		L_14 = ImageConversion_EncodeToPNG_m0FFFD0F0DC0EC22073BC937A5294067C57008391(L_13, NULL);
-		V_1 = L_14;
-		// string requestMessage = "kyj0701 CameraImage.png " + byteTestImageTexture.Length;
-		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_15 = V_1;
-		NullCheck(L_15);
-		V_3 = ((int32_t)(((RuntimeArray*)L_15)->max_length));
-		String_t* L_16;
-		L_16 = Int32_ToString_m030E01C24E294D6762FB0B6F37CB541581F55CA5((&V_3), NULL);
-		String_t* L_17;
-		L_17 = String_Concat_mAF2CE02CC0CB7460753D0A1A91CCF2B1E9804C5D(_stringLiteral6ADAE4ED93EB6C3C5BF9DFB02409BEEFCC35BC5B, L_16, NULL);
-		V_2 = L_17;
-		// Debug.Log(requestMessage);
-		String_t* L_18 = V_2;
-		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
-		Debug_Log_m86567BCF22BBE7809747817453CACA0E41E68219(L_18, NULL);
-		// SendMessage(System.Text.Encoding.Default.GetBytes(requestMessage));
-		Encoding_t65CDEF28CF20A7B8C92E85A4E808920C2465F095* L_19;
-		L_19 = Encoding_get_Default_m20D9BEC170CED98C8D129F8BF51BEEDCA6A9FB3D(NULL);
-		String_t* L_20 = V_2;
-		NullCheck(L_19);
-		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_21;
-		L_21 = VirtualFuncInvoker1< ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, String_t* >::Invoke(17 /* System.Byte[] System.Text.Encoding::GetBytes(System.String) */, L_19, L_20);
-		Client_SendMessage_m4BDDCE0AD2302CF8867AFBF3A9AB1BA8C2D2ECAC(__this, L_21, NULL);
-		// SendMessage(byteTestImageTexture);
-		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_22 = V_1;
-		Client_SendMessage_m4BDDCE0AD2302CF8867AFBF3A9AB1BA8C2D2ECAC(__this, L_22, NULL);
-		// SendMessage(System.Text.Encoding.Default.GetBytes("EOF"));
-		Encoding_t65CDEF28CF20A7B8C92E85A4E808920C2465F095* L_23;
-		L_23 = Encoding_get_Default_m20D9BEC170CED98C8D129F8BF51BEEDCA6A9FB3D(NULL);
-		NullCheck(L_23);
-		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_24;
-		L_24 = VirtualFuncInvoker1< ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, String_t* >::Invoke(17 /* System.Byte[] System.Text.Encoding::GetBytes(System.String) */, L_23, _stringLiteralA9E97704D98D8435E963D4DFE3AFF206257B680D);
-		Client_SendMessage_m4BDDCE0AD2302CF8867AFBF3A9AB1BA8C2D2ECAC(__this, L_24, NULL);
-		// RecvMessage();
-		Client_RecvMessage_m6B4CE38EE5E5C0A3A0B0D4563C1E217E51A3778C(__this, NULL);
-		// socketConnection = null;
-		__this->___socketConnection_5 = (TcpClient_t753B702EE06B59897564F75CEBFB6C8AFF10BD58*)NULL;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___socketConnection_5), (void*)(TcpClient_t753B702EE06B59897564F75CEBFB6C8AFF10BD58*)NULL);
+		Action__ctor_mBDC7B0B4A3F583B64C2896F01BDED360772F67DC(L_0, __this, (intptr_t)((void*)Client_U3CSendToServerImageU3Eb__22_0_m9A2C68D1CD82CAB171269E887D796B5C9E79BB6B_RuntimeMethod_var), NULL);
+		il2cpp_codegen_runtime_class_init_inline(Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572_il2cpp_TypeInfo_var);
+		Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* L_1;
+		L_1 = Task_Run_mBD6EF33232D13F2183A43D0A526A220C4F0181B4(L_0, NULL);
 		// }
 		return;
 	}
@@ -9598,6 +9522,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Client__ctor_m6F46A6650E8D17FC2CDF2D840F
 		return;
 	}
 }
+// System.Void Client::<SendToServerImage>b__22_0()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Client_U3CSendToServerImageU3Eb__22_0_m9A2C68D1CD82CAB171269E887D796B5C9E79BB6B (Client_t733365C872686A6CDE2EAF9FF1A2570997083D7E* __this, const RuntimeMethod* method) 
+{
+	{
+		// Task.Run(() => CommunitcateWithServer());
+		Client_CommunitcateWithServer_mE08ED39598DE36BBBE5409308901814C4699BB6E(__this, NULL);
+		return;
+	}
+}
 // System.Void Client::<CommunitcateWithServer>b__23_0()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Client_U3CCommunitcateWithServerU3Eb__23_0_mC12F83D2273B9E074F82BE4FBBE7AFD9492032C2 (Client_t733365C872686A6CDE2EAF9FF1A2570997083D7E* __this, const RuntimeMethod* method) 
 {
@@ -9607,8 +9540,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Client_U3CCommunitcateWithServerU3Eb__23
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GameObject_GetComponent_TisCameraManagerScript_t08491CC5BD2FD6A9F97306114E4BA8E26488979E_m7F819BC2BA7BD1657C89B0DE8C574FA6D285DD61_RuntimeMethod_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4_il2cpp_TypeInfo_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral0934FC6BFB2181A767301031EA32DE8F11379B3C);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral6ADAE4ED93EB6C3C5BF9DFB02409BEEFCC35BC5B);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral8FE5ACA991C78FB00F6C1E2F78DF8A90FF02793C);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralA9E97704D98D8435E963D4DFE3AFF206257B680D);
 		s_Il2CppMethodInitialized = true;
 	}
@@ -9619,9 +9552,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Client_U3CCommunitcateWithServerU3Eb__23
 	{
 		// ConnectToTcpServer();
 		Client_ConnectToTcpServer_m25B7AD1EF23DD81402F7C36379A6EA22D3749688(__this, NULL);
-		// CameraManagerScript CameraManager = GameObject.Find("CameraManager").GetComponent<CameraManagerScript>();
+		// CameraManagerScript CameraManager = GameObject.Find("Camera Manager").GetComponent<CameraManagerScript>();
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0;
-		L_0 = GameObject_Find_mFF1D6C65A7E2CD82443F4DCE4C53472FB30B7F51(_stringLiteral0934FC6BFB2181A767301031EA32DE8F11379B3C, NULL);
+		L_0 = GameObject_Find_mFF1D6C65A7E2CD82443F4DCE4C53472FB30B7F51(_stringLiteral8FE5ACA991C78FB00F6C1E2F78DF8A90FF02793C, NULL);
 		NullCheck(L_0);
 		CameraManagerScript_t08491CC5BD2FD6A9F97306114E4BA8E26488979E* L_1;
 		L_1 = GameObject_GetComponent_TisCameraManagerScript_t08491CC5BD2FD6A9F97306114E4BA8E26488979E_m7F819BC2BA7BD1657C89B0DE8C574FA6D285DD61(L_0, GameObject_GetComponent_TisCameraManagerScript_t08491CC5BD2FD6A9F97306114E4BA8E26488979E_m7F819BC2BA7BD1657C89B0DE8C574FA6D285DD61_RuntimeMethod_var);
@@ -9746,7 +9679,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CCommunitcateWithServerU3Ed__23_MoveNe
 			// {
 			//     ConnectToTcpServer();
 			// 
-			//     CameraManagerScript CameraManager = GameObject.Find("CameraManager").GetComponent<CameraManagerScript>();
+			//     CameraManagerScript CameraManager = GameObject.Find("Camera Manager").GetComponent<CameraManagerScript>();
 			//     Texture2D testImageTexture = new Texture2D(CameraManager.camTexture.width, CameraManager.camTexture.height);
 			//     testImageTexture.SetPixels(CameraManager.camTexture.GetPixels());
 			//     testImageTexture.Apply();

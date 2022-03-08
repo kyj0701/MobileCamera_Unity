@@ -26,7 +26,7 @@ public class Client : MonoBehaviour
     {
         try
         {
-            socketConnection = new TcpClient("166.104.246.60", 17000);
+            socketConnection = new TcpClient("166.104.246.62", 17000);
         }
         catch (Exception e)
         {
@@ -39,7 +39,7 @@ public class Client : MonoBehaviour
     {
         if (socketConnection == null)
         {
-            socketConnection = new TcpClient("166.104.246.60", 17000);
+            socketConnection = new TcpClient("166.104.246.62", 17000);
             // return;
         }
         try
@@ -98,25 +98,7 @@ public class Client : MonoBehaviour
 
 	public void SendToServerImage()
 	{
-        ConnectToTcpServer();
-
-        CameraManagerScript CameraManager = GameObject.Find("CameraManager").GetComponent<CameraManagerScript>();
-        Texture2D testImageTexture = new Texture2D(CameraManager.camTexture.width, CameraManager.camTexture.height);
-        testImageTexture.SetPixels(CameraManager.camTexture.GetPixels());
-        testImageTexture.Apply();
-        byte[] byteTestImageTexture = testImageTexture.EncodeToPNG();
-
-        string requestMessage = "kyj0701 CameraImage.png " + byteTestImageTexture.Length;
-        Debug.Log(requestMessage);
-
-        SendMessage(System.Text.Encoding.Default.GetBytes(requestMessage));
-
-        SendMessage(byteTestImageTexture);
-        SendMessage(System.Text.Encoding.Default.GetBytes("EOF"));
-
-        RecvMessage();
-
-        socketConnection = null;
+        Task.Run(() => CommunitcateWithServer());
 	}
 
     async void CommunitcateWithServer()
@@ -125,7 +107,7 @@ public class Client : MonoBehaviour
         {
             ConnectToTcpServer();
 
-            CameraManagerScript CameraManager = GameObject.Find("CameraManager").GetComponent<CameraManagerScript>();
+            CameraManagerScript CameraManager = GameObject.Find("Camera Manager").GetComponent<CameraManagerScript>();
             Texture2D testImageTexture = new Texture2D(CameraManager.camTexture.width, CameraManager.camTexture.height);
             testImageTexture.SetPixels(CameraManager.camTexture.GetPixels());
             testImageTexture.Apply();
