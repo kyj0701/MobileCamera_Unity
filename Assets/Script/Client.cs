@@ -1,26 +1,32 @@
 using System;
 using System.Net.Sockets;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Client : MonoBehaviour
 {
+    public static Client Instance { set; get; }
     private TcpClient socketConnection;
 
 	public RawImage testImage;
 
     public CameraManagerScript CameraManager;
+    public Text trajectory;
+    public string traj;
+    public string[] split_traj;
+    public float qw, qx, qy, qz, tx, ty, tz;
 
-    public void Start()
+    public void Awake()
   	{
-        ConnectToTcpServer();
+        // ConnectToTcpServer();
     }
 
     private void ConnectToTcpServer()
     {
         try
         {
-            socketConnection = new TcpClient("125.130.0.42", 17000);
+            socketConnection = new TcpClient("166.104.246.60", 17000);
         }
         catch (Exception e)
         {
@@ -33,7 +39,8 @@ public class Client : MonoBehaviour
     {
         if (socketConnection == null)
         {
-            return;
+            socketConnection = new TcpClient("166.104.246.60", 17000);
+            // return;
         }
         try
         {
@@ -51,9 +58,37 @@ public class Client : MonoBehaviour
         }
     }
 
+    private void RecvMessage()
+    {
+        try
+        {
+            // Get a stream object for writing.             
+            NetworkStream stream = socketConnection.GetStream();
+            byte[] recvMessage = new Byte[1024];
+
+            stream.Read(recvMessage, 0, recvMessage.Length);
+
+            trajectory.text = System.Text.Encoding.UTF8.GetString(recvMessage);
+            traj = trajectory.ToString();
+            split_traj = traj.Split(' ');
+            qw = float.Parse(split_traj[0]);
+            qx = float.Parse(split_traj[1]);
+            qy = float.Parse(split_traj[2]);
+            qz = float.Parse(split_traj[3]);
+            tx = float.Parse(split_traj[4]);
+            ty = float.Parse(split_traj[5]);
+            tz = float.Parse(split_traj[6]);
+
+        }
+        catch (SocketException socketException)
+        {
+            Debug.Log("Socket exception: " + socketException);
+        }
+    }
+
 	public void SendToServerMessage()
 	{
-		string test = "id test_message 1024";
+		string test = "test query.jpg 1024";
 		byte[] byteMessage = null;
 
 		byteMessage = System.Text.Encoding.Default.GetBytes(test);
@@ -63,28 +98,50 @@ public class Client : MonoBehaviour
 
 	public void SendToServerImage()
 	{
+        ConnectToTcpServer();
+
         CameraManagerScript CameraManager = GameObject.Find("CameraManager").GetComponent<CameraManagerScript>();
         Texture2D testImageTexture = new Texture2D(CameraManager.camTexture.width, CameraManager.camTexture.height);
         testImageTexture.SetPixels(CameraManager.camTexture.GetPixels());
         testImageTexture.Apply();
         byte[] byteTestImageTexture = testImageTexture.EncodeToPNG();
-        // string userID = "kyj0701";
-        // byte[] byteUserID = System.Text.Encoding.Default.GetBytes(userID);
-        // string imageSize = "1024";
-        // byte[] byteImageSize = System.Text.Encoding.Default.GetBytes(imageSize);
-        // byte[] byteMessage = new byte[byteUserID.Length + byteTestImageTexture.Length + byteImageSize.Length];
 
-        // Array.Copy(byteUserID, 0, byteMessage, 0, byteUserID.Length);
-        // Array.Copy(byteTestImageTexture, 0, byteMessage, byteUserID.Length, byteTestImageTexture.Length);
-        // Array.Copy(byteImageSize, 0, byteMessage, byteUserID.Length + byteTestImageTexture.Length, byteImageSize.Length);
-
-        string requestMessage = "kyj0701 CameraImage.png" + byteTestImageTexture.Length;
+        string requestMessage = "kyj0701 CameraImage.png " + byteTestImageTexture.Length;
         Debug.Log(requestMessage);
-        byte[] byteMessage = System.Text.Encoding.Default.GetBytes(requestMessage);
 
-		SendMessage(byteMessage);
+        SendMessage(System.Text.Encoding.Default.GetBytes(requestMessage));
 
-        byteMessage = byteTestImageTexture;
-        SendMessage(byteMessage);
+        SendMessage(byteTestImageTexture);
+        SendMessage(System.Text.Encoding.Default.GetBytes("EOF"));
+
+        RecvMessage();
+
+        socketConnection = null;
 	}
+
+    async void CommunitcateWithServer()
+    {
+        await Task.Run(() =>
+        {
+            ConnectToTcpServer();
+
+            CameraManagerScript CameraManager = GameObject.Find("CameraManager").GetComponent<CameraManagerScript>();
+            Texture2D testImageTexture = new Texture2D(CameraManager.camTexture.width, CameraManager.camTexture.height);
+            testImageTexture.SetPixels(CameraManager.camTexture.GetPixels());
+            testImageTexture.Apply();
+            byte[] byteTestImageTexture = testImageTexture.EncodeToPNG();
+
+            string requestMessage = "kyj0701 CameraImage.png " + byteTestImageTexture.Length;
+            Debug.Log(requestMessage);
+
+            SendMessage(System.Text.Encoding.Default.GetBytes(requestMessage));
+
+            SendMessage(byteTestImageTexture);
+            SendMessage(System.Text.Encoding.Default.GetBytes("EOF"));
+
+            RecvMessage();
+
+            socketConnection = null;
+        });
+    }
 }

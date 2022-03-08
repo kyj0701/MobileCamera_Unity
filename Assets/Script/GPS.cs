@@ -1,13 +1,11 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Android;
 
 public class GPS : MonoBehaviour {
 
     public static GPS Instance { set; get; }
 
-    public Text TF;
     public float latitude;
     public float longitude;
     public float altitude;
@@ -22,12 +20,12 @@ public class GPS : MonoBehaviour {
     {
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        // StartCoroutine(StartLocationService());
+        StartCoroutine(StartLocationService());
     }
 
     void Update()
     {
-        StartCoroutine(StartLocationService());
+        // StartCoroutine(StartLocationService());
     }
 
     private IEnumerator StartLocationService()
@@ -51,26 +49,22 @@ public class GPS : MonoBehaviour {
         while (Input.location.status == LocationServiceStatus.Initializing && delay < maxWait)
         {
             Debug.Log("HERE?");
-            TF.text = "GPS Update Complete";
             yield return new WaitForSeconds(3);
             delay++;
         }
 
         if (Input.location.status == LocationServiceStatus.Failed || Input.location.status == LocationServiceStatus.Stopped)
         {
-            TF.text = "GPS Update failed";
             Debug.Log("Unable to determine device location");
         }
 
         if (delay >= maxWait)
         {
-            TF.text = "Time out";
             Debug.Log("Time out");
         }
         
         UpdateLocationInfo();
-        TF.text = "GPS Update";
-        Debug.Log("GPS Update");
+        // Debug.Log("GPS Update");
         yield return new WaitForSeconds(2);
     }
 
