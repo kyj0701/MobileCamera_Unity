@@ -1,14 +1,16 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Android;
+using UnityEngine.XR.ARFoundation;
 
 public class CameraManagerScript : MonoBehaviour
 {
     public WebCamTexture camTexture;
-
     public RawImage cameraViewImage;
-
     private int selectedCameraIndex;
+    public Texture2D m_LastCameraTexture;
+    public RenderTexture renderTexture;
+    public ARCameraBackground m_ARCameraBackground;
 
     // Start is called before the first frame update
     void Awake()
@@ -27,26 +29,39 @@ public class CameraManagerScript : MonoBehaviour
 
     void Start() 
     {
-        WebCamDevice[] devices = WebCamTexture.devices;
+        // Copy the camera background to a RenderTexture
+        Graphics.Blit(null, renderTexture, m_ARCameraBackground.material);
+        
+        Debug.Log("AR Back : "+ m_ARCameraBackground);
+        // Copy the RenderTexture from GPU to CPU
+        var activeRenderTexture = RenderTexture.active;
+        RenderTexture.active = renderTexture;
+        if (m_LastCameraTexture == null)
+            m_LastCameraTexture = new Texture2D(renderTexture.width, renderTexture.height, TextureFormat.RGB24, true);
+        m_LastCameraTexture.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
+        m_LastCameraTexture.Apply();
+        RenderTexture.active = activeRenderTexture;
 
-        for (int i = 0; i < devices.Length; i++)
-        {
-            if(devices[i].isFrontFacing == false)
-            {
-                selectedCameraIndex = i;
-                break;
-            }
-        }
+        // WebCamDevice[] devices = WebCamTexture.devices;
 
-        if (selectedCameraIndex >= 0)
-        {
-            camTexture = new WebCamTexture(devices[selectedCameraIndex].name, 1080, 1920);
+        // for (int i = 0; i < devices.Length; i++)
+        // {
+        //     if(devices[i].isFrontFacing == false)
+        //     {
+        //         selectedCameraIndex = i;
+        //         break;
+        //     }
+        // }
 
-            camTexture.requestedFPS = 60;
+        // if (selectedCameraIndex >= 0)
+        // {
+        //     camTexture = new WebCamTexture(devices[selectedCameraIndex].name, 1080, 1920);
 
-            cameraViewImage.texture = camTexture;
+        //     camTexture.requestedFPS = 60;
 
-            camTexture.Play();
-        }
+        //     cameraViewImage.texture = camTexture;
+
+        //     camTexture.Play();
+        // }
     }
 }

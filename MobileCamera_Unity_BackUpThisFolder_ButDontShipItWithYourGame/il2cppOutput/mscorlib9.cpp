@@ -10,7 +10,6 @@
 #include <limits>
 #include <stdint.h>
 
-#include "icalls/mscorlib/System.Threading/InternalThread.h"
 #include "icalls/mscorlib/System.Threading/Timer.h"
 
 struct VirtualActionInvoker0
@@ -443,8 +442,6 @@ struct CompletionActionInvoker_t79D0F91F4193BD6F7BA4F4D831B00C0190E3F0F4;
 struct ContextCallback_tE8AFBDBFCC040FDA8DA8C1EEFE9BD66B16BDA007;
 // System.Threading.Tasks.ContinuationTaskFromTask
 struct ContinuationTaskFromTask_tAC326B0A0FC028C0DE2B55AB1D050D15F0C3384B;
-// System.Runtime.ConstrainedExecution.CriticalFinalizerObject
-struct CriticalFinalizerObject_t1DCAB623CAEA6529A96F5F3EDE3C7048A6E313C9;
 // System.Globalization.CultureData
 struct CultureData_tEEFDCF4ECA1BBF6C0C8C94EB3541657245598F9D;
 // System.Globalization.CultureInfo
@@ -2411,19 +2408,6 @@ struct UInt64_t8F12534CC8FC4B5860F2A2CD1EE79D322E7A41AF
 	uint64_t ___m_value_0;
 };
 
-// System.UIntPtr
-struct UIntPtr_t 
-{
-	// System.Void* System.UIntPtr::_pointer
-	void* ____pointer_1;
-};
-
-struct UIntPtr_t_StaticFields
-{
-	// System.UIntPtr System.UIntPtr::Zero
-	uintptr_t ___Zero_0;
-};
-
 // System.Threading.Tasks.UnobservedTaskExceptionEventArgs
 struct UnobservedTaskExceptionEventArgs_tCEC9720EE76432B9CB2AEA906818DC6FA0886E98  : public EventArgs_t37273F03EAC87217701DD431B190FBD84AD7C377
 {
@@ -2992,13 +2976,6 @@ struct TaskStatus_tDF62ACF297808A2BF8B7465A4A8E9FF161C9AB79
 	int32_t ___value___2;
 };
 
-// System.Threading.ThreadState
-struct ThreadState_t88980884E50F6863016A2A01EBC1549516DB3CB2 
-{
-	// System.Int32 System.Threading.ThreadState::value__
-	int32_t ___value___2;
-};
-
 // System.Runtime.CompilerServices.ValueTaskAwaiter
 struct ValueTaskAwaiter_t8A53759F995F1786E132CA010D1D215B55F3101A 
 {
@@ -3274,91 +3251,6 @@ struct ExecutionContext_t9D6EDFD92F0B2D391751963E2D77A8B03CB81710_StaticFields
 	ExecutionContext_t9D6EDFD92F0B2D391751963E2D77A8B03CB81710* ___s_dummyDefaultEC_7;
 	// System.Threading.ExecutionContext System.Threading.ExecutionContext::Default
 	ExecutionContext_t9D6EDFD92F0B2D391751963E2D77A8B03CB81710* ___Default_8;
-};
-
-// System.Threading.InternalThread
-struct InternalThread_tF40B7BFCBD60C82BD8475A22FF5186CA10293687  : public CriticalFinalizerObject_t1DCAB623CAEA6529A96F5F3EDE3C7048A6E313C9
-{
-	// System.Int32 System.Threading.InternalThread::lock_thread_id
-	int32_t ___lock_thread_id_0;
-	// System.IntPtr System.Threading.InternalThread::handle
-	intptr_t ___handle_1;
-	// System.IntPtr System.Threading.InternalThread::native_handle
-	intptr_t ___native_handle_2;
-	// System.IntPtr System.Threading.InternalThread::name_chars
-	intptr_t ___name_chars_3;
-	// System.Int32 System.Threading.InternalThread::name_free
-	int32_t ___name_free_4;
-	// System.Int32 System.Threading.InternalThread::name_length
-	int32_t ___name_length_5;
-	// System.Threading.ThreadState System.Threading.InternalThread::state
-	int32_t ___state_6;
-	// System.Object System.Threading.InternalThread::abort_exc
-	RuntimeObject* ___abort_exc_7;
-	// System.Int32 System.Threading.InternalThread::abort_state_handle
-	int32_t ___abort_state_handle_8;
-	// System.Int64 System.Threading.InternalThread::thread_id
-	int64_t ___thread_id_9;
-	// System.IntPtr System.Threading.InternalThread::debugger_thread
-	intptr_t ___debugger_thread_10;
-	// System.UIntPtr System.Threading.InternalThread::static_data
-	uintptr_t ___static_data_11;
-	// System.IntPtr System.Threading.InternalThread::runtime_thread_info
-	intptr_t ___runtime_thread_info_12;
-	// System.Object System.Threading.InternalThread::current_appcontext
-	RuntimeObject* ___current_appcontext_13;
-	// System.Object System.Threading.InternalThread::root_domain_thread
-	RuntimeObject* ___root_domain_thread_14;
-	// System.Byte[] System.Threading.InternalThread::_serialized_principal
-	ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* ____serialized_principal_15;
-	// System.Int32 System.Threading.InternalThread::_serialized_principal_version
-	int32_t ____serialized_principal_version_16;
-	// System.IntPtr System.Threading.InternalThread::appdomain_refs
-	intptr_t ___appdomain_refs_17;
-	// System.Int32 System.Threading.InternalThread::interruption_requested
-	int32_t ___interruption_requested_18;
-	// System.IntPtr System.Threading.InternalThread::longlived
-	intptr_t ___longlived_19;
-	// System.Boolean System.Threading.InternalThread::threadpool_thread
-	bool ___threadpool_thread_20;
-	// System.Boolean System.Threading.InternalThread::thread_interrupt_requested
-	bool ___thread_interrupt_requested_21;
-	// System.Int32 System.Threading.InternalThread::stack_size
-	int32_t ___stack_size_22;
-	// System.Byte System.Threading.InternalThread::apartment_state
-	uint8_t ___apartment_state_23;
-	// System.Int32 modreq(System.Runtime.CompilerServices.IsVolatile) System.Threading.InternalThread::critical_region_level
-	int32_t ___critical_region_level_24;
-	// System.Int32 System.Threading.InternalThread::managed_id
-	int32_t ___managed_id_25;
-	// System.Int32 System.Threading.InternalThread::small_id
-	int32_t ___small_id_26;
-	// System.IntPtr System.Threading.InternalThread::manage_callback
-	intptr_t ___manage_callback_27;
-	// System.IntPtr System.Threading.InternalThread::flags
-	intptr_t ___flags_28;
-	// System.IntPtr System.Threading.InternalThread::thread_pinning_ref
-	intptr_t ___thread_pinning_ref_29;
-	// System.IntPtr System.Threading.InternalThread::abort_protected_block_count
-	intptr_t ___abort_protected_block_count_30;
-	// System.Int32 System.Threading.InternalThread::priority
-	int32_t ___priority_31;
-	// System.IntPtr System.Threading.InternalThread::owned_mutex
-	intptr_t ___owned_mutex_32;
-	// System.IntPtr System.Threading.InternalThread::suspended_event
-	intptr_t ___suspended_event_33;
-	// System.Int32 System.Threading.InternalThread::self_suspended
-	int32_t ___self_suspended_34;
-	// System.IntPtr System.Threading.InternalThread::thread_state
-	intptr_t ___thread_state_35;
-	// System.IntPtr System.Threading.InternalThread::netcore0
-	intptr_t ___netcore0_36;
-	// System.IntPtr System.Threading.InternalThread::netcore1
-	intptr_t ___netcore1_37;
-	// System.IntPtr System.Threading.InternalThread::netcore2
-	intptr_t ___netcore2_38;
-	// System.IntPtr System.Threading.InternalThread::last
-	intptr_t ___last_39;
 };
 
 // System.MulticastDelegate
@@ -4170,12 +4062,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Array_Resize_TisInt32_t680FF22E76F6EFAD4
 // System.Void System.ReadOnlySpan`1<System.Char>::.ctor(T&,System.Int32)
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void ReadOnlySpan_1__ctor_m0152E50B40750679B83FF9F30CA539FFBB98EEE8_gshared_inline (ReadOnlySpan_1_t59614EA6E51A945A32B02AB17FBCBDF9A5C419C1* __this, Il2CppChar* ___ptr0, int32_t ___length1, const RuntimeMethod* method) ;
 
-// System.Void System.Runtime.ConstrainedExecution.CriticalFinalizerObject::Finalize()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CriticalFinalizerObject_Finalize_m232B8F4BCBB58BB7D0A0B10611234BCCE2A86020 (CriticalFinalizerObject_t1DCAB623CAEA6529A96F5F3EDE3C7048A6E313C9* __this, const RuntimeMethod* method) ;
-// System.Void System.Threading.InternalThread::Thread_free_internal()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InternalThread_Thread_free_internal_mD8372B9C85F81D2C1DA5D29F2FE5ECC3B544B36C (InternalThread_tF40B7BFCBD60C82BD8475A22FF5186CA10293687* __this, const RuntimeMethod* method) ;
-// System.Void System.Runtime.ConstrainedExecution.CriticalFinalizerObject::.ctor()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CriticalFinalizerObject__ctor_m688241D670D6A0857F938CDC8CD07B1BE4A1C733 (CriticalFinalizerObject_t1DCAB623CAEA6529A96F5F3EDE3C7048A6E313C9* __this, const RuntimeMethod* method) ;
 // System.Threading.Timer/Scheduler System.Threading.Timer/Scheduler::get_Instance()
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Scheduler_tDB0486C2DDAAB94544061CD295D4798386C62A79* Scheduler_get_Instance_mCE427865757B5122BCEF67155B7DFBF82AD780E3_inline (const RuntimeMethod* method) ;
 // System.Void System.MarshalByRefObject::.ctor()
@@ -5466,59 +5352,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ThrowHelper_ThrowArgumentOutOfRangeExcep
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ThrowHelper_ThrowArrayTypeMismatchException_mDF51E7FDFA74ADCDDB1E43CFC4A3A3083692B010 (const RuntimeMethod* method) ;
 // System.Byte& System.Array::GetRawSzArrayData()
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR uint8_t* Array_GetRawSzArrayData_m2F8F5B2A381AEF971F12866D9C0A6C4FBA59F6BB_inline (RuntimeArray* __this, const RuntimeMethod* method) ;
-#ifdef __clang__
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Winvalid-offsetof"
-#pragma clang diagnostic ignored "-Wunused-variable"
-#endif
-// System.Void System.Threading.InternalThread::Thread_free_internal()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InternalThread_Thread_free_internal_mD8372B9C85F81D2C1DA5D29F2FE5ECC3B544B36C (InternalThread_tF40B7BFCBD60C82BD8475A22FF5186CA10293687* __this, const RuntimeMethod* method) 
-{
-	typedef void (*InternalThread_Thread_free_internal_mD8372B9C85F81D2C1DA5D29F2FE5ECC3B544B36C_ftn) (InternalThread_tF40B7BFCBD60C82BD8475A22FF5186CA10293687*);
-	using namespace il2cpp::icalls;
-	((InternalThread_Thread_free_internal_mD8372B9C85F81D2C1DA5D29F2FE5ECC3B544B36C_ftn)mscorlib::System::Threading::InternalThread::Thread_free_internal) (__this);
-}
-// System.Void System.Threading.InternalThread::Finalize()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InternalThread_Finalize_mD0FEF4E56524AE4CC0897ADDF543645201CD0AB9 (InternalThread_tF40B7BFCBD60C82BD8475A22FF5186CA10293687* __this, const RuntimeMethod* method) 
-{
-	{
-		auto __finallyBlock = il2cpp::utils::Finally([&]
-		{
-
-FINALLY_0008:
-			{// begin finally (depth: 1)
-				CriticalFinalizerObject_Finalize_m232B8F4BCBB58BB7D0A0B10611234BCCE2A86020(__this, NULL);
-				return;
-			}// end finally (depth: 1)
-		});
-		try
-		{// begin try (depth: 1)
-			InternalThread_Thread_free_internal_mD8372B9C85F81D2C1DA5D29F2FE5ECC3B544B36C(__this, NULL);
-			goto IL_000f;
-		}// end try (depth: 1)
-		catch(Il2CppExceptionWrapper& e)
-		{
-			__finallyBlock.StoreException(e.ex);
-		}
-	}
-
-IL_000f:
-	{
-		return;
-	}
-}
-// System.Void System.Threading.InternalThread::.ctor()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InternalThread__ctor_m0A6A63CC505973F2599EB70B23F0CB566F661731 (InternalThread_tF40B7BFCBD60C82BD8475A22FF5186CA10293687* __this, const RuntimeMethod* method) 
-{
-	{
-		__this->___priority_31 = 2;
-		CriticalFinalizerObject__ctor_m688241D670D6A0857F938CDC8CD07B1BE4A1C733(__this, NULL);
-		return;
-	}
-}
-#ifdef __clang__
-#pragma clang diagnostic pop
-#endif
 #ifdef __clang__
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Winvalid-offsetof"

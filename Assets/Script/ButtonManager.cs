@@ -8,9 +8,7 @@ public class ButtonManager : MonoBehaviour
     {
         if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
         {
-            Debug.Log("Camera Debugging");
             Permission.RequestUserPermission(Permission.Camera);
-            Debug.Log(Permission.HasUserAuthorizedPermission(Permission.Camera));
         }   
     }
 
