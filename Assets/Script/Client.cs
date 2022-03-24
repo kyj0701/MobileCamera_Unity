@@ -8,19 +8,12 @@ public class Client : MonoBehaviour
 {
     public static Client Instance { set; get; }
     private TcpClient socketConnection;
-
 	public RawImage testImage;
-
-    // public CameraManagerScript CameraManager;
+    private CameraManager mobileCamera;
     public Text trajectory;
     public string traj;
     public string[] split_traj;
     public float qw, qx, qy, qz, tx, ty, tz;
-
-    public void Awake()
-  	{
-        // ConnectToTcpServer();
-    }
 
     private void ConnectToTcpServer()
     {
@@ -86,54 +79,34 @@ public class Client : MonoBehaviour
         }
     }
 
-	public void SendToServerImage()
+    public void SendToServerImage()
 	{
-        ConnectToTcpServer();
-
-        CameraManagerScript CameraManager = GameObject.Find("Camera Manager").GetComponent<CameraManagerScript>();
-        Debug.Log("Test : " + CameraManager);
-        // Texture2D testImageTexture = new Texture2D(CameraManager.camTexture.width, CameraManager.camTexture.height);
-        // testImageTexture.SetPixels(CameraManager.camTexture.GetPixels());
+        Debug.Log("Task Start!");
+        mobileCamera = GameObject.Find("Camera Manager").GetComponent<CameraManager>();
+        // Texture2D testImageTexture = new Texture2D(mobileCamera.camTexture.width, mobileCamera.camTexture.height);
+        // testImageTexture.SetPixels(mobileCamera.camTexture.GetPixels());
         // testImageTexture.Apply();
-        // byte[] byteTestImageTexture = testImageTexture.EncodeToPNG();
-        byte[] byteTestImageTexture = CameraManager.m_LastCameraTexture.EncodeToPNG();
-        Debug.Log(byteTestImageTexture);
-
-
-        string requestMessage = "kyj0701 CameraImage.png " + byteTestImageTexture.Length;
-        Debug.Log(requestMessage);
-
-        SendMessage(System.Text.Encoding.Default.GetBytes(requestMessage));
-
-        SendMessage(byteTestImageTexture);
-        SendMessage(System.Text.Encoding.Default.GetBytes("EOF"));
-
-        RecvMessage();
-
-        socketConnection = null;
+        CommunitcateWithServer(mobileCamera.m_LastCameraTexture.EncodeToPNG());
 	}
 
-    async void CommunitcateWithServer()
+    async void CommunitcateWithServer(byte[] byteTestImageTexture)
     {
         await Task.Run(() =>
         {
             ConnectToTcpServer();
 
-            CameraManagerScript CameraManager = GameObject.Find("Camera Manager").GetComponent<CameraManagerScript>();
-            Texture2D testImageTexture = new Texture2D(CameraManager.camTexture.width, CameraManager.camTexture.height);
-            testImageTexture.SetPixels(CameraManager.camTexture.GetPixels());
-            testImageTexture.Apply();
-            byte[] byteTestImageTexture = CameraManager.m_LastCameraTexture.EncodeToPNG();
-
             string requestMessage = "kyj0701 CameraImage.png " + byteTestImageTexture.Length;
             Debug.Log(requestMessage);
 
             SendMessage(System.Text.Encoding.Default.GetBytes(requestMessage));
-
+            Debug.Log("001");
             SendMessage(byteTestImageTexture);
+            Debug.Log("002");
             SendMessage(System.Text.Encoding.Default.GetBytes("EOF"));
+            Debug.Log("003");
 
             RecvMessage();
+            Debug.Log("004");
 
             socketConnection = null;
         });
