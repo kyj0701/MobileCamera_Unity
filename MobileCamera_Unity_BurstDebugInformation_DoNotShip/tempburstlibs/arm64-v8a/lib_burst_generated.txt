@@ -129,10 +129,10 @@ Library: lib_burst_generated
 --root-assembly=E:\BlueDot\MobileCamera_Unity\Temp\StagingArea\Data\Managed\Unity.XR.ARSubsystems.dll
 --root-assembly=E:\BlueDot\MobileCamera_Unity\Temp\StagingArea\Data\Managed\Unity.Timeline.dll
 --root-assembly=E:\BlueDot\MobileCamera_Unity\Temp\StagingArea\Data\Managed\Unity.XR.ARCore.dll
---root-assembly=E:\BlueDot\MobileCamera_Unity\Temp\StagingArea\Data\Managed\Assembly-CSharp.dll
 --root-assembly=E:\BlueDot\MobileCamera_Unity\Temp\StagingArea\Data\Managed\Unity.TextMeshPro.dll
 --root-assembly=E:\BlueDot\MobileCamera_Unity\Temp\StagingArea\Data\Managed\Unity.Burst.dll
 --root-assembly=E:\BlueDot\MobileCamera_Unity\Temp\StagingArea\Data\Managed\Unity.2D.Animation.Runtime.dll
+--root-assembly=E:\BlueDot\MobileCamera_Unity\Temp\StagingArea\Data\Managed\Assembly-CSharp.dll
 --root-assembly=E:\BlueDot\MobileCamera_Unity\Temp\StagingArea\Data\Managed\Unity.XR.Management.dll
 --root-assembly=E:\BlueDot\MobileCamera_Unity\Temp\StagingArea\Data\Managed\Unity.2D.IK.Runtime.dll
 --root-assembly=E:\BlueDot\MobileCamera_Unity\Temp\StagingArea\Data\Managed\Unity.2D.SpriteShape.Runtime.dll

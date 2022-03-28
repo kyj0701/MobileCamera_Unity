@@ -7104,8 +7104,10 @@ struct U3CCommunitcateWithServerU3Ed__21_t42DE29B599E083DF8FAF8225F5DCAD71EDEA74
 	AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D ___U3CU3Et__builder_1;
 	// Client Client/<CommunitcateWithServer>d__21::<>4__this
 	Client_t733365C872686A6CDE2EAF9FF1A2570997083D7E* ___U3CU3E4__this_2;
+	// System.Byte[] Client/<CommunitcateWithServer>d__21::byteTestImageTexture
+	ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* ___byteTestImageTexture_3;
 	// System.Runtime.CompilerServices.TaskAwaiter Client/<CommunitcateWithServer>d__21::<>u__1
-	TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 ___U3CU3Eu__1_3;
+	TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 ___U3CU3Eu__1_4;
 };
 
 // System.Net.FtpWebRequest/<CreateConnectionAsync>d__86
