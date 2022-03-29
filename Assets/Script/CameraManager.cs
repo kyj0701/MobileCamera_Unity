@@ -29,25 +29,6 @@ public class CameraManager : MonoBehaviour
 
     void Start() 
     {
-        // Copy the camera background to a RenderTexture
-        Graphics.Blit(null, renderTexture, m_ARCameraBackground.material);
-        Debug.Log("renderTexture : " + renderTexture);
-
-        Debug.Log("AR Back : "+ m_ARCameraBackground.material);
-        // Copy the RenderTexture from GPU to CPU
-        var activeRenderTexture = RenderTexture.active;
-        Debug.Log("1. m_LastCameraTexture : " + m_LastCameraTexture);
-        RenderTexture.active = renderTexture;
-        Debug.Log("2. m_LastCameraTexture : " + m_LastCameraTexture);        
-        
-        // if (m_LastCameraTexture == null)
-        m_LastCameraTexture = new Texture2D(renderTexture.width, renderTexture.height, TextureFormat.RGB24, true);
-        Debug.Log("2. m_LastCameraTexture : " + m_LastCameraTexture);
-        m_LastCameraTexture.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
-        m_LastCameraTexture.Apply();
-        Debug.Log("3. m_LastCameraTexture : " + m_LastCameraTexture);
-        RenderTexture.active = activeRenderTexture;
-
         // WebCamDevice[] devices = WebCamTexture.devices;
 
         // for (int i = 0; i < devices.Length; i++)
@@ -68,5 +49,26 @@ public class CameraManager : MonoBehaviour
 
         //     camTexture.Play();
         // }
+    }
+
+    public void ARCamera()
+    {
+        Graphics.Blit(null, renderTexture, m_ARCameraBackground.material);
+        Debug.Log("renderTexture : " + renderTexture);
+
+        Debug.Log("AR Back : "+ m_ARCameraBackground.material);
+        // Copy the RenderTexture from GPU to CPU
+        var activeRenderTexture = RenderTexture.active;
+        Debug.Log("1. m_LastCameraTexture : " + m_LastCameraTexture);
+        RenderTexture.active = renderTexture;
+        Debug.Log("2. m_LastCameraTexture : " + m_LastCameraTexture);        
+        
+        if (m_LastCameraTexture == null)
+            m_LastCameraTexture = new Texture2D(renderTexture.width, renderTexture.height, TextureFormat.RGB24, true);
+        Debug.Log("2. m_LastCameraTexture : " + m_LastCameraTexture);
+        m_LastCameraTexture.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
+        m_LastCameraTexture.Apply();
+        Debug.Log("3. m_LastCameraTexture : " + m_LastCameraTexture);
+        RenderTexture.active = activeRenderTexture;
     }
 }

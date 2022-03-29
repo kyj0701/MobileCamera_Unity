@@ -64,6 +64,7 @@ public class Client : MonoBehaviour
             trajectory.text = System.Text.Encoding.UTF8.GetString(recvMessage);
             traj = trajectory.text.ToString();
             split_traj = traj.Split(' ');
+            Debug.Log(split_traj);
 
             qw = float.Parse(split_traj[0]);
             qx = float.Parse(split_traj[1]);
@@ -83,6 +84,7 @@ public class Client : MonoBehaviour
 	{
         Debug.Log("Task Start!");
         mobileCamera = GameObject.Find("Camera Manager").GetComponent<CameraManager>();
+        mobileCamera.ARCamera();
         // Texture2D testImageTexture = new Texture2D(mobileCamera.camTexture.width, mobileCamera.camTexture.height);
         // testImageTexture.SetPixels(mobileCamera.camTexture.GetPixels());
         // testImageTexture.Apply();
@@ -111,4 +113,6 @@ public class Client : MonoBehaviour
             socketConnection = null;
         });
     }
+
+    
 }
