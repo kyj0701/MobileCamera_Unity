@@ -32,7 +32,7 @@ public class Client : MonoBehaviour
     {
         if (socketConnection == null)
         {
-            socketConnection = new TcpClient("166.104.246.62", 17000);
+            ConnectToTcpServer();
             // return;
         }
         try
@@ -101,14 +101,10 @@ public class Client : MonoBehaviour
             Debug.Log(requestMessage);
 
             SendMessage(System.Text.Encoding.Default.GetBytes(requestMessage));
-            Debug.Log("001");
             SendMessage(byteTestImageTexture);
-            Debug.Log("002");
             SendMessage(System.Text.Encoding.Default.GetBytes("EOF"));
-            Debug.Log("003");
 
             RecvMessage();
-            Debug.Log("004");
 
             socketConnection = null;
         });

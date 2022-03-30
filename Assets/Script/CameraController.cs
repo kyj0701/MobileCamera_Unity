@@ -7,11 +7,10 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
-        Input.gyro.enabled = true;
-        camParent = new GameObject("CamParent");
-        camParent.transform.position = this.transform.position;
-        this.transform.parent = camParent.transform;
-        // Camera.main.transform.position = new Vector3(1,1,1);
+        // Input.gyro.enabled = true;
+        // camParent = new GameObject("CamParent");
+        // camParent.transform.position = this.transform.position;
+        // this.transform.parent = camParent.transform;
     }
 
     // Update is called once per frame
@@ -20,8 +19,8 @@ public class CameraController : MonoBehaviour
         // transform.position = new Vector3((GPS.Instance.longitude), (GPS.Instance.latitude), GPS.Instance.altitude);
         // transform.rotation = Quaternion.Euler(new Vector3())\
 
-        camParent.transform.Rotate(0, -Input.gyro.rotationRateUnbiased.y, 0);
-        this.transform.Rotate(-Input.gyro.rotationRateUnbiased.x, 0, 0);
+        // camParent.transform.Rotate(0, -Input.gyro.rotationRateUnbiased.y, 0);
+        // this.transform.Rotate(-Input.gyro.rotationRateUnbiased.x, 0, 0);
     }
 
     public void UpdateLocation()

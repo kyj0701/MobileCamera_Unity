@@ -33,11 +33,11 @@ public class TouchObject : MonoBehaviour
 
 		if (true == _mouseState)
 		{
-			transform.localScale = new Vector3(9f, 9f, 9f);
+			transform.localScale = new Vector3(0.09f, 0.09f, 0.09f);
 		}
 		else
 		{
-			transform.localScale = new Vector3(10f, 10f, 10f);
+			transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
 		}
 
 	} 

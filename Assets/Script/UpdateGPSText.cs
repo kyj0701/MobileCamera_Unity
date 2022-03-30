@@ -8,10 +8,12 @@ public class UpdateGPSText : MonoBehaviour
     public Text altitude_t;
     public Text UTC_t;
     public Text PDOP_t;
+    public GameObject cube;
     
 
     private void Update() 
     {
+        // Debug.Log("x:"+ cube.transform.position.x + " y:"+ cube.transform.position.y + " z:" + cube.transform.position.z);
         latitude_t.text = "Lat : " + GPS.Instance.latitude.ToString();
         longitude_t.text = "Lon : " + GPS.Instance.longitude.ToString();
         altitude_t.text = "Alt : " + GPS.Instance.altitude.ToString();
