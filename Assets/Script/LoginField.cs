@@ -32,7 +32,7 @@ public class LoginField : MonoBehaviour
         if(bro.IsSuccess())
         {
             Debug.Log("자동 로그인에 성공했습니다");
-            SceneManager.LoadScene("Main");
+            SceneManager.LoadScene("Loading");
         }
         else
         {

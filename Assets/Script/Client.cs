@@ -11,9 +11,30 @@ public class Client : MonoBehaviour
 	public RawImage testImage;
     private CameraManager mobileCamera;
     public Text trajectory;
+    public Text transX;
+    public Text transY;
+    public Text transZ;
+
     public string traj;
     public string[] split_traj;
     public float qw, qx, qy, qz, tx, ty, tz;
+    public Boolean connecting = false;
+
+    private void Awake() 
+    {
+        Instance = this;    
+    }
+
+    void Start()
+    {
+        qw = 0;
+        qx = 0;
+        qy = 0;
+        qz = 0;
+        tx = 0;
+        ty = 0;
+        tz = 0;
+    }
 
     private void ConnectToTcpServer()
     {
@@ -73,6 +94,10 @@ public class Client : MonoBehaviour
             tx = float.Parse(split_traj[4]);
             ty = float.Parse(split_traj[5]);
             tz = float.Parse(split_traj[6]);
+
+            transX.text = tx.ToString();
+            transY.text = ty.ToString();
+            transZ.text = tz.ToString();
         }
         catch (SocketException socketException)
         {
@@ -105,6 +130,10 @@ public class Client : MonoBehaviour
             SendMessage(System.Text.Encoding.Default.GetBytes("EOF"));
 
             RecvMessage();
+            if (tx != 0) 
+            {
+                connecting = true;
+            }
 
             socketConnection = null;
         });

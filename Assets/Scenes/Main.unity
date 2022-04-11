@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 82705933}
   - component: {fileID: 82705932}
   m_Layer: 5
-  m_Name: altitude
+  m_Name: tZ
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -374,7 +374,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uACE0\uB3C4"
+  m_Text: tranZ
 --- !u!222 &82705933
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -776,7 +776,7 @@ GameObject:
   - component: {fileID: 588548185}
   - component: {fileID: 588548186}
   m_Layer: 5
-  m_Name: latitude
+  m_Name: tX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -843,7 +843,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC704\uB3C4"
+  m_Text: tranX
 --- !u!1 &699506167
 GameObject:
   m_ObjectHideFlags: 0
@@ -1322,7 +1322,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8980549144392899874, guid: e4ae179372a6a3b47a8e72317cc63142, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: -4216948427090074523, guid: e4ae179372a6a3b47a8e72317cc63142, type: 3}
@@ -1495,7 +1495,7 @@ GameObject:
   - component: {fileID: 1077760121}
   - component: {fileID: 1077760122}
   m_Layer: 5
-  m_Name: longitude
+  m_Name: tY
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1562,7 +1562,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uACBD\uB3C4"
+  m_Text: tranY
 --- !u!1 &1110261505
 GameObject:
   m_ObjectHideFlags: 0
@@ -1898,9 +1898,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fbaad7e2ab21e348ac469543556bec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  latitude_t: {fileID: 588548186}
-  longitude_t: {fileID: 1077760122}
-  altitude_t: {fileID: 82705932}
   UTC_t: {fileID: 471906647}
   PDOP_t: {fileID: 1110261507}
   cube: {fileID: 377506605}
@@ -2276,6 +2273,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   testImage: {fileID: 1031717022}
   trajectory: {fileID: 870583898}
+  transX: {fileID: 588548186}
+  transY: {fileID: 1077760122}
+  transZ: {fileID: 82705932}
   traj: 
   split_traj: []
   qw: 0
