@@ -110,9 +110,6 @@ public class Client : MonoBehaviour
         Debug.Log("Task Start!");
         mobileCamera = GameObject.Find("Camera Manager").GetComponent<CameraManager>();
         mobileCamera.ARCamera();
-        // Texture2D testImageTexture = new Texture2D(mobileCamera.camTexture.width, mobileCamera.camTexture.height);
-        // testImageTexture.SetPixels(mobileCamera.camTexture.GetPixels());
-        // testImageTexture.Apply();
         CommunitcateWithServer(mobileCamera.m_LastCameraTexture.EncodeToPNG());
 	}
 

@@ -16,7 +16,6 @@ public class DoorManager : MonoBehaviour
     public Button door;
     public GameObject open;
     private bool canOpen = false;
-    // public GameObject cl;
 
     enum DoorState
     {
@@ -43,8 +42,6 @@ public class DoorManager : MonoBehaviour
 
         door.onClick.AddListener(DoorClicked);
 
-        // cl = GameObject.FindGameObjectWithTag("Client");
-
         //If Key is needed and the KeyGameObject is not assigned, stop playing and throw error
     }
 
@@ -66,8 +63,7 @@ public class DoorManager : MonoBehaviour
 
     private void Update()
     {
-        // Debug.Log(cl.connecting);
-        Debug.Log(Client.Instance.connecting);
+        //When Client receives traj, we load main scene
         if (Client.Instance.connecting == true)
         {
             SceneManager.LoadScene("Main");
@@ -90,7 +86,7 @@ public class DoorManager : MonoBehaviour
                 doorCollider.enabled = true;
             }
         }
-        // else open.SetActive(false);
+        else open.SetActive(false);
 
         if (canOpen && playerInZone)
         {
@@ -116,24 +112,6 @@ public class DoorManager : MonoBehaviour
                 doorAnim.Play("Door_Open");
                 doorState = DoorState.Opened;
             }
-
-            // if (doorState == DoorState.Opened && !doorAnim.isPlaying)
-            // {
-            //     doorAnim.Play("Door_Close");
-            //     doorState = DoorState.Closed;
-            // }
-
-            // if (doorState == DoorState.Jammed && !gotKey)
-            // {
-            //     if (doorAnim.GetClip("Door_Jam") != null)
-            //         doorAnim.Play("Door_Jam");
-            //     doorState = DoorState.Jammed;
-            // }
-            // else if (doorState == DoorState.Jammed && gotKey && !doorAnim.isPlaying)
-            // {
-            //     doorAnim.Play("Door_Open");
-            //     doorState = DoorState.Opened;
-            // }
         }
     }
 }

@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
-    public GameObject arCamera;
     public Text playerPos;
     // Start is called before the first frame update
     void Start()
@@ -16,7 +15,8 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = arCamera.transform.position;
+        Camera.main.transform.position = transform.position;
+        // transform.position = Camera.main.transform.position;
         playerPos.text = " X: " + transform.position.x.ToString("N2") + " Y: " + transform.position.y.ToString("N2") + " Z: " + transform.position.z.ToString("N2");
         
         if (Input.GetKey(KeyCode.W))
