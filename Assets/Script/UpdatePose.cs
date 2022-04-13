@@ -1,0 +1,67 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using BackEnd;
+using LitJson;
+
+
+
+public class UpdatePose : MonoBehaviour
+{
+    // Start is called before the first frame update
+    string inDate;
+    void Start()
+    {
+        string owner_inDate = Backend.UserInDate;
+        var bro = Backend.GameData.GetMyData("Position", new Where());
+        inDate = bro.GetInDate();
+        Debug.Log("bro : " + bro);
+        Debug.Log("bro success : " + bro.GetReturnValuetoJSON());
+        if(bro.GetReturnValuetoJSON()["rows"].Count <= 0){
+            Param param = GetCurrentParam();
+            Backend.GameData.Insert ("Position", param );
+        }
+        
+        
+    }
+    static Param GetCurrentParam(){
+        Param param = new Param();
+        param.Add("tx", Camera.main.transform.position.x);
+        param.Add("ty", Camera.main.transform.position.y);
+        param.Add("tz", Camera.main.transform.position.z);
+        param.Add("qw", Camera.main.transform.rotation.w);
+        param.Add("qx", Camera.main.transform.rotation.x);
+        param.Add("qy", Camera.main.transform.rotation.y);
+        param.Add("qz", Camera.main.transform.rotation.z);
+        return param;
+    }
+    // Update is called once per frame
+
+    void FixedUpdate(){
+        Param param = GetCurrentParam();
+        var mybro = Backend.GameData.UpdateV2 ("Position", inDate, Backend.UserInDate, param );
+        Debug.Log(mybro);
+
+        string[] select = {"gamer_Id", "owner_inDate", "tx", "ty", "tz", "qw", "qx", "qy", "qz"};
+        Where where = new Where();
+        var otherbro = Backend.GameData.Get("Position", where);
+        Debug.Log(otherbro);
+        JsonData gameDataListJson = otherbro.FlattenRows();
+        for(int i = 0; i < gameDataListJson.Count; i++){
+            if(gameDataListJson[i]["owner_inDate"].ToString() != Backend.UserInDate){
+                Debug.Log(gameDataListJson[i]["owner_inDate"].ToString() + " ----- qw : " + gameDataListJson[i]["qw"].ToString());
+
+            }
+            
+        }
+        
+    }
+    void Update()
+    {
+        
+    }
+    void OnApplicationQuit(){
+        Debug.Log("destroy!");
+        Backend.GameData.DeleteV2 ( "Position", inDate, Backend.UserInDate ); 
+    }
+}
