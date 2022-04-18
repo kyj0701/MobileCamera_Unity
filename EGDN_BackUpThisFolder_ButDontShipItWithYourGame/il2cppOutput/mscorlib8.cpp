@@ -18,6 +18,7 @@
 #include "icalls/mscorlib/System.Threading/WaitHandle.h"
 #include "vm-utils/icalls/mscorlib/System.Threading/Interlocked.h"
 #include "icalls/mscorlib/System.Threading/NativeEventCalls.h"
+#include "icalls/mscorlib/System.Threading/InternalThread.h"
 
 struct VirtualActionInvoker0
 {
@@ -6251,6 +6252,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool NativeEventCalls_ResetEvent_internal_mA9
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t WaitHandle_WaitAny_m57982CDCC0802AEB45F8E5579A734F38B5B7F5DB (WaitHandleU5BU5D_t85D0945086BF1BF6008422B3DD937ECEC35A8108* ___waitHandles0, TimeSpan_t8195C5B013A2C532FEBDF0B64B6911982E750F5A ___timeout1, bool ___exitContext2, const RuntimeMethod* method) ;
 // System.Void System.Threading.WaitOrTimerCallback::Invoke(System.Object,System.Boolean)
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void WaitOrTimerCallback_Invoke_mA17026F4DE7C2495D720D21EC513CF915351204C_inline (WaitOrTimerCallback_t7F57455D2C211D4751694104BA7DD36A9AB51711* __this, RuntimeObject* ___state0, bool ___timedOut1, const RuntimeMethod* method) ;
+// System.Void System.Threading.InternalThread::Thread_free_internal()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InternalThread_Thread_free_internal_mD8372B9C85F81D2C1DA5D29F2FE5ECC3B544B36C (InternalThread_tF40B7BFCBD60C82BD8475A22FF5186CA10293687* __this, const RuntimeMethod* method) ;
 // System.Char& System.String::GetRawStringData()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Il2CppChar* String_GetRawStringData_m87BC50B7B314C055E27A28032D1003D42FDE411D (String_t* __this, const RuntimeMethod* method) ;
 // System.Void System.ReadOnlySpan`1<System.Char>::.ctor(T&,System.Int32)
@@ -32009,13 +32012,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t Interlocked_Decrement_mFACC375A9985A7
 	using namespace il2cpp::icalls;
 	return ((Interlocked_Decrement_mFACC375A9985A7E1A3473EECE768B1D2ECB8CEF5_ftn)mscorlib::System::Threading::Interlocked::Decrement) (___location0);
 }
-// System.Int64 System.Threading.Interlocked::Decrement(System.Int64&)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int64_t Interlocked_Decrement_mC1A06AF8FBCFBF498585006F437BEC8003BD4AB5 (int64_t* ___location0, const RuntimeMethod* method) 
-{
-	typedef int64_t (*Interlocked_Decrement_mC1A06AF8FBCFBF498585006F437BEC8003BD4AB5_ftn) (int64_t*);
-	using namespace il2cpp::icalls;
-	return ((Interlocked_Decrement_mC1A06AF8FBCFBF498585006F437BEC8003BD4AB5_ftn)mscorlib::System::Threading::Interlocked::Decrement64) (___location0);
-}
 // System.Int32 System.Threading.Interlocked::Increment(System.Int32&)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t Interlocked_Increment_m7AC68EC482A6AFD97BCEFABA0FD45D203F3EA2E1 (int32_t* ___location0, const RuntimeMethod* method) 
 {
@@ -32118,13 +32114,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t Interlocked_Add_m23B9D5199E4C5C986B13
 	typedef int32_t (*Interlocked_Add_m23B9D5199E4C5C986B13B24917EBF2BAC87CABA4_ftn) (int32_t*, int32_t);
 	using namespace il2cpp::icalls;
 	return ((Interlocked_Add_m23B9D5199E4C5C986B13B24917EBF2BAC87CABA4_ftn)mscorlib::System::Threading::Interlocked::Add) (___location10, ___value1);
-}
-// System.Int64 System.Threading.Interlocked::Add(System.Int64&,System.Int64)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int64_t Interlocked_Add_mBF0FD78E930DEDDA2EEB0E9884FA2D8198D0EEC8 (int64_t* ___location10, int64_t ___value1, const RuntimeMethod* method) 
-{
-	typedef int64_t (*Interlocked_Add_mBF0FD78E930DEDDA2EEB0E9884FA2D8198D0EEC8_ftn) (int64_t*, int64_t);
-	using namespace il2cpp::icalls;
-	return ((Interlocked_Add_mBF0FD78E930DEDDA2EEB0E9884FA2D8198D0EEC8_ftn)mscorlib::System::Threading::Interlocked::Add64) (___location10, ___value1);
 }
 // System.Void System.Threading.Interlocked::MemoryBarrier()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Interlocked_MemoryBarrier_m4628E20A5D3E2546755C7C75439FCB11239EE61C (const RuntimeMethod* method) 
@@ -32925,6 +32914,59 @@ IL_0040:
 	{
 		bool L_7 = V_2;
 		return L_7;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// System.Void System.Threading.InternalThread::Thread_free_internal()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InternalThread_Thread_free_internal_mD8372B9C85F81D2C1DA5D29F2FE5ECC3B544B36C (InternalThread_tF40B7BFCBD60C82BD8475A22FF5186CA10293687* __this, const RuntimeMethod* method) 
+{
+	typedef void (*InternalThread_Thread_free_internal_mD8372B9C85F81D2C1DA5D29F2FE5ECC3B544B36C_ftn) (InternalThread_tF40B7BFCBD60C82BD8475A22FF5186CA10293687*);
+	using namespace il2cpp::icalls;
+	((InternalThread_Thread_free_internal_mD8372B9C85F81D2C1DA5D29F2FE5ECC3B544B36C_ftn)mscorlib::System::Threading::InternalThread::Thread_free_internal) (__this);
+}
+// System.Void System.Threading.InternalThread::Finalize()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InternalThread_Finalize_mD0FEF4E56524AE4CC0897ADDF543645201CD0AB9 (InternalThread_tF40B7BFCBD60C82BD8475A22FF5186CA10293687* __this, const RuntimeMethod* method) 
+{
+	{
+		auto __finallyBlock = il2cpp::utils::Finally([&]
+		{
+
+FINALLY_0008:
+			{// begin finally (depth: 1)
+				CriticalFinalizerObject_Finalize_m232B8F4BCBB58BB7D0A0B10611234BCCE2A86020(__this, NULL);
+				return;
+			}// end finally (depth: 1)
+		});
+		try
+		{// begin try (depth: 1)
+			InternalThread_Thread_free_internal_mD8372B9C85F81D2C1DA5D29F2FE5ECC3B544B36C(__this, NULL);
+			goto IL_000f;
+		}// end try (depth: 1)
+		catch(Il2CppExceptionWrapper& e)
+		{
+			__finallyBlock.StoreException(e.ex);
+		}
+	}
+
+IL_000f:
+	{
+		return;
+	}
+}
+// System.Void System.Threading.InternalThread::.ctor()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InternalThread__ctor_m0A6A63CC505973F2599EB70B23F0CB566F661731 (InternalThread_tF40B7BFCBD60C82BD8475A22FF5186CA10293687* __this, const RuntimeMethod* method) 
+{
+	{
+		__this->___priority_31 = 2;
+		CriticalFinalizerObject__ctor_m688241D670D6A0857F938CDC8CD07B1BE4A1C733(__this, NULL);
+		return;
 	}
 }
 #ifdef __clang__

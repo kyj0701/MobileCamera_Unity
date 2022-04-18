@@ -23,8 +23,8 @@ static Il2CppMethodPointer s_methodPointers[2] =
 };
 static const int32_t s_InvokerIndices[2] = 
 {
-	9993,
-	9968,
+	8209,
+	8183,
 };
 IL2CPP_EXTERN_C const Il2CppCodeGenModule g_TheBackend_iOS_CodeGenModule;
 const Il2CppCodeGenModule g_TheBackend_iOS_CodeGenModule = 

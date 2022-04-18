@@ -2344,6 +2344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   testImage: {fileID: 1031717022}
+  arCamera: {fileID: 1783991686}
   trajectory: {fileID: 870583898}
   transX: {fileID: 588548186}
   transY: {fileID: 1077760122}

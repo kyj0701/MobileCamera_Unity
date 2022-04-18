@@ -16225,7 +16225,7 @@ IL_0062_2:
 					CharU5BU5D_t799905CF001DD5F13F7DBB310181FC4D8B7D0AAB* L_19 = __this->___bufChars_17;
 					int32_t L_20 = __this->___bufPos_7;
 					NullCheck(L_18);
-					VirtualActionInvoker3< CharU5BU5D_t799905CF001DD5F13F7DBB310181FC4D8B7D0AAB*, int32_t, int32_t >::Invoke(15 /* System.Void System.IO.TextWriter::Write(System.Char[],System.Int32,System.Int32) */, L_18, L_19, 1, ((int32_t)il2cpp_codegen_subtract(L_20, 1)));
+					VirtualActionInvoker3< CharU5BU5D_t799905CF001DD5F13F7DBB310181FC4D8B7D0AAB*, int32_t, int32_t >::Invoke(14 /* System.Void System.IO.TextWriter::Write(System.Char[],System.Int32,System.Int32) */, L_18, L_19, 1, ((int32_t)il2cpp_codegen_subtract(L_20, 1)));
 				}
 
 IL_007c_2:

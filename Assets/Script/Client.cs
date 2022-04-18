@@ -10,6 +10,7 @@ public class Client : MonoBehaviour
     private TcpClient socketConnection;
 	public RawImage testImage;
     private CameraManager mobileCamera;
+    public GameObject arCamera;
     public Text trajectory;
     public Text transX;
     public Text transY;
@@ -76,11 +77,14 @@ public class Client : MonoBehaviour
     {
         try
         {
+            Debug.Log("Receive Start!");
             // Get a stream object for writing.             
             NetworkStream stream = socketConnection.GetStream();
+            Debug.Log("Receiving" + stream);
             byte[] recvMessage = new Byte[1024];
 
             stream.Read(recvMessage, 0, recvMessage.Length);
+            Debug.Log("Receiving!");
 
             trajectory.text = System.Text.Encoding.UTF8.GetString(recvMessage);
             traj = trajectory.text.ToString();
@@ -130,6 +134,7 @@ public class Client : MonoBehaviour
             if (tx != 0) 
             {
                 connecting = true;
+                arCamera.transform.Translate(new Vector3(tx, ty, tz));
             }
 
             socketConnection = null;

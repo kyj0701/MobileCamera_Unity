@@ -4527,16 +4527,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Type_op_Inequality_m71AAC993EBBDBA44EE73
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AttributeU5BU5D_t0F73488E6F1249C889608E8DCC0BCC28A874E8F1* Attribute_InternalGetCustomAttributes_m593A09AD5F249917CAEED510C32AF5D957782080 (PropertyInfo_t* ___element0, Type_t* ___type1, bool ___inherit2, const RuntimeMethod* method) ;
 // System.Attribute[] System.Attribute::InternalGetCustomAttributes(System.Reflection.EventInfo,System.Type,System.Boolean)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AttributeU5BU5D_t0F73488E6F1249C889608E8DCC0BCC28A874E8F1* Attribute_InternalGetCustomAttributes_mD7B4B34B890B97232BF8759F25E2B08EEF4707F8 (EventInfo_t* ___element0, Type_t* ___type1, bool ___inherit2, const RuntimeMethod* method) ;
-// System.Attribute[] System.Attribute::GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AttributeU5BU5D_t0F73488E6F1249C889608E8DCC0BCC28A874E8F1* Attribute_GetCustomAttributes_m0769AE954BBEBA567C151001B00EC6386DFCCC2D (MemberInfo_t* ___element0, bool ___inherit1, const RuntimeMethod* method) ;
 // System.Boolean System.Attribute::IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Attribute_IsDefined_m3C1056DA9FDF6820B4916432FFE0AC31DEFB5310 (MemberInfo_t* ___element0, Type_t* ___attributeType1, bool ___inherit2, const RuntimeMethod* method) ;
 // System.Boolean System.Attribute::InternalIsDefined(System.Reflection.PropertyInfo,System.Type,System.Boolean)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Attribute_InternalIsDefined_m691FBAFD2FEDDC91469783313CBFEAC7610CED82 (PropertyInfo_t* ___element0, Type_t* ___attributeType1, bool ___inherit2, const RuntimeMethod* method) ;
 // System.Boolean System.Attribute::InternalIsDefined(System.Reflection.EventInfo,System.Type,System.Boolean)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Attribute_InternalIsDefined_m83C02F1F592EECE273614CCD8C560112DE1FADEE (EventInfo_t* ___element0, Type_t* ___attributeType1, bool ___inherit2, const RuntimeMethod* method) ;
-// System.Attribute System.Attribute::GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Attribute_tFDA8EFEFB0711976D22474794576DAF28F7440AA* Attribute_GetCustomAttribute_m137ADD9F50AC82BE4E04FA6A4C5E8CD94876D00B (MemberInfo_t* ___element0, Type_t* ___attributeType1, bool ___inherit2, const RuntimeMethod* method) ;
 // System.Void System.Reflection.AmbiguousMatchException::.ctor(System.String)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AmbiguousMatchException__ctor_m626D7A373A51DC634778AEECB96ACAA06058006D (AmbiguousMatchException_t74F105B42C618E39EEE32A52E79C24044604E70E* __this, String_t* ___message0, const RuntimeMethod* method) ;
 // System.Attribute[] System.Attribute::InternalParamGetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
@@ -8562,16 +8558,6 @@ IL_0088:
 		return ((AttributeU5BU5D_t0F73488E6F1249C889608E8DCC0BCC28A874E8F1*)IsInst((RuntimeObject*)L_31, AttributeU5BU5D_t0F73488E6F1249C889608E8DCC0BCC28A874E8F1_il2cpp_TypeInfo_var));
 	}
 }
-// System.Attribute[] System.Attribute::GetCustomAttributes(System.Reflection.MemberInfo)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AttributeU5BU5D_t0F73488E6F1249C889608E8DCC0BCC28A874E8F1* Attribute_GetCustomAttributes_m155BEEE65668D69987740D77C8713396510E3EE5 (MemberInfo_t* ___element0, const RuntimeMethod* method) 
-{
-	{
-		MemberInfo_t* L_0 = ___element0;
-		AttributeU5BU5D_t0F73488E6F1249C889608E8DCC0BCC28A874E8F1* L_1;
-		L_1 = Attribute_GetCustomAttributes_m0769AE954BBEBA567C151001B00EC6386DFCCC2D(L_0, (bool)1, NULL);
-		return L_1;
-	}
-}
 // System.Attribute[] System.Attribute::GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AttributeU5BU5D_t0F73488E6F1249C889608E8DCC0BCC28A874E8F1* Attribute_GetCustomAttributes_m0769AE954BBEBA567C151001B00EC6386DFCCC2D (MemberInfo_t* ___element0, bool ___inherit1, const RuntimeMethod* method) 
 {
@@ -8804,17 +8790,6 @@ IL_0088:
 		bool L_31;
 		L_31 = VirtualFuncInvoker2< bool, Type_t*, bool >::Invoke(12 /* System.Boolean System.Reflection.MemberInfo::IsDefined(System.Type,System.Boolean) */, L_28, L_29, L_30);
 		return L_31;
-	}
-}
-// System.Attribute System.Attribute::GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Attribute_tFDA8EFEFB0711976D22474794576DAF28F7440AA* Attribute_GetCustomAttribute_mF9CB9F03A29701923B68556A396459E8FBEAE6B0 (MemberInfo_t* ___element0, Type_t* ___attributeType1, const RuntimeMethod* method) 
-{
-	{
-		MemberInfo_t* L_0 = ___element0;
-		Type_t* L_1 = ___attributeType1;
-		Attribute_tFDA8EFEFB0711976D22474794576DAF28F7440AA* L_2;
-		L_2 = Attribute_GetCustomAttribute_m137ADD9F50AC82BE4E04FA6A4C5E8CD94876D00B(L_0, L_1, (bool)1, NULL);
-		return L_2;
 	}
 }
 // System.Attribute System.Attribute::GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
