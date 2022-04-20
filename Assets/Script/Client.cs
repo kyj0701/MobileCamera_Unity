@@ -1,12 +1,14 @@
 using System;
 using System.Net.Sockets;
 using System.Threading.Tasks;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Client : MonoBehaviour
 {
-    public static Client Instance { set; get; }
+    // private static Client instance = null;
+    public static Client Instance { get; set; }
     private TcpClient socketConnection;
 	public RawImage testImage;
     private CameraManager mobileCamera;
@@ -23,7 +25,16 @@ public class Client : MonoBehaviour
 
     private void Awake() 
     {
-        Instance = this;    
+        // if (null == instance)
+        // {
+        //     instance = this;
+        //     DontDestroyOnLoad(this.gameObject);
+        // } 
+        // else
+        // {
+        //     Destroy(this.gameObject);
+        // }
+        Instance = this;
     }
 
     void Start()
@@ -80,16 +91,18 @@ public class Client : MonoBehaviour
             Debug.Log("Receive Start!");
             // Get a stream object for writing.             
             NetworkStream stream = socketConnection.GetStream();
-            Debug.Log("Receiving" + stream);
+            Debug.Log("Receiving " + stream);
             byte[] recvMessage = new Byte[1024];
 
             stream.Read(recvMessage, 0, recvMessage.Length);
-            Debug.Log("Receiving!");
+            Debug.Log("Receiving 1");
 
             trajectory.text = System.Text.Encoding.UTF8.GetString(recvMessage);
+            Debug.Log("Receiving 2");
             traj = trajectory.text.ToString();
+            Debug.Log("Receiving 3 " + traj);
             split_traj = traj.Split(' ');
-            Debug.Log(split_traj);
+            Debug.Log("Receiving 4 - tx: " + split_traj[4]);
 
             qw = float.Parse(split_traj[0]);
             qx = float.Parse(split_traj[1]);
@@ -99,9 +112,9 @@ public class Client : MonoBehaviour
             ty = float.Parse(split_traj[5]);
             tz = float.Parse(split_traj[6]);
 
-            transX.text = tx.ToString();
-            transY.text = ty.ToString();
-            transZ.text = tz.ToString();
+            // transX.text = tx.ToString();
+            // transY.text = ty.ToString();
+            // transZ.text = tz.ToString();
         }
         catch (SocketException socketException)
         {
@@ -141,5 +154,20 @@ public class Client : MonoBehaviour
         });
     }
 
-    
+    public void LoadMainScene()
+    {
+        SceneManager.LoadScene("Main");
+    }
+
+    // public static Client Instance
+    // {
+    //     get
+    //     {
+    //         if (null == instance)
+    //         {
+    //             return null;
+    //         }
+    //         return instance;
+    //     }
+    // }
 }

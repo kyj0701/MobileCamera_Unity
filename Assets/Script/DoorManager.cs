@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class DoorManager : MonoBehaviour
 {
-    public bool keyNeeded = false;              //Is key needed for the door
+    public bool keyNeeded;              //Is key needed for the door
     public bool gotKey;                  //Has the player acquired key
 
     private bool playerInZone;                  //Check if the player is in the zone
@@ -14,8 +14,13 @@ public class DoorManager : MonoBehaviour
     private Animation doorAnim;
     private BoxCollider doorCollider;           //To enable the player to go through the door if door is opened else block him
     public Button door;
-    public GameObject open;
     private bool canOpen = false;
+    public GameObject doorObject;
+
+    Camera _mainCam = null; 
+	private bool _mouseState;
+	private GameObject target;
+	private Vector3 MousePos;
 
     enum DoorState
     {
@@ -26,12 +31,18 @@ public class DoorManager : MonoBehaviour
 
     DoorState doorState = new DoorState();      //To check the current state of the door
 
+    void Awake() 
+    {
+		_mainCam = Camera.main;
+    } 
+
     /// <summary>
     /// Initial State of every variables
     /// </summary>
     private void Start()
     {
-        gotKey = true;
+        gotKey = false;
+        keyNeeded = true;
         doorOpened = false;                     //Is the door currently opened
         playerInZone = false;                   //Player not in zone
         doorState = DoorState.Closed;           //Starting state is door closed
@@ -40,7 +51,6 @@ public class DoorManager : MonoBehaviour
         doorAnim = transform.parent.gameObject.GetComponent<Animation>();
         doorCollider = transform.parent.gameObject.GetComponent<BoxCollider>();
 
-        door.onClick.AddListener(DoorClicked);
 
         //If Key is needed and the KeyGameObject is not assigned, stop playing and throw error
     }
@@ -56,23 +66,44 @@ public class DoorManager : MonoBehaviour
         playerInZone = false;
     }
 
-    private void DoorClicked()
+    public void KeyGotted()
     {
-        canOpen = true;
+        gotKey = true;
+        keyNeeded = false;
     }
 
     private void Update()
     {
+        if ( true == Input.GetMouseButtonDown(0)) 
+        {
+            target = GetClickedObject(); 
+			
+			if ( true == target.Equals(doorObject)) 
+            {
+				_mouseState = true; 
+			}
+
+        }
+		else if ( true == Input.GetMouseButtonUp(0)) 
+        {
+            _mouseState = false; 
+        }
+
+		if (true == _mouseState)
+		{
+            Debug.Log("Clicked");
+		}
+
         //When Client receives traj, we load main scene
         if (Client.Instance.connecting == true)
         {
-            SceneManager.LoadScene("Main");
+            doorObject.SetActive(false);
         }
 
         //To Check if the player is in the zone
         if (playerInZone)
         {
-            open.SetActive(true);
+            Debug.Log(keyNeeded);
             if (doorState == DoorState.Opened)
             {
                 doorCollider.enabled = false;
@@ -86,9 +117,8 @@ public class DoorManager : MonoBehaviour
                 doorCollider.enabled = true;
             }
         }
-        else open.SetActive(false);
 
-        if (canOpen && playerInZone)
+        if (true == _mouseState && playerInZone)
         {
             doorOpened = !doorOpened;           //The toggle function of door to open/close
 
@@ -96,6 +126,7 @@ public class DoorManager : MonoBehaviour
             {
                 if (!keyNeeded)
                 {
+                    // Debug.Log(keyNeeded + " " + gotKey + " Open!");
                     doorAnim.Play("Door_Open");
                     doorState = DoorState.Opened;
                 }
@@ -112,6 +143,37 @@ public class DoorManager : MonoBehaviour
                 doorAnim.Play("Door_Open");
                 doorState = DoorState.Opened;
             }
+            if (doorState == DoorState.Opened && !doorAnim.isPlaying)
+            {
+                doorAnim.Play("Door_Close");
+                doorState = DoorState.Closed;
+            }
+            if (doorState == DoorState.Jammed && !gotKey)
+            {
+                if (doorAnim.GetClip("Door_Jam") != null)
+                    doorAnim.Play("Door_Jam");
+                doorState = DoorState.Jammed;
+            }
+            else if (doorState == DoorState.Jammed && gotKey && !doorAnim.isPlaying)
+            {
+                doorAnim.Play("Door_Open");
+                doorState = DoorState.Opened;
+            }
         }
     }
+
+    private GameObject GetClickedObject() 
+    {
+		RaycastHit hit;
+		GameObject target = null; 
+
+		Ray ray = _mainCam.ScreenPointToRay(Input.mousePosition); 
+		
+		if( true == (Physics.Raycast(ray.origin, ray.direction * 10, out hit))) 
+		{
+			target = hit.collider.gameObject; 
+		} 
+
+        return target; 
+    } 
 }
