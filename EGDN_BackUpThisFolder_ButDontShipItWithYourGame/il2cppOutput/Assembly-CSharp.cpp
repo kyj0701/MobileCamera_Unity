@@ -964,6 +964,7 @@ IL2CPP_EXTERN_C String_t* _stringLiteralA6107EE62A5874EF8D2DEAC7D3C0A9F07B89E096
 IL2CPP_EXTERN_C String_t* _stringLiteralA835F2072497039A936536E28974F2C5DA3D6238;
 IL2CPP_EXTERN_C String_t* _stringLiteralA87D266F5AAE1AF5998468D25833A8C6AD50D4FD;
 IL2CPP_EXTERN_C String_t* _stringLiteralA9E97704D98D8435E963D4DFE3AFF206257B680D;
+IL2CPP_EXTERN_C String_t* _stringLiteralAA7797BC4F636E5CA25BD6C2C9595F9289A1C6AE;
 IL2CPP_EXTERN_C String_t* _stringLiteralAB3448E21FA53C63C06270903A13B17D02935BE0;
 IL2CPP_EXTERN_C String_t* _stringLiteralADC22AA545904822AEFE3003A56D4B7084464DB6;
 IL2CPP_EXTERN_C String_t* _stringLiteralB90AEB71EEF73D732FF86A926D89C87006CD9ADF;
@@ -5557,6 +5558,8 @@ struct GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6  : public MonoBehav
 {
 	// System.String GameManager::playerID
 	String_t* ___playerID_5;
+	// System.Int32 GameManager::count
+	int32_t ___count_6;
 };
 
 struct GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_StaticFields
@@ -7779,6 +7782,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Encoding_t65CDEF28CF20A7B8C92E85A4E808920C246
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* String_Split_m9530B73D02054692283BF35C3A27C8F2230946F4 (String_t* __this, Il2CppChar ___separator0, int32_t ___options1, const RuntimeMethod* method) ;
 // System.Single System.Single::Parse(System.String)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float Single_Parse_m349A7F699C77834259812ABE86909825C1F93CF4 (String_t* ___s0, const RuntimeMethod* method) ;
+// System.String System.Single::ToString()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* Single_ToString_mE282EDA9CA4F7DF88432D807732837A629D04972 (float* __this, const RuntimeMethod* method) ;
 // UnityEngine.GameObject UnityEngine.GameObject::Find(System.String)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* GameObject_Find_mFF1D6C65A7E2CD82443F4DCE4C53472FB30B7F51 (String_t* ___name0, const RuntimeMethod* method) ;
 // T UnityEngine.GameObject::GetComponent<CameraManager>()
@@ -7873,6 +7878,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpriteRenderer_set_color_mB0EEC2845A0347
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float Time_get_deltaTime_m7AB6BFA101D83E1D8F2EF3D5A128AEE9DDBF1A6D (const RuntimeMethod* method) ;
 // UnityEngine.Color UnityEngine.Color::get_white()
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Color_tD001788D726C3A7F1379BEED0260B9591F440C1F Color_get_white_m28BB6E19F27D4EE6858D3021A44F62BC74E20C43_inline (const RuntimeMethod* method) ;
+// System.Boolean UnityEngine.MonoBehaviour::IsInvoking(System.String)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool MonoBehaviour_IsInvoking_m9CD08C2F7F5E83660FFE3B5A373B202CCBDB3708 (MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71* __this, String_t* ___methodName0, const RuntimeMethod* method) ;
+// System.Void UnityEngine.MonoBehaviour::Invoke(System.String,System.Single)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MonoBehaviour_Invoke_mF724350C59362B0F1BFE26383209A274A29A63FB (MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71* __this, String_t* ___methodName0, float ___time1, const RuntimeMethod* method) ;
+// System.Void UnityEngine.MonoBehaviour::CancelInvoke(System.String)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MonoBehaviour_CancelInvoke_m268FFD58AFF64C07FD4C9B9B8B85F58BD86F3A01 (MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71* __this, String_t* ___methodName0, const RuntimeMethod* method) ;
+// System.Void UnityEngine.Application::Quit()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Application_Quit_m965C6D4CA85A24DD95B347D22837074F19C58134 (const RuntimeMethod* method) ;
 // System.Void GPS::set_Instance(GPS)
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void GPS_set_Instance_m339C8B9C7517B7D4D1977C660D3798D3D8E238E6_inline (GPS_t9C9F600CBDCEB78DE9B27572B3F849ABAB1B92B9* ___value0, const RuntimeMethod* method) ;
 // System.Collections.IEnumerator GPS::StartLocationService()
@@ -10295,8 +10308,29 @@ IL_0028_1:
 			float L_53;
 			L_53 = Single_Parse_m349A7F699C77834259812ABE86909825C1F93CF4(L_52, NULL);
 			__this->___tz_21 = L_53;
+			// transX.text = tx.ToString();
+			Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_54 = __this->___transX_10;
+			float* L_55 = (&__this->___tx_19);
+			String_t* L_56;
+			L_56 = Single_ToString_mE282EDA9CA4F7DF88432D807732837A629D04972(L_55, NULL);
+			NullCheck(L_54);
+			VirtualActionInvoker1< String_t* >::Invoke(75 /* System.Void UnityEngine.UI.Text::set_text(System.String) */, L_54, L_56);
+			// transY.text = ty.ToString();
+			Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_57 = __this->___transY_11;
+			float* L_58 = (&__this->___ty_20);
+			String_t* L_59;
+			L_59 = Single_ToString_mE282EDA9CA4F7DF88432D807732837A629D04972(L_58, NULL);
+			NullCheck(L_57);
+			VirtualActionInvoker1< String_t* >::Invoke(75 /* System.Void UnityEngine.UI.Text::set_text(System.String) */, L_57, L_59);
+			// transZ.text = tz.ToString();
+			Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_60 = __this->___transZ_12;
+			float* L_61 = (&__this->___tz_21);
+			String_t* L_62;
+			L_62 = Single_ToString_mE282EDA9CA4F7DF88432D807732837A629D04972(L_61, NULL);
+			NullCheck(L_60);
+			VirtualActionInvoker1< String_t* >::Invoke(75 /* System.Void UnityEngine.UI.Text::set_text(System.String) */, L_60, L_62);
 			// }
-			goto IL_016f;
+			goto IL_01b1;
 		}
 	}// end try (depth: 1)
 	catch(Il2CppExceptionWrapper& e)
@@ -10304,56 +10338,56 @@ IL_0028_1:
 		if(il2cpp_codegen_class_is_assignable_from (((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&SocketException_t6D10102A62EA871BD31748E026A372DB6804083B_il2cpp_TypeInfo_var)), il2cpp_codegen_object_class(e.ex)))
 		{
 			IL2CPP_PUSH_ACTIVE_EXCEPTION(e.ex);
-			goto CATCH_0150;
+			goto CATCH_0192;
 		}
 		throw e;
 	}
 
-CATCH_0150:
+CATCH_0192:
 	{// begin catch(System.Net.Sockets.SocketException)
 		{
 			// catch (SocketException socketException)
 			V_2 = ((SocketException_t6D10102A62EA871BD31748E026A372DB6804083B*)IL2CPP_GET_ACTIVE_EXCEPTION(SocketException_t6D10102A62EA871BD31748E026A372DB6804083B*));
 			// Debug.Log("Socket exception: " + socketException);
-			SocketException_t6D10102A62EA871BD31748E026A372DB6804083B* L_54 = V_2;
-			SocketException_t6D10102A62EA871BD31748E026A372DB6804083B* L_55 = L_54;
-			G_B5_0 = L_55;
+			SocketException_t6D10102A62EA871BD31748E026A372DB6804083B* L_63 = V_2;
+			SocketException_t6D10102A62EA871BD31748E026A372DB6804083B* L_64 = L_63;
+			G_B5_0 = L_64;
 			G_B5_1 = ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral7BDBE49F8400C8FDAB7F40A18406E3E11C2BAB22));
-			if (L_55)
+			if (L_64)
 			{
-				G_B6_0 = L_55;
+				G_B6_0 = L_64;
 				G_B6_1 = ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral7BDBE49F8400C8FDAB7F40A18406E3E11C2BAB22));
-				goto IL_015e;
+				goto IL_01a0;
 			}
 		}
 		{
 			G_B7_0 = ((String_t*)(NULL));
 			G_B7_1 = G_B5_1;
-			goto IL_0163;
+			goto IL_01a5;
 		}
 
-IL_015e:
+IL_01a0:
 		{
 			NullCheck(G_B6_0);
-			String_t* L_56;
-			L_56 = VirtualFuncInvoker0< String_t* >::Invoke(3 /* System.String System.Object::ToString() */, G_B6_0);
-			G_B7_0 = L_56;
+			String_t* L_65;
+			L_65 = VirtualFuncInvoker0< String_t* >::Invoke(3 /* System.String System.Object::ToString() */, G_B6_0);
+			G_B7_0 = L_65;
 			G_B7_1 = G_B6_1;
 		}
 
-IL_0163:
+IL_01a5:
 		{
-			String_t* L_57;
-			L_57 = String_Concat_mAF2CE02CC0CB7460753D0A1A91CCF2B1E9804C5D(G_B7_1, G_B7_0, NULL);
+			String_t* L_66;
+			L_66 = String_Concat_mAF2CE02CC0CB7460753D0A1A91CCF2B1E9804C5D(G_B7_1, G_B7_0, NULL);
 			il2cpp_codegen_runtime_class_init_inline(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var)));
-			Debug_Log_m86567BCF22BBE7809747817453CACA0E41E68219(L_57, NULL);
+			Debug_Log_m86567BCF22BBE7809747817453CACA0E41E68219(L_66, NULL);
 			// }
 			IL2CPP_POP_ACTIVE_EXCEPTION();
-			goto IL_016f;
+			goto IL_01b1;
 		}
 	}// end catch (depth: 1)
 
-IL_016f:
+IL_01b1:
 	{
 		// }
 		return;
@@ -11606,6 +11640,74 @@ IL_001f:
 		L_3 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		Object_Destroy_mFCDAE6333522488F60597AF019EA90BB1207A5AA(L_3, NULL);
+		// }
+		return;
+	}
+}
+// System.Void GameManager::Update()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_Update_m7F29D8E933B8D21D2E67507979C0F12ACF87BB41 (GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralAA7797BC4F636E5CA25BD6C2C9595F9289A1C6AE);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		// if (Input.GetKeyDown(KeyCode.Escape))
+		bool L_0;
+		L_0 = Input_GetKeyDown_m0D59B7EBC3A782C9FBBF107FBCD4B72B38D993B3(((int32_t)27), NULL);
+		if (!L_0)
+		{
+			goto IL_0035;
+		}
+	}
+	{
+		// count++;
+		int32_t L_1 = __this->___count_6;
+		__this->___count_6 = ((int32_t)il2cpp_codegen_add(L_1, 1));
+		// if (!IsInvoking("DoubleClick"))
+		bool L_2;
+		L_2 = MonoBehaviour_IsInvoking_m9CD08C2F7F5E83660FFE3B5A373B202CCBDB3708(__this, _stringLiteralAA7797BC4F636E5CA25BD6C2C9595F9289A1C6AE, NULL);
+		if (L_2)
+		{
+			goto IL_004e;
+		}
+	}
+	{
+		// Invoke("DoubleClick", 1.0f);
+		MonoBehaviour_Invoke_mF724350C59362B0F1BFE26383209A274A29A63FB(__this, _stringLiteralAA7797BC4F636E5CA25BD6C2C9595F9289A1C6AE, (1.0f), NULL);
+		return;
+	}
+
+IL_0035:
+	{
+		// else if (count == 2)
+		int32_t L_3 = __this->___count_6;
+		if ((!(((uint32_t)L_3) == ((uint32_t)2))))
+		{
+			goto IL_004e;
+		}
+	}
+	{
+		// CancelInvoke("DoubleClick");
+		MonoBehaviour_CancelInvoke_m268FFD58AFF64C07FD4C9B9B8B85F58BD86F3A01(__this, _stringLiteralAA7797BC4F636E5CA25BD6C2C9595F9289A1C6AE, NULL);
+		// Application.Quit();
+		Application_Quit_m965C6D4CA85A24DD95B347D22837074F19C58134(NULL);
+	}
+
+IL_004e:
+	{
+		// }
+		return;
+	}
+}
+// System.Void GameManager::DoubleClick()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_DoubleClick_mA9FC92AC3AB03B8AFA0F8168491EE1069E4FD7C6 (GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* __this, const RuntimeMethod* method) 
+{
+	{
+		// count = 0;
+		__this->___count_6 = 0;
 		// }
 		return;
 	}

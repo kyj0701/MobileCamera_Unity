@@ -19787,6 +19787,8 @@ struct GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6  : public MonoBehav
 {
 	// System.String GameManager::playerID
 	String_t* ___playerID_5;
+	// System.Int32 GameManager::count
+	int32_t ___count_6;
 };
 
 struct GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_StaticFields

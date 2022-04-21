@@ -42329,6 +42329,8 @@ struct GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6  : public MonoBehav
 {
 	// System.String GameManager::playerID
 	String_t* ___playerID_5;
+	// System.Int32 GameManager::count
+	int32_t ___count_6;
 };
 
 struct GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_StaticFields
@@ -54296,9 +54298,9 @@ IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable5978[1] =
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable5979[2] = 
 {
 	static_cast<int32_t>(offsetof(FadeOutAnim_t88B8B941E2D45F2FD0F7AD8594E0893738B5E754, ___time_4)),static_cast<int32_t>(offsetof(FadeOutAnim_t88B8B941E2D45F2FD0F7AD8594E0893738B5E754, ____fadeTime_5)),};
-IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable5980[2] = 
+IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable5980[3] = 
 {
-	static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_StaticFields, ___instance_4)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___playerID_5)),};
+	static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_StaticFields, ___instance_4)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___playerID_5)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___count_6)),};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable5981[3] = 
 {
 	static_cast<int32_t>(offsetof(U3CStartLocationServiceU3Ed__15_t87A3513FCF164ABF92438EEC61C81226FAC4AC11, ___U3CU3E1__state_0)),static_cast<int32_t>(offsetof(U3CStartLocationServiceU3Ed__15_t87A3513FCF164ABF92438EEC61C81226FAC4AC11, ___U3CU3E2__current_1)),static_cast<int32_t>(offsetof(U3CStartLocationServiceU3Ed__15_t87A3513FCF164ABF92438EEC61C81226FAC4AC11, ___U3CU3E4__this_2)),};

@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager instance = null;
     public string playerID;
+    private int count;
 
     void Awake() 
     {
@@ -15,6 +16,27 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         }  
         else Destroy(this.gameObject);
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            count++;
+            if (!IsInvoking("DoubleClick"))
+                Invoke("DoubleClick", 1.0f);
+       
+        }
+        else if (count == 2)
+        {
+            CancelInvoke("DoubleClick");
+            Application.Quit();
+        }
+    }
+
+    private void DoubleClick()
+    {
+        count = 0;
     }
 
     public static GameManager Instance

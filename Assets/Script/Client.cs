@@ -112,9 +112,9 @@ public class Client : MonoBehaviour
             ty = float.Parse(split_traj[5]);
             tz = float.Parse(split_traj[6]);
 
-            // transX.text = tx.ToString();
-            // transY.text = ty.ToString();
-            // transZ.text = tz.ToString();
+            transX.text = tx.ToString();
+            transY.text = ty.ToString();
+            transZ.text = tz.ToString();
         }
         catch (SocketException socketException)
         {
