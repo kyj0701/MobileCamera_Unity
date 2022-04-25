@@ -17,7 +17,7 @@ public class PlayerMove : MonoBehaviour
     {
         // Camera.main.transform.position = transform.position;
         transform.position = Camera.main.transform.position;
-        playerPos.text = " X: " + transform.position.x.ToString("N2") + " Y: " + transform.position.y.ToString("N2") + " Z: " + transform.position.z.ToString("N2");
+        // playerPos.text = " X: " + transform.position.x.ToString("N2") + " Y: " + transform.position.y.ToString("N2") + " Z: " + transform.position.z.ToString("N2");
         
         if (Input.GetKey(KeyCode.W))
         {

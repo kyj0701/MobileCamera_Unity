@@ -80,7 +80,8 @@ public class DoorManager : MonoBehaviour
 			
 			if ( true == target.Equals(doorObject)) 
             {
-				_mouseState = true; 
+				_mouseState = true;
+                TextManager.Instance.ChangeInfo("Waiting for Seconds...");                
 			}
 
         }
@@ -89,21 +90,17 @@ public class DoorManager : MonoBehaviour
             _mouseState = false; 
         }
 
-		if (true == _mouseState)
-		{
-            Debug.Log("Clicked");
-		}
-
         //When Client receives traj, we load main scene
         if (Client.Instance.connecting == true)
         {
             doorObject.SetActive(false);
+            TextManager.Instance.ChangeInfo(" ");
         }
 
         //To Check if the player is in the zone
         if (playerInZone)
         {
-            Debug.Log(keyNeeded);
+            // Debug.Log(keyNeeded);
             if (doorState == DoorState.Opened)
             {
                 doorCollider.enabled = false;

@@ -64,7 +64,6 @@ public class GPS : MonoBehaviour {
         }
         
         UpdateLocationInfo();
-        // Debug.Log("GPS Update");
         yield return new WaitForSeconds(2);
     }
 

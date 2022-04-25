@@ -17,6 +17,7 @@ public class Client : MonoBehaviour
     public Text transX;
     public Text transY;
     public Text transZ;
+    public int[,] rotationMat = new int [3,3];
 
     public string traj;
     public string[] split_traj;
@@ -91,18 +92,18 @@ public class Client : MonoBehaviour
             Debug.Log("Receive Start!");
             // Get a stream object for writing.             
             NetworkStream stream = socketConnection.GetStream();
-            Debug.Log("Receiving " + stream);
+            // Debug.Log("Receiving " + stream);
             byte[] recvMessage = new Byte[1024];
 
             stream.Read(recvMessage, 0, recvMessage.Length);
-            Debug.Log("Receiving 1");
+            // Debug.Log("Receiving 1");
 
             trajectory.text = System.Text.Encoding.UTF8.GetString(recvMessage);
-            Debug.Log("Receiving 2");
+            // Debug.Log("Receiving 2");
             traj = trajectory.text.ToString();
-            Debug.Log("Receiving 3 " + traj);
+            // Debug.Log("Receiving 3 " + traj);
             split_traj = traj.Split(' ');
-            Debug.Log("Receiving 4 - tx: " + split_traj[4]);
+            // Debug.Log("Receiving 4 - tx: " + split_traj[4]);
 
             qw = float.Parse(split_traj[0]);
             qx = float.Parse(split_traj[1]);

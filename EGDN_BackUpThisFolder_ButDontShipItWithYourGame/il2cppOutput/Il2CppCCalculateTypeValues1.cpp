@@ -20102,10 +20102,14 @@ struct TextConsoleSimulator_t986082F574CD2A38D6E40D856C6A9926D7EF49D2  : public 
 // TextManager
 struct TextManager_t035D1E5CAAF615422BCE680E65D2EDDEDC297936  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
 {
-	// TextManager TextManager::instance
-	TextManager_t035D1E5CAAF615422BCE680E65D2EDDEDC297936* ___instance_4;
 	// UnityEngine.UI.Text TextManager::information
 	Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* ___information_5;
+};
+
+struct TextManager_t035D1E5CAAF615422BCE680E65D2EDDEDC297936_StaticFields
+{
+	// TextManager TextManager::<Instance>k__BackingField
+	TextManager_t035D1E5CAAF615422BCE680E65D2EDDEDC297936* ___U3CInstanceU3Ek__BackingField_4;
 };
 
 // TMPro.Examples.TextMeshProFloatingText
@@ -22845,7 +22849,7 @@ const Il2CppTypeDefinitionSizes g_typeDefinitionSize5983 = { sizeof (LoginField_
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize5984;
 const Il2CppTypeDefinitionSizes g_typeDefinitionSize5984 = { sizeof (PlayerMove_t5C7A927946DCC60A38F893BF9FA47FE643DF1EE4), -1, 0, 0 };
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize5985;
-const Il2CppTypeDefinitionSizes g_typeDefinitionSize5985 = { sizeof (TextManager_t035D1E5CAAF615422BCE680E65D2EDDEDC297936), -1, 0, 0 };
+const Il2CppTypeDefinitionSizes g_typeDefinitionSize5985 = { sizeof (TextManager_t035D1E5CAAF615422BCE680E65D2EDDEDC297936), -1, sizeof(TextManager_t035D1E5CAAF615422BCE680E65D2EDDEDC297936_StaticFields), 0 };
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize5986;
 const Il2CppTypeDefinitionSizes g_typeDefinitionSize5986 = { sizeof (TouchObject_tEB05956A439551AB14350D16300240DD005D67E6), -1, 0, 0 };
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize5987;
