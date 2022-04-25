@@ -42459,6 +42459,15 @@ struct TMP_SubMesh_t03A386328B843ADDDC3D5C53D901B38294142214  : public MonoBehav
 	bool ___m_isRegisteredForEvents_16;
 };
 
+// TextManager
+struct TextManager_t035D1E5CAAF615422BCE680E65D2EDDEDC297936  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
+{
+	// TextManager TextManager::instance
+	TextManager_t035D1E5CAAF615422BCE680E65D2EDDEDC297936* ___instance_4;
+	// UnityEngine.UI.Text TextManager::information
+	Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* ___information_5;
+};
+
 // Unity.ThrowStub
 struct ThrowStub_tA028CA7941154A8E0F17F9AD0563D538617A7A47  : public ObjectDisposedException_tC5FB29E8E980E2010A2F6A5B9B791089419F89EB
 {
@@ -42479,11 +42488,6 @@ struct TouchObject_tEB05956A439551AB14350D16300240DD005D67E6  : public MonoBehav
 
 // UnityEngine.EventSystems.UIBehaviour
 struct UIBehaviour_tB9D4295827BD2EEDEF0749200C6CA7090C742A9D  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
-{
-};
-
-// UpdateGPSText
-struct UpdateGPSText_tDA3EBD6547880F1DF8C0C7D95324EF837905C8B9  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
 {
 };
 
@@ -54313,12 +54317,12 @@ IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable5983[1] =
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable5984[1] = 
 {
 	static_cast<int32_t>(offsetof(PlayerMove_t5C7A927946DCC60A38F893BF9FA47FE643DF1EE4, ___playerPos_4)),};
-IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable5985[4] = 
+IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable5985[2] = 
+{
+	static_cast<int32_t>(offsetof(TextManager_t035D1E5CAAF615422BCE680E65D2EDDEDC297936, ___instance_4)),static_cast<int32_t>(offsetof(TextManager_t035D1E5CAAF615422BCE680E65D2EDDEDC297936, ___information_5)),};
+IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable5986[4] = 
 {
 	static_cast<int32_t>(offsetof(TouchObject_tEB05956A439551AB14350D16300240DD005D67E6, ____mainCam_4)),static_cast<int32_t>(offsetof(TouchObject_tEB05956A439551AB14350D16300240DD005D67E6, ____mouseState_5)),static_cast<int32_t>(offsetof(TouchObject_tEB05956A439551AB14350D16300240DD005D67E6, ___target_6)),static_cast<int32_t>(offsetof(TouchObject_tEB05956A439551AB14350D16300240DD005D67E6, ___MousePos_7)),};
-IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable5986[1] = 
-{
-};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable5987[2] = 
 {
 	static_cast<int32_t>(offsetof(UpdateKapture_t352F8C139A15A505415AD76F2C0043B57F118F2E, ___accel_4)),static_cast<int32_t>(offsetof(UpdateKapture_t352F8C139A15A505415AD76F2C0043B57F118F2E, ___pos_5)),};

@@ -109,6 +109,7 @@ Library: lib_burst_generated
 --compilation-defines=ENABLE_TILEMAP
 --compilation-defines=ENABLE_TIMELINE
 --compilation-defines=ENABLE_LEGACY_INPUT_MANAGER
+--compilation-defines=UNITY_POST_PROCESSING_STACK_V2
 --compilation-defines=PACKAGE_PHYSICS
 --compilation-defines=PACKAGE_PHYSICS2D
 --compilation-defines=PACKAGE_TILEMAP
@@ -117,6 +118,8 @@ Library: lib_burst_generated
 --compilation-defines=CSHARP_7_OR_LATER
 --compilation-defines=CSHARP_7_3_OR_NEWER
 --compilation-defines=USE_LEGACY_INPUT_HELPERS
+--compilation-defines=ENABLE_VR_MODULE
+--compilation-defines=ENABLE_XR_MODULE
 --compilation-defines=ENABLE_ANIMATION_BURST
 --compilation-defines=TIMELINE_FRAMEACCURATE
 --compilation-defines=ENABLE_SPRITESHAPE_BURST
@@ -127,6 +130,7 @@ Library: lib_burst_generated
 --root-assembly=E:\BlueDot\MobileCamera_Unity\Temp\StagingArea\Data\Managed\Unity.XR.ARFoundation.dll
 --root-assembly=E:\BlueDot\MobileCamera_Unity\Temp\StagingArea\Data\Managed\Unity.XR.ARSubsystems.dll
 --root-assembly=E:\BlueDot\MobileCamera_Unity\Temp\StagingArea\Data\Managed\Unity.XR.ARCore.dll
+--root-assembly=E:\BlueDot\MobileCamera_Unity\Temp\StagingArea\Data\Managed\Unity.Postprocessing.Runtime.dll
 --root-assembly=E:\BlueDot\MobileCamera_Unity\Temp\StagingArea\Data\Managed\UnityEngine.XR.LegacyInputHelpers.dll
 --root-assembly=E:\BlueDot\MobileCamera_Unity\Temp\StagingArea\Data\Managed\Unity.Burst.dll
 --root-assembly=E:\BlueDot\MobileCamera_Unity\Temp\StagingArea\Data\Managed\Unity.2D.Animation.Runtime.dll

@@ -20099,6 +20099,15 @@ struct TextConsoleSimulator_t986082F574CD2A38D6E40D856C6A9926D7EF49D2  : public 
 	bool ___hasTextChanged_5;
 };
 
+// TextManager
+struct TextManager_t035D1E5CAAF615422BCE680E65D2EDDEDC297936  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
+{
+	// TextManager TextManager::instance
+	TextManager_t035D1E5CAAF615422BCE680E65D2EDDEDC297936* ___instance_4;
+	// UnityEngine.UI.Text TextManager::information
+	Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* ___information_5;
+};
+
 // TMPro.Examples.TextMeshProFloatingText
 struct TextMeshProFloatingText_t833773B79A4826E78EDF2799C157B0EC3ACACB31  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
 {
@@ -20196,11 +20205,6 @@ struct TrackedPoseDriver_t5A2DEE7957ED76932DB7460383BF09AB1CB4CCCD  : public Mon
 
 // UnityEngine.EventSystems.UIBehaviour
 struct UIBehaviour_tB9D4295827BD2EEDEF0749200C6CA7090C742A9D  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
-{
-};
-
-// UpdateGPSText
-struct UpdateGPSText_tDA3EBD6547880F1DF8C0C7D95324EF837905C8B9  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
 {
 };
 
@@ -22841,9 +22845,9 @@ const Il2CppTypeDefinitionSizes g_typeDefinitionSize5983 = { sizeof (LoginField_
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize5984;
 const Il2CppTypeDefinitionSizes g_typeDefinitionSize5984 = { sizeof (PlayerMove_t5C7A927946DCC60A38F893BF9FA47FE643DF1EE4), -1, 0, 0 };
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize5985;
-const Il2CppTypeDefinitionSizes g_typeDefinitionSize5985 = { sizeof (TouchObject_tEB05956A439551AB14350D16300240DD005D67E6), -1, 0, 0 };
+const Il2CppTypeDefinitionSizes g_typeDefinitionSize5985 = { sizeof (TextManager_t035D1E5CAAF615422BCE680E65D2EDDEDC297936), -1, 0, 0 };
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize5986;
-const Il2CppTypeDefinitionSizes g_typeDefinitionSize5986 = { sizeof (UpdateGPSText_tDA3EBD6547880F1DF8C0C7D95324EF837905C8B9), -1, 0, 0 };
+const Il2CppTypeDefinitionSizes g_typeDefinitionSize5986 = { sizeof (TouchObject_tEB05956A439551AB14350D16300240DD005D67E6), -1, 0, 0 };
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize5987;
 const Il2CppTypeDefinitionSizes g_typeDefinitionSize5987 = { sizeof (UpdateKapture_t352F8C139A15A505415AD76F2C0043B57F118F2E), -1, 0, 0 };
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize5988;

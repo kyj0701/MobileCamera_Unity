@@ -688,6 +688,8 @@ struct TextConsoleSimulator_t986082F574CD2A38D6E40D856C6A9926D7EF49D2;
 struct TextContainer_t949A6EBEE5C8832723E73D8D3DCF4C8D0B3D7F3C;
 // UnityEngine.TextGenerator
 struct TextGenerator_t85D00417640A53953556C01F9D4E7DDE1ABD8FEC;
+// TextManager
+struct TextManager_t035D1E5CAAF615422BCE680E65D2EDDEDC297936;
 // UnityEngine.TextMesh
 struct TextMesh_t7E1981C7B03E50D5CA5A3AD5B0D9BB0AB6EE91F8;
 // TMPro.TextMeshPro
@@ -714,8 +716,6 @@ struct Type_t;
 struct UnionRank_t3B93C8195E9991809EB98BB3392BCF840E1D49C3;
 // UnityEngine.Events.UnityAction
 struct UnityAction_t11A1F3B953B365C072A5DCC32677EE1796A962A7;
-// UpdateGPSText
-struct UpdateGPSText_tDA3EBD6547880F1DF8C0C7D95324EF837905C8B9;
 // UpdateKapture
 struct UpdateKapture_t352F8C139A15A505415AD76F2C0043B57F118F2E;
 // UpdatePose
@@ -966,6 +966,7 @@ IL2CPP_EXTERN_C String_t* _stringLiteralA87D266F5AAE1AF5998468D25833A8C6AD50D4FD
 IL2CPP_EXTERN_C String_t* _stringLiteralA9E97704D98D8435E963D4DFE3AFF206257B680D;
 IL2CPP_EXTERN_C String_t* _stringLiteralAA7797BC4F636E5CA25BD6C2C9595F9289A1C6AE;
 IL2CPP_EXTERN_C String_t* _stringLiteralAB3448E21FA53C63C06270903A13B17D02935BE0;
+IL2CPP_EXTERN_C String_t* _stringLiteralACC6F432C8041B457D5474BCC62C7EF463D4F129;
 IL2CPP_EXTERN_C String_t* _stringLiteralADC22AA545904822AEFE3003A56D4B7084464DB6;
 IL2CPP_EXTERN_C String_t* _stringLiteralB90AEB71EEF73D732FF86A926D89C87006CD9ADF;
 IL2CPP_EXTERN_C String_t* _stringLiteralBA1039E8CDAE53E44AC3E6185B0871F3D031A476;
@@ -5856,6 +5857,15 @@ struct TextConsoleSimulator_t986082F574CD2A38D6E40D856C6A9926D7EF49D2  : public 
 	bool ___hasTextChanged_5;
 };
 
+// TextManager
+struct TextManager_t035D1E5CAAF615422BCE680E65D2EDDEDC297936  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
+{
+	// TextManager TextManager::instance
+	TextManager_t035D1E5CAAF615422BCE680E65D2EDDEDC297936* ___instance_4;
+	// UnityEngine.UI.Text TextManager::information
+	Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* ___information_5;
+};
+
 // TMPro.Examples.TextMeshProFloatingText
 struct TextMeshProFloatingText_t833773B79A4826E78EDF2799C157B0EC3ACACB31  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
 {
@@ -5919,11 +5929,6 @@ struct TouchObject_tEB05956A439551AB14350D16300240DD005D67E6  : public MonoBehav
 
 // UnityEngine.EventSystems.UIBehaviour
 struct UIBehaviour_tB9D4295827BD2EEDEF0749200C6CA7090C742A9D  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
-{
-};
-
-// UpdateGPSText
-struct UpdateGPSText_tDA3EBD6547880F1DF8C0C7D95324EF837905C8B9  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
 {
 };
 
@@ -12605,6 +12610,83 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PlayerMove__ctor_m259C024B72725E14EF78BC
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
+// System.Void TextManager::Awake()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TextManager_Awake_m9A0FC8D44AC5B2EF5714DFEA87612D8086E87DFA (TextManager_t035D1E5CAAF615422BCE680E65D2EDDEDC297936* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		// if (instance == null)
+		TextManager_t035D1E5CAAF615422BCE680E65D2EDDEDC297936* L_0 = __this->___instance_4;
+		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		bool L_1;
+		L_1 = Object_op_Equality_mD3DB0D72CE0250C84033DC2A90AEF9D59896E536(L_0, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
+		if (!L_1)
+		{
+			goto IL_0021;
+		}
+	}
+	{
+		// instance = this;
+		__this->___instance_4 = __this;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___instance_4), (void*)__this);
+		// DontDestroyOnLoad(this.gameObject);
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_2;
+		L_2 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
+		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		Object_DontDestroyOnLoad_m303AA1C4DC810349F285B4809E426CBBA8F834F9(L_2, NULL);
+		return;
+	}
+
+IL_0021:
+	{
+		// else Destroy(this.gameObject);
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_3;
+		L_3 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
+		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		Object_Destroy_mFCDAE6333522488F60597AF019EA90BB1207A5AA(L_3, NULL);
+		// }
+		return;
+	}
+}
+// System.Void TextManager::Start()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TextManager_Start_m662E158043F6CABAFCAA2CB8F1E553C571945955 (TextManager_t035D1E5CAAF615422BCE680E65D2EDDEDC297936* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralACC6F432C8041B457D5474BCC62C7EF463D4F129);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		// information.text = "Press 'Send' toward the desired location";
+		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_0 = __this->___information_5;
+		NullCheck(L_0);
+		VirtualActionInvoker1< String_t* >::Invoke(75 /* System.Void UnityEngine.UI.Text::set_text(System.String) */, L_0, _stringLiteralACC6F432C8041B457D5474BCC62C7EF463D4F129);
+		// }
+		return;
+	}
+}
+// System.Void TextManager::.ctor()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TextManager__ctor_mE8D11DAD772F51A380EF2569FEB3A2FBA34E14FF (TextManager_t035D1E5CAAF615422BCE680E65D2EDDEDC297936* __this, const RuntimeMethod* method) 
+{
+	{
+		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
+		return;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
 // System.Void TouchObject::Awake()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TouchObject_Awake_mD903DC8606D9321C5BA735AA6581F306DEA54A65 (TouchObject_tEB05956A439551AB14350D16300240DD005D67E6* __this, const RuntimeMethod* method) 
 {
@@ -12756,30 +12838,6 @@ IL_0041:
 }
 // System.Void TouchObject::.ctor()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TouchObject__ctor_mB8F7D72E808696BF3D7B18397C4AD471377EB52B (TouchObject_tEB05956A439551AB14350D16300240DD005D67E6* __this, const RuntimeMethod* method) 
-{
-	{
-		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
-		return;
-	}
-}
-#ifdef __clang__
-#pragma clang diagnostic pop
-#endif
-#ifdef __clang__
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Winvalid-offsetof"
-#pragma clang diagnostic ignored "-Wunused-variable"
-#endif
-// System.Void UpdateGPSText::Update()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdateGPSText_Update_m32085EA3D0F6B37489FEE6E20264E680894CCC3C (UpdateGPSText_tDA3EBD6547880F1DF8C0C7D95324EF837905C8B9* __this, const RuntimeMethod* method) 
-{
-	{
-		// }
-		return;
-	}
-}
-// System.Void UpdateGPSText::.ctor()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdateGPSText__ctor_mFB50DBB84EA8794F55B704DE2931E203A82CB290 (UpdateGPSText_tDA3EBD6547880F1DF8C0C7D95324EF837905C8B9* __this, const RuntimeMethod* method) 
 {
 	{
 		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
