@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
+using Unity.Mathematics;
+
 
 public class Client : MonoBehaviour
 {
@@ -17,11 +19,12 @@ public class Client : MonoBehaviour
     public Text transX;
     public Text transY;
     public Text transZ;
-    public int[,] rotationMat = new int [3,3];
 
     public string traj;
     public string[] split_traj;
     public float qw, qx, qy, qz, tx, ty, tz;
+    public Vector3 rotatePos;
+    public float[][] rotationMat;
     public Boolean connecting = false;
 
     private void Awake() 
@@ -113,9 +116,12 @@ public class Client : MonoBehaviour
             ty = float.Parse(split_traj[5]);
             tz = float.Parse(split_traj[6]);
 
-            transX.text = tx.ToString();
-            transY.text = ty.ToString();
-            transZ.text = tz.ToString();
+            rotationMat = QuaternionToMatrix3x3();
+            rotatePos = rotaionMatrixToEulerAngles(rotationMat);
+
+            transX.text = rotatePos.x.ToString();
+            transY.text = rotatePos.y.ToString();
+            transZ.text = rotatePos.z.ToString();
         }
         catch (SocketException socketException)
         {
@@ -160,15 +166,108 @@ public class Client : MonoBehaviour
         SceneManager.LoadScene("Main");
     }
 
-    // public static Client Instance
+    private float[][] QuaternionToMatrix3x3()
+    {
+        float[][] matrix3x3 = {
+            new float[3],
+            new float[3],
+            new float[3],
+        };
+
+        matrix3x3[0][0] = 2 * (qw * qw + qx * qx) -1;
+        matrix3x3[0][1] = 2 * (qx * qy - qw * qz);
+        matrix3x3[0][2] = 2 * (qx * qz + qw * qy);
+
+        matrix3x3[1][0] = 2 * (qx * qy + qw * qz);
+        matrix3x3[1][1] = 2 * (qw * qw + qy * qy - 1);
+        matrix3x3[1][2] = 2 * (qy * qz - qw * qx);
+
+        matrix3x3[2][0] = 2 * (qx * qz - qw * qy);
+        matrix3x3[2][1] = 2 * (qy * qz + qw * qx);
+        matrix3x3[2][2] = 2 * (qw * qw + qz * qz) - 1;
+
+        return matrix3x3;
+    }
+
+    private Vector3 rotaionMatrixToEulerAngles(float[][] R)
+    {
+        float sy = MathF.Sqrt(R[0][0] * R[0][0] + R[1][0] * R[1][0]);
+
+        bool singular = sy < 1e-6;
+
+        float x,y,z;
+        if (!singular)
+        {
+            x = MathF.Atan2(R[2][1], R[2][2]);
+            y = MathF.Atan2(R[2][0], sy);
+            z = MathF.Atan2(R[1][0], R[0][0]);
+        }
+        else
+        {
+            x = MathF.Atan2(R[1][2], R[1][1]);
+            y = MathF.Atan2(R[2][0], sy);
+            z = 0;
+        }
+
+        Vector3 newRotation = new Vector3(x,y,z);
+
+        return newRotation;
+    }
+
+    // private bool IsRotationMatrix4x4()
     // {
-    //     get
+    //     float[][] Rt = 
     //     {
-    //         if (null == instance)
+    //         new float[3],
+    //         new float[3],
+    //         new float[3],
+
+    //     };
+
+    //     float[][] shouldBeIdentity =
+    //     {
+    //         new float[3],
+    //         new float[3],
+    //         new float[3],
+    //     };
+
+    //     float[][] I =
+    //     {
+    //         new float[3],
+    //         new float[3],
+    //         new float[3],
+    //     };
+
+    //     for (int i = 0; i< 3; i++)
+    //     {
+    //         for (int j = 0; j < 3; j++)
     //         {
-    //             return null;
+    //             if (i == j) I[i][j] = 1.0f;
+    //             else I[i][j] = 0.0f;
     //         }
-    //         return instance;
     //     }
+
+    //     for (int i = 0; i < 3; i++)
+    //     {
+    //         for (int j = 0; j < 3; j++)
+    //         {
+    //             Rt[i][j] = rotationMat[j][i];
+    //         }
+    //     }
+
+    //     for (int k = 0; k < 3; k++)
+    //     {
+    //         for (int i = 0; i < 3; i++)
+    //         {
+    //             float sum = 0;
+    //             for (int j = 0; j < 3; j++)
+    //             {
+    //                 sum += Rt[i][j] * rotationMat[j][k];
+    //             }
+    //             shouldBeIdentity[i][k] = sum;
+    //         }
+    //     }
+
+    //     return true;
     // }
 }
