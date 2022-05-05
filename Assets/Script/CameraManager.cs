@@ -13,7 +13,7 @@ public class CameraManager : MonoBehaviour
     public ARCameraBackground m_ARCameraBackground;
 
     // Start is called before the first frame update
-    void Awake()
+    private void Awake()
     {
         if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
         {

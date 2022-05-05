@@ -10,7 +10,7 @@ public class UpdatePose : MonoBehaviour
 {
     // Start is called before the first frame update
     string inDate;
-    void Start()
+    private void Start()
     {
         string owner_inDate = Backend.UserInDate;
         var bro = Backend.GameData.GetMyData("Position", new Where());
@@ -22,10 +22,10 @@ public class UpdatePose : MonoBehaviour
             Param param = GetCurrentParam();
             Backend.GameData.Insert ("Position", param );
         }
-        
-        
     }
-    static Param GetCurrentParam(){
+    
+    static Param GetCurrentParam()
+    {
         Param param = new Param();
         param.Add("tx", Camera.main.transform.position.x);
         param.Add("ty", Camera.main.transform.position.y);
@@ -39,7 +39,8 @@ public class UpdatePose : MonoBehaviour
     // Update is called once per frame
 
     int count = 0;
-    void FixedUpdate(){
+    private void FixedUpdate()
+    {
         if(count % 15 == 0){
             Param param = GetCurrentParam();
             Backend.GameData.UpdateV2("Position", inDate, Backend.UserInDate, param, ( callback ) =>
@@ -63,21 +64,16 @@ public class UpdatePose : MonoBehaviour
                         Debug.Log(gameDataListJson[i]["owner_inDate"].ToString() + " ----- qw : " + gameDataListJson[i]["qw"].ToString());
 
                     }
-
                 }
             });
         }
-        
         //Debug.Log(otherbro);
         count++;
-        
     }
-    void Update()
+
+    void OnApplicationQuit()
     {
-        
-    }
-    void OnApplicationQuit(){
-        Debug.Log("destroy!");
+        Debug.Log("Application Quits!");
         Backend.GameData.DeleteV2 ( "Position", inDate, Backend.UserInDate ); 
     }
 }

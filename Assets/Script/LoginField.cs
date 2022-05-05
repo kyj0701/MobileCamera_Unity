@@ -6,7 +6,7 @@ using TMPro;
 
 public class LoginField : MonoBehaviour
 {
-    void Update()
+    private void Update()
     {
         Backend.Match.Poll();
     }

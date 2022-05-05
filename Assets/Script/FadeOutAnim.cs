@@ -8,7 +8,7 @@ public class FadeOutAnim : MonoBehaviour
     public float _fadeTime = 1f;
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if(time < _fadeTime)
         {

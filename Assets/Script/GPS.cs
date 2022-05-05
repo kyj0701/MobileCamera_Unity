@@ -16,16 +16,11 @@ public class GPS : MonoBehaviour {
     public int maxWait = 5;
     public int delay;
 
-    void Start()
+    private void Start()
     {
         Instance = this;
         DontDestroyOnLoad(gameObject);
         StartCoroutine(StartLocationService());
-    }
-
-    void Update()
-    {
-        // StartCoroutine(StartLocationService());
     }
 
     private IEnumerator StartLocationService()

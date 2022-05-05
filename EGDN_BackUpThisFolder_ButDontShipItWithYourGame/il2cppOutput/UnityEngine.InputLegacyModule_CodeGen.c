@@ -136,37 +136,33 @@ extern void Input_get_mousePresent_m7636BF18F4329EA82F264DA4D87B9B25A8A4923C (vo
 extern void Input_get_touchCount_m7B8EAAB3449A6DC2D90AF3BA36AF226D97C020CF (void);
 // 0x0000003E System.Boolean UnityEngine.Input::get_touchSupported()
 extern void Input_get_touchSupported_m941C82FC6E66A263CDAD12283DF87CDF15A06FD4 (void);
-// 0x0000003F UnityEngine.Vector3 UnityEngine.Input::get_acceleration()
-extern void Input_get_acceleration_mF33877F82B497F1B4B7D32BD9CD8388D0B3696FD (void);
-// 0x00000040 UnityEngine.LocationService UnityEngine.Input::get_location()
+// 0x0000003F UnityEngine.LocationService UnityEngine.Input::get_location()
 extern void Input_get_location_m6F753D9369213F07EC556FF6240D723DCF3C689D (void);
-// 0x00000041 System.Void UnityEngine.Input::GetTouch_Injected(System.Int32,UnityEngine.Touch&)
+// 0x00000040 System.Void UnityEngine.Input::GetTouch_Injected(System.Int32,UnityEngine.Touch&)
 extern void Input_GetTouch_Injected_m5779DCAC4D6055BF7641FE4862B7A7AE383BD44F (void);
-// 0x00000042 System.Void UnityEngine.Input::get_mousePosition_Injected(UnityEngine.Vector3&)
+// 0x00000041 System.Void UnityEngine.Input::get_mousePosition_Injected(UnityEngine.Vector3&)
 extern void Input_get_mousePosition_Injected_mCBD97B0298BAC155AA7E987E29857142A13D2041 (void);
-// 0x00000043 System.Void UnityEngine.Input::get_mouseScrollDelta_Injected(UnityEngine.Vector2&)
+// 0x00000042 System.Void UnityEngine.Input::get_mouseScrollDelta_Injected(UnityEngine.Vector2&)
 extern void Input_get_mouseScrollDelta_Injected_mDB890FFFE7A09E94245B15E8A17E35819D69BE94 (void);
-// 0x00000044 System.Void UnityEngine.Input::get_compositionCursorPos_Injected(UnityEngine.Vector2&)
+// 0x00000043 System.Void UnityEngine.Input::get_compositionCursorPos_Injected(UnityEngine.Vector2&)
 extern void Input_get_compositionCursorPos_Injected_m3B033ACD8286AEB0A319D79525D3F37C03096825 (void);
-// 0x00000045 System.Void UnityEngine.Input::set_compositionCursorPos_Injected(UnityEngine.Vector2&)
+// 0x00000044 System.Void UnityEngine.Input::set_compositionCursorPos_Injected(UnityEngine.Vector2&)
 extern void Input_set_compositionCursorPos_Injected_m09E851911609A84F1B16F6B8DBAF3CC32FFA4246 (void);
-// 0x00000046 System.Void UnityEngine.Input::get_acceleration_Injected(UnityEngine.Vector3&)
-extern void Input_get_acceleration_Injected_m3B5DB6014DCDB56286B56B3F02187ED2354742BE (void);
-// 0x00000047 System.Void UnityEngine.SendMouseEvents::SetMouseMoved()
+// 0x00000045 System.Void UnityEngine.SendMouseEvents::SetMouseMoved()
 extern void SendMouseEvents_SetMouseMoved_m0B2D1A29ED92D3F769C0592036C2228EB85C5EC8 (void);
-// 0x00000048 System.Void UnityEngine.SendMouseEvents::DoSendMouseEvents(System.Int32)
+// 0x00000046 System.Void UnityEngine.SendMouseEvents::DoSendMouseEvents(System.Int32)
 extern void SendMouseEvents_DoSendMouseEvents_m6ED386F607BB79BE62E0C3A523F7D8551B5B4F2C (void);
-// 0x00000049 System.Void UnityEngine.SendMouseEvents::SendEvents(System.Int32,UnityEngine.SendMouseEvents/HitInfo)
+// 0x00000047 System.Void UnityEngine.SendMouseEvents::SendEvents(System.Int32,UnityEngine.SendMouseEvents/HitInfo)
 extern void SendMouseEvents_SendEvents_mB4970ECB0198E490463A9DA84B3926F10652D72C (void);
-// 0x0000004A System.Void UnityEngine.SendMouseEvents::.cctor()
+// 0x00000048 System.Void UnityEngine.SendMouseEvents::.cctor()
 extern void SendMouseEvents__cctor_mBA2FA1153AF7CB9F3550B83A8ABE8EB734BC1B82 (void);
-// 0x0000004B System.Void UnityEngine.SendMouseEvents/HitInfo::SendMessage(System.String)
+// 0x00000049 System.Void UnityEngine.SendMouseEvents/HitInfo::SendMessage(System.String)
 extern void HitInfo_SendMessage_m7834418ACE250BBCBA38ADCF0892E475BD1AD541 (void);
-// 0x0000004C System.Boolean UnityEngine.SendMouseEvents/HitInfo::op_Implicit(UnityEngine.SendMouseEvents/HitInfo)
+// 0x0000004A System.Boolean UnityEngine.SendMouseEvents/HitInfo::op_Implicit(UnityEngine.SendMouseEvents/HitInfo)
 extern void HitInfo_op_Implicit_m61283E88B22AAF13DE05C7A8A3A6CA195F16C6FE (void);
-// 0x0000004D System.Boolean UnityEngine.SendMouseEvents/HitInfo::Compare(UnityEngine.SendMouseEvents/HitInfo,UnityEngine.SendMouseEvents/HitInfo)
+// 0x0000004B System.Boolean UnityEngine.SendMouseEvents/HitInfo::Compare(UnityEngine.SendMouseEvents/HitInfo,UnityEngine.SendMouseEvents/HitInfo)
 extern void HitInfo_Compare_m96C748D312D26A3333E37553940DAAA11D0AA8F2 (void);
-static Il2CppMethodPointer s_methodPointers[77] = 
+static Il2CppMethodPointer s_methodPointers[75] = 
 {
 	Touch_get_fingerId_mC1DCE93BFA0574960A3AE5329AE6C5F7E06962BD,
 	Touch_get_position_m41B9EB0F3F3E1BE98CEB388253A9E31979CB964A,
@@ -230,14 +226,12 @@ static Il2CppMethodPointer s_methodPointers[77] =
 	Input_get_mousePresent_m7636BF18F4329EA82F264DA4D87B9B25A8A4923C,
 	Input_get_touchCount_m7B8EAAB3449A6DC2D90AF3BA36AF226D97C020CF,
 	Input_get_touchSupported_m941C82FC6E66A263CDAD12283DF87CDF15A06FD4,
-	Input_get_acceleration_mF33877F82B497F1B4B7D32BD9CD8388D0B3696FD,
 	Input_get_location_m6F753D9369213F07EC556FF6240D723DCF3C689D,
 	Input_GetTouch_Injected_m5779DCAC4D6055BF7641FE4862B7A7AE383BD44F,
 	Input_get_mousePosition_Injected_mCBD97B0298BAC155AA7E987E29857142A13D2041,
 	Input_get_mouseScrollDelta_Injected_mDB890FFFE7A09E94245B15E8A17E35819D69BE94,
 	Input_get_compositionCursorPos_Injected_m3B033ACD8286AEB0A319D79525D3F37C03096825,
 	Input_set_compositionCursorPos_Injected_m09E851911609A84F1B16F6B8DBAF3CC32FFA4246,
-	Input_get_acceleration_Injected_m3B5DB6014DCDB56286B56B3F02187ED2354742BE,
 	SendMouseEvents_SetMouseMoved_m0B2D1A29ED92D3F769C0592036C2228EB85C5EC8,
 	SendMouseEvents_DoSendMouseEvents_m6ED386F607BB79BE62E0C3A523F7D8551B5B4F2C,
 	SendMouseEvents_SendEvents_mB4970ECB0198E490463A9DA84B3926F10652D72C,
@@ -295,93 +289,91 @@ static Il2CppTokenAdjustorThunkPair s_adjustorThunks[24] =
 	{ 0x06000015, LocationInfo_get_horizontalAccuracy_m3178154DD5F4F72B8743665F33CCAE5BEC6296F4_AdjustorThunk },
 	{ 0x06000016, LocationInfo_get_verticalAccuracy_m90B3477474136BE858810B92C2C601BBB311A16B_AdjustorThunk },
 	{ 0x06000017, LocationInfo_get_timestamp_mAD1095E60A61DF0FA66195AA06A0F801CF9BDC9F_AdjustorThunk },
-	{ 0x0600004B, HitInfo_SendMessage_m7834418ACE250BBCBA38ADCF0892E475BD1AD541_AdjustorThunk },
+	{ 0x06000049, HitInfo_SendMessage_m7834418ACE250BBCBA38ADCF0892E475BD1AD541_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[77] = 
+static const int32_t s_InvokerIndices[75] = 
 {
-	5313,
-	5430,
-	4450,
-	5430,
-	4450,
-	5430,
-	4450,
-	5381,
-	5313,
-	5313,
-	5381,
-	5381,
-	5313,
-	5381,
-	5381,
-	5381,
-	5381,
-	5381,
-	5381,
-	5381,
-	5381,
-	5381,
-	5285,
-	8195,
-	8175,
-	8180,
-	8080,
-	8080,
-	8209,
-	5376,
-	5313,
-	5327,
-	2409,
-	5441,
-	5441,
-	8058,
-	6259,
-	6259,
-	6243,
-	6243,
-	7978,
-	7978,
-	8008,
-	8008,
-	7981,
-	7978,
-	7978,
-	7978,
-	8036,
-	7978,
-	7978,
-	8078,
+	5314,
+	5431,
+	4451,
+	5431,
+	4451,
+	5431,
+	4451,
+	5382,
+	5314,
+	5314,
+	5382,
+	5382,
+	5314,
+	5382,
+	5382,
+	5382,
+	5382,
+	5382,
+	5382,
+	5382,
+	5382,
+	5382,
+	5286,
+	8196,
+	8176,
+	8181,
+	8081,
+	8081,
+	8210,
+	5377,
+	5314,
+	5328,
+	2410,
+	5442,
+	5442,
+	8059,
+	6260,
+	6260,
+	6244,
+	6244,
+	7979,
+	7979,
+	8009,
+	8009,
+	7982,
+	7979,
+	7979,
+	7979,
+	8037,
+	7979,
+	7979,
+	8079,
+	8208,
 	8207,
-	8206,
-	8175,
-	8068,
-	8183,
-	8206,
-	8083,
-	8195,
-	8175,
-	8195,
+	8176,
+	8069,
+	8184,
 	8207,
-	8183,
-	7536,
-	8058,
-	8058,
-	8058,
-	8058,
-	8058,
-	8209,
-	8068,
-	7543,
-	8209,
-	4372,
-	7997,
-	7389,
+	8084,
+	8196,
+	8176,
+	8196,
+	8184,
+	7537,
+	8059,
+	8059,
+	8059,
+	8059,
+	8210,
+	8069,
+	7544,
+	8210,
+	4373,
+	7998,
+	7390,
 };
 IL2CPP_EXTERN_C const Il2CppCodeGenModule g_UnityEngine_InputLegacyModule_CodeGenModule;
 const Il2CppCodeGenModule g_UnityEngine_InputLegacyModule_CodeGenModule = 
 {
 	"UnityEngine.InputLegacyModule.dll",
-	77,
+	75,
 	s_methodPointers,
 	24,
 	s_adjustorThunks,

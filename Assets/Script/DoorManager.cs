@@ -13,7 +13,6 @@ public class DoorManager : MonoBehaviour
 
     private Animation doorAnim;
     private BoxCollider doorCollider;           //To enable the player to go through the door if door is opened else block him
-    public Button door;
     private bool canOpen = false;
     public GameObject doorObject;
 
@@ -31,7 +30,7 @@ public class DoorManager : MonoBehaviour
 
     DoorState doorState = new DoorState();      //To check the current state of the door
 
-    void Awake() 
+    private void Awake() 
     {
 		_mainCam = Camera.main;
     } 
@@ -78,7 +77,7 @@ public class DoorManager : MonoBehaviour
         {
             target = GetClickedObject(); 
 			
-			if ( true == target.Equals(doorObject)) 
+			if ( gotKey == true && target.Equals(doorObject) == true) 
             {
 				_mouseState = true;
                 TextManager.Instance.ChangeInfo("Waiting for Seconds...");                

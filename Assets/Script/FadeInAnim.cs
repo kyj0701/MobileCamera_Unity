@@ -8,7 +8,7 @@ public class FadeInAnim : MonoBehaviour
     float time = 0;
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (time < 3f)
         {

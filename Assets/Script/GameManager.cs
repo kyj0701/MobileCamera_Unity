@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public string playerID;
     private int count;
 
-    void Awake() 
+    private void Awake() 
     {
         if (instance == null)
         {
@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
         else Destroy(this.gameObject);
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {

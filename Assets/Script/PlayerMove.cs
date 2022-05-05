@@ -7,13 +7,9 @@ public class PlayerMove : MonoBehaviour
 {
     public Text playerPos;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         // Camera.main.transform.position = transform.position;
         transform.position = Camera.main.transform.position;

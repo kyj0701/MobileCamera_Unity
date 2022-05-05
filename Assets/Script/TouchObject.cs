@@ -9,12 +9,12 @@ public class TouchObject : MonoBehaviour
 	private GameObject target;
 	private Vector3 MousePos;
 
-	void Awake() 
+	private void Awake() 
     {
 		_mainCam = Camera.main;
     } 
 
-	void Update () 
+	private void Update () 
     {
         if ( true == Input.GetMouseButtonDown(0)) 
         {
@@ -24,7 +24,6 @@ public class TouchObject : MonoBehaviour
             {
 				_mouseState = true; 
 			}
-
         }
 		else if ( true == Input.GetMouseButtonUp(0)) 
         {

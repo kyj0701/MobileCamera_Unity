@@ -15116,15 +15116,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Math__cctor_mA6B699B7A42A6821D8F7929BF2F
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
+// System.Single System.MathF::Asin(System.Single)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float MathF_Asin_m21FCFF0FC926F03CB877E3FFA11028A0EF588777 (float ___x0, const RuntimeMethod* method) 
+{
+	return asinf(___x0);
+}
 // System.Single System.MathF::Atan2(System.Single,System.Single)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float MathF_Atan2_m6CCBB985F99730F8E3F651E6F9D9B1BD520DE697 (float ___y0, float ___x1, const RuntimeMethod* method) 
 {
 	return atan2f(___y0, ___x1);
-}
-// System.Single System.MathF::Sqrt(System.Single)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float MathF_Sqrt_m9A848AD71CD38420DDA9B227FC1F6266B736B274 (float ___x0, const RuntimeMethod* method) 
-{
-	return sqrtf(___x0);
 }
 // System.Void System.MathF::.cctor()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MathF__cctor_m8B4E503F02909DD9DC3D29ECDA8A470D6BF9296B (const RuntimeMethod* method) 

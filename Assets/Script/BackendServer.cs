@@ -4,7 +4,7 @@ using BackEnd;
 public class BackendServer : MonoBehaviour
 {
     public static BackendServer instance = null;
-    void Awake()
+    private void Awake()
     {
         if (instance == null)
         {
@@ -15,7 +15,7 @@ public class BackendServer : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         var bro = Backend.Initialize(true);
         if (bro.IsSuccess())
