@@ -28,6 +28,8 @@ public class Client : MonoBehaviour
     private Vector3 rotatePos;
     public Boolean connecting = false;
 
+    private int state;
+
     private void Awake() 
     {
         Instance = this;
@@ -35,6 +37,7 @@ public class Client : MonoBehaviour
 
     private void Start()
     {
+        state = -1;
         qw = 0;
         qx = 0;
         qy = 0;
@@ -42,6 +45,11 @@ public class Client : MonoBehaviour
         tx = 0;
         ty = 0;
         tz = 0;
+    }
+
+    private void Update() 
+    {
+        if (state == 0) SendToServerImage();
     }
 
     private void ConnectToTcpServer()
@@ -115,7 +123,7 @@ public class Client : MonoBehaviour
             rotateX.text = rotatePos.x.ToString();
             rotateY.text = rotatePos.y.ToString();
             rotateZ.text = rotatePos.z.ToString();
-
+            state = 0;
         }
         catch (SocketException socketException)
         {
@@ -125,6 +133,7 @@ public class Client : MonoBehaviour
 
     public void SendToServerImage()
 	{
+        state = 1;
         Debug.Log("Task Start!");
         mobileCamera = GameObject.Find("Camera Manager").GetComponent<CameraManager>();
         mobileCamera.ARCamera();
@@ -148,7 +157,7 @@ public class Client : MonoBehaviour
             if (tx != 0 || ty != 0 || tz != 0) 
             {
                 connecting = true;
-                arCamera.transform.Translate(new Vector3(tx, ty, tz));
+                arCamera.transform.position = new Vector3(tx, ty, tz);
             }
 
             socketConnection = null;

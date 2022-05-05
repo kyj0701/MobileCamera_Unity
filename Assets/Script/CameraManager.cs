@@ -32,7 +32,7 @@ public class CameraManager : MonoBehaviour
         Graphics.Blit(null, renderTexture, m_ARCameraBackground.material);
         // Copy the RenderTexture from GPU to CPU
         var activeRenderTexture = RenderTexture.active;
-        RenderTexture.active = renderTexture;  
+        RenderTexture.active = renderTexture; 
         if (m_LastCameraTexture == null)
             m_LastCameraTexture = new Texture2D(renderTexture.width, renderTexture.height, TextureFormat.RGB24, true);
         m_LastCameraTexture.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);

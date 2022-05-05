@@ -39,6 +39,11 @@ public class GameManager : MonoBehaviour
         count = 0;
     }
 
+    public void Deactive(GameObject obj)
+    {
+        obj.SetActive(false);
+    }
+
     public static GameManager Instance
     {
         get
