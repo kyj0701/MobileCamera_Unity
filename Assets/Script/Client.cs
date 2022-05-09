@@ -49,7 +49,9 @@ public class Client : MonoBehaviour
 
     private void Update() 
     {
-        if (state == 0) SendToServerImage();
+        // if state = 0, server sends traj to client
+        // if state = 1, client can't receive traj from server 
+        if (state == 0 || state == 2) SendToServerImage();
     }
 
     private void ConnectToTcpServer()
@@ -102,28 +104,36 @@ public class Client : MonoBehaviour
             Debug.Log("Receiving 1 " + recvMessage);
 
             traj = System.Text.Encoding.UTF8.GetString(recvMessage).ToString();
-            Debug.Log("Receiving 2 " + traj);
-            split_traj = traj.Split(' ');
-            Debug.Log("Receiving 3 - tx: " + split_traj[4]);
+            if (traj .Equals("error"))
+            {
+                state = 2;
+                Debug.Log("UnicodeDecodeError");
+            }
+            else
+            {
+                Debug.Log("Receiving 2 " + traj);
+                split_traj = traj.Split(' ');
+                Debug.Log("Receiving 3 - tx: " + split_traj[4]);
 
-            qw = float.Parse(split_traj[0]);
-            qx = float.Parse(split_traj[1]);
-            qy = float.Parse(split_traj[2]);
-            qz = float.Parse(split_traj[3]);
-            tx = float.Parse(split_traj[4]);
-            ty = float.Parse(split_traj[5]);
-            tz = float.Parse(split_traj[6]);
+                qw = float.Parse(split_traj[0]);
+                qx = float.Parse(split_traj[1]);
+                qy = float.Parse(split_traj[2]);
+                qz = float.Parse(split_traj[3]);
+                tx = float.Parse(split_traj[4]);
+                ty = float.Parse(split_traj[5]);
+                tz = float.Parse(split_traj[6]);
 
-            rotatePos = EulerFromQuarternion(qw, qx, qy, qz);
+                rotatePos = EulerFromQuarternion(qw, qx, qy, qz);
 
-            transX.text = tx.ToString();
-            transY.text = ty.ToString();
-            transZ.text = tz.ToString();
+                transX.text = tx.ToString();
+                transY.text = ty.ToString();
+                transZ.text = tz.ToString();
 
-            rotateX.text = rotatePos.x.ToString();
-            rotateY.text = rotatePos.y.ToString();
-            rotateZ.text = rotatePos.z.ToString();
-            state = 0;
+                rotateX.text = rotatePos.x.ToString();
+                rotateY.text = rotatePos.y.ToString();
+                rotateZ.text = rotatePos.z.ToString();
+                state = 0;
+            }
         }
         catch (SocketException socketException)
         {
@@ -149,9 +159,10 @@ public class Client : MonoBehaviour
             string requestMessage = "kyj0701 CameraImage.png " + byteTestImageTexture.Length;
             Debug.Log(requestMessage);
 
-            SendMessage(System.Text.Encoding.Default.GetBytes(requestMessage));
+            SendMessage(System.Text.Encoding.UTF8.GetBytes(requestMessage));
             SendMessage(byteTestImageTexture);
-            SendMessage(System.Text.Encoding.Default.GetBytes("EOF"));
+            SendMessage(System.Text.Encoding.UTF8.GetBytes("EOF"));
+
             RecvMessage();
 
             if (tx != 0 || ty != 0 || tz != 0) 
