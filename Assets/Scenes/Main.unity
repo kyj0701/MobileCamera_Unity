@@ -548,7 +548,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 377506605}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.84, y: 0.127, z: 1.281}
+  m_LocalPosition: {x: 0.84, y: -0.67, z: 1.498}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1157,8 +1157,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -364223573239433514, guid: e4ae179372a6a3b47a8e72317cc63142, type: 3}
-      propertyPath: m_LocalScale.z
+      propertyPath: m_LocalScale.y
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: -364223573239433514, guid: e4ae179372a6a3b47a8e72317cc63142, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -364223573239433514, guid: e4ae179372a6a3b47a8e72317cc63142, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1174,7 +1178,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -364223573239433514, guid: e4ae179372a6a3b47a8e72317cc63142, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -364223573239433514, guid: e4ae179372a6a3b47a8e72317cc63142, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1186,7 +1190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -364223573239433514, guid: e4ae179372a6a3b47a8e72317cc63142, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -364223573239433514, guid: e4ae179372a6a3b47a8e72317cc63142, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1198,7 +1202,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -364223573239433514, guid: e4ae179372a6a3b47a8e72317cc63142, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8980549144392899874, guid: e4ae179372a6a3b47a8e72317cc63142, type: 3}
       propertyPath: m_Name
@@ -2272,10 +2276,9 @@ MonoBehaviour:
   rotateX: {fileID: 588548186}
   rotateY: {fileID: 1077760122}
   rotateZ: {fileID: 82705932}
-  qw: 0
-  qx: 0
-  qy: 0
-  qz: 0
+  roll: 0
+  pitch: 0
+  yaw: 0
   connecting: 0
 --- !u!4 &2012410940
 Transform:

@@ -23,10 +23,12 @@ public class Client : MonoBehaviour
 
     private string traj;
     private string[] split_traj;
-    public float qw, qx, qy, qz;
+    public float roll, pitch, yaw;
     private float tx, ty, tz;
     private Vector3 rotatePos;
     public Boolean connecting = false;
+    private Vector3 t0;
+    private Vector3 t1;
 
     private int state;
 
@@ -38,10 +40,9 @@ public class Client : MonoBehaviour
     private void Start()
     {
         state = -1;
-        qw = 0;
-        qx = 0;
-        qy = 0;
-        qz = 0;
+        roll = 0;
+        pitch = 0;
+        yaw = 0;
         tx = 0;
         ty = 0;
         tz = 0;
@@ -50,8 +51,9 @@ public class Client : MonoBehaviour
     private void Update() 
     {
         // if state = 0, server sends traj to client
-        // if state = 1, client can't receive traj from server 
-        if (state == 0 || state == 2) SendToServerImage();
+        // if state = 2, client can't receive traj from server 
+        // if state = 3, SocketException: Connection reset by peer or Connection failed
+        if (state == 0 || state == 2 || state == 3) SendToServerImage();
     }
 
     private void ConnectToTcpServer()
@@ -63,6 +65,7 @@ public class Client : MonoBehaviour
         catch (Exception e)
         {
             Debug.Log("On client connect exception " + e);
+            state = 3;
         }
     }
 
@@ -87,6 +90,7 @@ public class Client : MonoBehaviour
         catch (SocketException socketException)
         {
             Debug.Log("Socket exception: " + socketException);
+            state = 3;
         }
     }
 
@@ -97,41 +101,38 @@ public class Client : MonoBehaviour
             Debug.Log("Receive Start!");
             // Get a stream object for writing.             
             NetworkStream stream = socketConnection.GetStream();
-            Debug.Log("Receiving " + stream);
+            // Debug.Log("Receiving " + stream);
             byte[] recvMessage = new Byte[4096];
 
             stream.Read(recvMessage, 0, recvMessage.Length);
-            Debug.Log("Receiving 1 " + recvMessage);
+            // Debug.Log("Receiving 1 " + recvMessage);
 
             traj = System.Text.Encoding.UTF8.GetString(recvMessage).ToString();
-            if (traj .Equals("error"))
+            if (traj.Equals("error"))
             {
                 state = 2;
                 Debug.Log("UnicodeDecodeError");
             }
             else
             {
-                Debug.Log("Receiving 2 " + traj);
+                // Debug.Log("Receiving 2 " + traj);
                 split_traj = traj.Split(' ');
-                Debug.Log("Receiving 3 - tx: " + split_traj[4]);
+                // Debug.Log("Receiving 3 - tx: " + split_traj[3]);
 
-                qw = float.Parse(split_traj[0]);
-                qx = float.Parse(split_traj[1]);
-                qy = float.Parse(split_traj[2]);
-                qz = float.Parse(split_traj[3]);
-                tx = float.Parse(split_traj[4]);
-                ty = float.Parse(split_traj[5]);
-                tz = float.Parse(split_traj[6]);
-
-                rotatePos = EulerFromQuarternion(qw, qx, qy, qz);
+                roll = float.Parse(split_traj[0]);
+                pitch = float.Parse(split_traj[1]);
+                yaw = float.Parse(split_traj[2]);
+                tx = float.Parse(split_traj[3]);
+                ty = float.Parse(split_traj[4]);
+                tz = float.Parse(split_traj[5]);
 
                 transX.text = tx.ToString();
                 transY.text = ty.ToString();
                 transZ.text = tz.ToString();
 
-                rotateX.text = rotatePos.x.ToString();
-                rotateY.text = rotatePos.y.ToString();
-                rotateZ.text = rotatePos.z.ToString();
+                rotateX.text = roll.ToString();
+                rotateY.text = pitch.ToString();
+                rotateZ.text = yaw.ToString();
                 state = 0;
             }
         }
@@ -148,6 +149,8 @@ public class Client : MonoBehaviour
         mobileCamera = GameObject.Find("Camera Manager").GetComponent<CameraManager>();
         mobileCamera.ARCamera();
         CommunitcateWithServer(mobileCamera.m_LastCameraTexture.EncodeToPNG());
+        t0 = new Vector3(arCamera.transform.position.x, arCamera.transform.position.y, arCamera.transform.position.z);
+
 	}
 
     async void CommunitcateWithServer(byte[] byteTestImageTexture)
@@ -156,8 +159,9 @@ public class Client : MonoBehaviour
         {
             ConnectToTcpServer();
 
-            string requestMessage = "kyj0701 CameraImage.png " + byteTestImageTexture.Length;
-            Debug.Log(requestMessage);
+            string requestMessage =  GameManager.Instance.playerID + " CameraImage.png " + byteTestImageTexture.Length;
+            // string requestMessage =  "kyj0701" + " CameraImage.png " + byteTestImageTexture.Length;
+            // Debug.Log(requestMessage);
 
             SendMessage(System.Text.Encoding.UTF8.GetBytes(requestMessage));
             SendMessage(byteTestImageTexture);
@@ -168,28 +172,11 @@ public class Client : MonoBehaviour
             if (tx != 0 || ty != 0 || tz != 0) 
             {
                 connecting = true;
-                arCamera.transform.position = new Vector3(tx, ty, tz);
+                t1 = new Vector3(arCamera.transform.position.x, arCamera.transform.position.y, arCamera.transform.position.z);
+                arCamera.transform.position = new Vector3(t1.x - t0.x + tx, t1.y - t0.y + ty, t1.z - t0.z + tz);
             }
 
             socketConnection = null;
         });
-    }
-
-    private Vector3 EulerFromQuarternion(float qw, float qx, float qy, float qz)
-    {
-        float t0 = 2.0f * (qw * qx + qy * qz);
-        float t1 = 1.0f - 2.0f * (qx * qx + qy * qy);
-        float rx = MathF.Atan2(t0, t1);
-
-        float t2 = 2.0f * (qw * qy - qz * qx);
-        if (t2 > 1.0f) t2 = 1.0f;
-        if (t2 < -1.0f) t2= -1.0f;
-        float ry = MathF.Asin(t2);
-
-        float t3 = 2.0f * (qw * qz + qx * qy);
-        float t4 = 1.0f - 2.0f * (qy * qy + qz * qz);
-        float rz = MathF.Atan2(t3, t4);
-
-        return new Vector3(rx, ry, rz);
     }
 }
