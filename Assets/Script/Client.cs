@@ -174,6 +174,7 @@ public class Client : MonoBehaviour
                 connecting = true;
                 t1 = new Vector3(arCamera.transform.position.x, arCamera.transform.position.y, arCamera.transform.position.z);
                 arCamera.transform.position = new Vector3(t1.x - t0.x + tx, t1.y - t0.y + ty, t1.z - t0.z + tz);
+                arCamera.transform.rotation = Quaternion.Euler(roll, pitch, yaw);
             }
 
             socketConnection = null;
