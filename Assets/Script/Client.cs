@@ -23,9 +23,10 @@ public class Client : MonoBehaviour
 
     private string traj;
     private string[] split_traj;
-    public float roll, pitch, yaw;
+    private float qw, qx, qy, qz;
     private float tx, ty, tz;
-    private Vector3 rotatePos;
+    private Vector3 position;
+    private Quaternion rotation;
     public Boolean connecting = false;
     private Vector3 t0;
     private Vector3 t1;
@@ -40,9 +41,10 @@ public class Client : MonoBehaviour
     private void Start()
     {
         state = -1;
-        roll = 0;
-        pitch = 0;
-        yaw = 0;
+        qw = 0;
+        qx = 0;
+        qy = 0;
+        qz = 0;
         tx = 0;
         ty = 0;
         tz = 0;
@@ -119,20 +121,23 @@ public class Client : MonoBehaviour
                 split_traj = traj.Split(' ');
                 // Debug.Log("Receiving 3 - tx: " + split_traj[3]);
 
-                roll = float.Parse(split_traj[0]);
-                pitch = float.Parse(split_traj[1]);
-                yaw = float.Parse(split_traj[2]);
-                tx = float.Parse(split_traj[3]);
-                ty = float.Parse(split_traj[4]);
-                tz = float.Parse(split_traj[5]);
+                qw = float.Parse(split_traj[0]);
+                qx = float.Parse(split_traj[1]);
+                qy = float.Parse(split_traj[2]);
+                qz = float.Parse(split_traj[3]);
+                tx = float.Parse(split_traj[4]);
+                ty = float.Parse(split_traj[5]);
+                tz = float.Parse(split_traj[6]);
 
                 transX.text = tx.ToString();
                 transY.text = ty.ToString();
                 transZ.text = tz.ToString();
 
-                rotateX.text = roll.ToString();
-                rotateY.text = pitch.ToString();
-                rotateZ.text = yaw.ToString();
+                ConvertCoordinatesCOLMAPtoUnity(new Vector3(tx, ty, tz), new Quaternion(qw, qx, qy, qz));
+
+                rotateX.text = rotation.x.ToString();
+                rotateY.text = rotation.y.ToString();
+                rotateZ.text = rotation.z.ToString();
                 state = 0;
             }
         }
@@ -173,11 +178,19 @@ public class Client : MonoBehaviour
             {
                 connecting = true;
                 t1 = new Vector3(arCamera.transform.position.x, arCamera.transform.position.y, arCamera.transform.position.z);
-                arCamera.transform.position = new Vector3(t1.x - t0.x + tx, t1.y - t0.y + ty, t1.z - t0.z + tz);
-                arCamera.transform.rotation = Quaternion.Euler(roll, pitch, yaw);
+                arCamera.transform.position = new Vector3(t1.x - t0.x + position.x, t1.y - t0.y + position.y, t1.z - t0.z + position.z);
+                arCamera.transform.rotation = rotation;
             }
 
             socketConnection = null;
         });
+    }
+
+    private void ConvertCoordinatesCOLMAPtoUnity (Vector3 pos, Quaternion rot)
+    {
+        position = Quaternion.Inverse(rot) * -pos;
+        position = Vector3.Scale(position, new Vector3(1,-1,1));
+        rotation = Quaternion.Inverse(rot);
+        rotation = new Quaternion(-rotation.x, rotation.y, -rotation.z, rotation.w);
     }
 }
