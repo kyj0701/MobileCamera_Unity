@@ -32,6 +32,8 @@ public class Client : MonoBehaviour
     public Boolean connecting = false;
     private Vector3 t0;
     private Vector3 t1;
+    private Quaternion q0;
+    private Quaternion q1;
 
     public int state;
     public int toggle;
@@ -143,7 +145,7 @@ public class Client : MonoBehaviour
                     ty = float.Parse(split_traj[5]);
                     tz = float.Parse(split_traj[6]);
 
-                    Quaternion rot = new Quaternion(qw, qx, qy, qz);
+                    Quaternion rot = new Quaternion(qx, qy, qz, qw);
                     Vector3 pos = new Vector3(tx, ty, tz);         
 
                     trajPos = Quaternion.Inverse(rot) * -pos;
@@ -187,6 +189,7 @@ public class Client : MonoBehaviour
             mobileCamera.ARCamera();
             CommunitcateWithServer(mobileCamera.m_LastCameraTexture.EncodeToPNG());
             t0 = new Vector3(arCamera.transform.position.x, arCamera.transform.position.y, arCamera.transform.position.z);
+            q0 = arCamera.transform.rotation;
         }
         else socketConnection = null;
 	}
@@ -208,12 +211,14 @@ public class Client : MonoBehaviour
 
             RecvMessage();
 
-            if (tx != 0 || ty != 0 || tz != 0) 
             {
                 connecting = true;
                 t1 = new Vector3(arCamera.transform.position.x, arCamera.transform.position.y, arCamera.transform.position.z);
+                q1 = arCamera.transform.rotation;
                 arCamera.transform.position = new Vector3(t1.x - t0.x + trajPos.x, t1.y - t0.y + trajPos.y, t1.z - t0.z + trajPos.z);
-                arCamera.transform.rotation = trajRot;
+                // arCamera.transform.rotation = trajRot; 
+
+                arCamera.transform.rotation = (q1 * Quaternion.Inverse(q0)) * trajRot;
             }
 
             socketConnection = null;
