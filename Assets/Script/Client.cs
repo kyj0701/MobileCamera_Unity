@@ -20,18 +20,21 @@ public class Client : MonoBehaviour
     public Text rotateX;
     public Text rotateY;
     public Text rotateZ;
+    public GameObject sendBtn;
+    public Text mapText;
 
     private string traj;
     private string[] split_traj;
     private float qw, qx, qy, qz;
     private float tx, ty, tz;
-    private Vector3 position;
-    private Quaternion rotation;
+    private Vector3 trajPos;
+    private Quaternion trajRot;
     public Boolean connecting = false;
     private Vector3 t0;
     private Vector3 t1;
 
-    private int state;
+    public int state;
+    public int toggle;
 
     private void Awake() 
     {
@@ -41,6 +44,7 @@ public class Client : MonoBehaviour
     private void Start()
     {
         state = -1;
+        toggle = 0;
         qw = 0;
         qx = 0;
         qy = 0;
@@ -48,6 +52,7 @@ public class Client : MonoBehaviour
         tx = 0;
         ty = 0;
         tz = 0;
+
     }
 
     private void Update() 
@@ -55,7 +60,9 @@ public class Client : MonoBehaviour
         // if state = 0, server sends traj to client
         // if state = 2, client can't receive traj from server 
         // if state = 3, SocketException: Connection reset by peer or Connection failed
-        if (state == 0 || state == 2 || state == 3) SendToServerImage();
+        // if state = 4, Exception: All exception
+        if (state == 0 || state == 2 || state == 3 || state == 4) SendToServerImage();
+        else if (state == -1) socketConnection = null;
     }
 
     private void ConnectToTcpServer()
@@ -94,68 +101,94 @@ public class Client : MonoBehaviour
             Debug.Log("Socket exception: " + socketException);
             state = 3;
         }
+        catch (Exception e)
+        {
+            Debug.Log("Exception : " + e);
+            state = 4;
+        }
     }
 
     private void RecvMessage()
     {
         try
         {
-            Debug.Log("Receive Start!");
-            // Get a stream object for writing.             
-            NetworkStream stream = socketConnection.GetStream();
-            // Debug.Log("Receiving " + stream);
-            byte[] recvMessage = new Byte[4096];
-
-            stream.Read(recvMessage, 0, recvMessage.Length);
-            // Debug.Log("Receiving 1 " + recvMessage);
-
-            traj = System.Text.Encoding.UTF8.GetString(recvMessage).ToString();
-            if (traj.Equals("error"))
+            if (toggle == 1)
             {
-                state = 2;
-                Debug.Log("UnicodeDecodeError");
+                Debug.Log("Receive Start!");
+                // Get a stream object for writing.             
+                NetworkStream stream = socketConnection.GetStream();
+                // Debug.Log("Receiving " + stream);
+                byte[] recvMessage = new Byte[4096];
+
+                stream.Read(recvMessage, 0, recvMessage.Length);
+                // Debug.Log("Receiving 1 " + recvMessage);
+
+                traj = System.Text.Encoding.UTF8.GetString(recvMessage).ToString();
+                if (traj.Equals("error"))
+                {
+                    state = 2;
+                    Debug.Log("UnicodeDecodeError");
+                }
+                else
+                {
+                    // Debug.Log("Receiving 2 " + traj);
+                    split_traj = traj.Split(' ');
+                    // Debug.Log("Receiving 3 - tx: " + split_traj[3]);
+
+                    qw = float.Parse(split_traj[0]);
+                    qx = float.Parse(split_traj[1]);
+                    qy = float.Parse(split_traj[2]);
+                    qz = float.Parse(split_traj[3]);
+                    tx = float.Parse(split_traj[4]);
+                    ty = float.Parse(split_traj[5]);
+                    tz = float.Parse(split_traj[6]);
+
+                    Quaternion rot = new Quaternion(qw, qx, qy, qz);
+                    Vector3 pos = new Vector3(tx, ty, tz);         
+
+                    trajPos = Quaternion.Inverse(rot) * -pos;
+                    trajPos = Vector3.Scale(trajPos, new Vector3(1,-1,1));
+                    trajRot = Quaternion.Inverse(rot);
+                    trajRot = new Quaternion(-trajRot.x, trajRot.y, -trajRot.z, trajRot.w);
+
+                    transX.text = trajPos.x.ToString();
+                    transY.text = trajPos.y.ToString();
+                    transZ.text = trajPos.z.ToString();                
+
+                    rotateX.text = trajRot.x.ToString();
+                    rotateY.text = trajRot.y.ToString();
+                    rotateZ.text = trajRot.z.ToString();
+                    state = 0;
+                }
             }
-            else
-            {
-                // Debug.Log("Receiving 2 " + traj);
-                split_traj = traj.Split(' ');
-                // Debug.Log("Receiving 3 - tx: " + split_traj[3]);
-
-                qw = float.Parse(split_traj[0]);
-                qx = float.Parse(split_traj[1]);
-                qy = float.Parse(split_traj[2]);
-                qz = float.Parse(split_traj[3]);
-                tx = float.Parse(split_traj[4]);
-                ty = float.Parse(split_traj[5]);
-                tz = float.Parse(split_traj[6]);
-
-                transX.text = tx.ToString();
-                transY.text = ty.ToString();
-                transZ.text = tz.ToString();
-
-                ConvertCoordinatesCOLMAPtoUnity(new Vector3(tx, ty, tz), new Quaternion(qw, qx, qy, qz));
-
-                rotateX.text = rotation.x.ToString();
-                rotateY.text = rotation.y.ToString();
-                rotateZ.text = rotation.z.ToString();
-                state = 0;
-            }
+            else socketConnection = null;
         }
         catch (SocketException socketException)
         {
             Debug.Log("Socket exception: " + socketException);
         }
+        catch (Exception e)
+        {
+            Debug.Log("Exception : " + e);
+            state = 4;
+        }
     }
 
     public void SendToServerImage()
 	{
-        state = 1;
-        Debug.Log("Task Start!");
-        mobileCamera = GameObject.Find("Camera Manager").GetComponent<CameraManager>();
-        mobileCamera.ARCamera();
-        CommunitcateWithServer(mobileCamera.m_LastCameraTexture.EncodeToPNG());
-        t0 = new Vector3(arCamera.transform.position.x, arCamera.transform.position.y, arCamera.transform.position.z);
-
+        if (toggle == 1)
+        {
+            state = 1;
+            Debug.Log("Task Start!");
+            if (sendBtn.activeSelf == true) {
+                sendBtn.SetActive(false);
+            }
+            mobileCamera = GameObject.Find("Camera Manager").GetComponent<CameraManager>();
+            mobileCamera.ARCamera();
+            CommunitcateWithServer(mobileCamera.m_LastCameraTexture.EncodeToPNG());
+            t0 = new Vector3(arCamera.transform.position.x, arCamera.transform.position.y, arCamera.transform.position.z);
+        }
+        else socketConnection = null;
 	}
 
     async void CommunitcateWithServer(byte[] byteTestImageTexture)
@@ -163,10 +196,11 @@ public class Client : MonoBehaviour
         await Task.Run(() =>
         {
             ConnectToTcpServer();
+            
 
             string requestMessage =  GameManager.Instance.playerID + " CameraImage.png " + byteTestImageTexture.Length;
-            // string requestMessage =  "kyj0701" + " CameraImage.png " + byteTestImageTexture.Length;
-            // Debug.Log(requestMessage);
+            // string requestMessage =  GameManager.Instance.playerID + " " + mapText.text.ToString() + " CameraImage.png " + byteTestImageTexture.Length;
+            Debug.Log(requestMessage);
 
             SendMessage(System.Text.Encoding.UTF8.GetBytes(requestMessage));
             SendMessage(byteTestImageTexture);
@@ -178,8 +212,8 @@ public class Client : MonoBehaviour
             {
                 connecting = true;
                 t1 = new Vector3(arCamera.transform.position.x, arCamera.transform.position.y, arCamera.transform.position.z);
-                arCamera.transform.position = new Vector3(t1.x - t0.x + position.x, t1.y - t0.y + position.y, t1.z - t0.z + position.z);
-                arCamera.transform.rotation = rotation;
+                arCamera.transform.position = new Vector3(t1.x - t0.x + trajPos.x, t1.y - t0.y + trajPos.y, t1.z - t0.z + trajPos.z);
+                arCamera.transform.rotation = trajRot;
             }
 
             socketConnection = null;
@@ -188,9 +222,9 @@ public class Client : MonoBehaviour
 
     private void ConvertCoordinatesCOLMAPtoUnity (Vector3 pos, Quaternion rot)
     {
-        position = Quaternion.Inverse(rot) * -pos;
-        position = Vector3.Scale(position, new Vector3(1,-1,1));
-        rotation = Quaternion.Inverse(rot);
-        rotation = new Quaternion(-rotation.x, rotation.y, -rotation.z, rotation.w);
+        trajPos = Quaternion.Inverse(rot) * -pos;
+        trajPos = Vector3.Scale(trajPos, new Vector3(1,-1,1));
+        trajRot = Quaternion.Inverse(rot);
+        trajRot = new Quaternion(-trajRot.x, trajRot.y, -trajRot.z, trajRot.w);
     }
 }
