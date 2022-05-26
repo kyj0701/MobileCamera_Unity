@@ -4,8 +4,6 @@ using System.Threading.Tasks;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
-using Unity.Mathematics;
-
 
 public class Client : MonoBehaviour
 {
