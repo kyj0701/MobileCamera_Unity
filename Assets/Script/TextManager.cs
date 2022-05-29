@@ -9,6 +9,8 @@ public class TextManager : MonoBehaviour
     public Text information;
     public Text cameraPos;
     private bool firstClick;
+    // dummy
+    public GameObject sendBtn;
 
     private void Start() 
     {
@@ -29,5 +31,14 @@ public class TextManager : MonoBehaviour
             information.text = info;
             firstClick = true;
         }
+        //dummy
+        if (sendBtn.activeSelf == true) {
+            sendBtn.SetActive(false);
+        }
+    }
+
+    public void Active(GameObject obj)
+    {
+        obj.SetActive(true);
     }
 }

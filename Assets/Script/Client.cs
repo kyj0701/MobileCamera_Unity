@@ -214,9 +214,11 @@ public class Client : MonoBehaviour
                 t1 = new Vector3(arCamera.transform.position.x, arCamera.transform.position.y, arCamera.transform.position.z);
                 q1 = arCamera.transform.rotation;
                 arCamera.transform.position = new Vector3(t1.x - t0.x + trajPos.x, t1.y - t0.y + trajPos.y, t1.z - t0.z + trajPos.z);
-                // arCamera.transform.rotation = trajRot; 
-
                 arCamera.transform.rotation = (q1 * Quaternion.Inverse(q0)) * trajRot;
+
+                // arCamera.transform.position = trajPos;
+                // arCamera.transform.rotation = trajRot;
+                
             }
 
             socketConnection = null;

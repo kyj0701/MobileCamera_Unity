@@ -9,13 +9,13 @@ public class SelectDest : MonoBehaviour
     public List<Text> mapListInBtn = new List<Text>(3);
     public GameObject scrollBar;
     public Text mapBtnText;
-    public GameObject navigator;
+    public List<GameObject> dest_list;
 
     // Start is called before the first frame update
     void Start()
     {
         mapList.Add("coffee machine");
-        mapList.Add("--");
+        mapList.Add("multi space");
         mapList.Add("--");
 
         for (int i = 0; i < mapListInBtn.Count; i++) {
@@ -31,6 +31,20 @@ public class SelectDest : MonoBehaviour
     public void Select(Text mapName) {
         mapBtnText.text = mapName.text;
         scrollBar.SetActive(false);
-        navigator.SetActive(true);
+        if (mapBtnText.text == "coffee machine") 
+        { 
+            dest_list[0].SetActive(true);
+            dest_list[1].SetActive(false);
+        }
+        else if (mapBtnText.text == "multi space") 
+        {
+            dest_list[0].SetActive(false);
+            dest_list[1].SetActive(true);
+        }
+        else 
+        {
+            dest_list[0].SetActive(false);
+            dest_list[1].SetActive(false);
+        }
     }
 }
