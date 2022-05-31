@@ -218,7 +218,6 @@ public class Client : MonoBehaviour
 
                 // arCamera.transform.position = trajPos;
                 // arCamera.transform.rotation = trajRot;
-                
             }
 
             socketConnection = null;
