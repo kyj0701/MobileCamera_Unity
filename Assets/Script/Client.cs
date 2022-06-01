@@ -197,11 +197,10 @@ public class Client : MonoBehaviour
         await Task.Run(() =>
         {
             ConnectToTcpServer();
-            
 
-            string requestMessage =  GameManager.Instance.playerID + " CameraImage.png " + byteTestImageTexture.Length;
-            // string requestMessage =  GameManager.Instance.playerID + " " + mapText.text.ToString() + " CameraImage.png " + byteTestImageTexture.Length;
-            Debug.Log(requestMessage);
+            string requestMessage =  "kyj0701 CameraImage.png " + byteTestImageTexture.Length;
+            // string requestMessage =  GameManager.Instance.playerID + " CameraImage.png " + byteTestImageTexture.Length;
+            // Debug.Log(requestMessage);
 
             SendMessage(System.Text.Encoding.UTF8.GetBytes(requestMessage));
             SendMessage(byteTestImageTexture);
